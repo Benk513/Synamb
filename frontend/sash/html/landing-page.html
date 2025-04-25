@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <!-- META DATA -->
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="description"
+      content="Sash – Bootstrap 5  Admin & Dashboard Template"
+    />
+    <meta name="author" content="Spruko Technologies Private Limited" />
+    <meta
+      name="keywords"
+      content="admin,admin dashboard,admin panel,admin template,bootstrap,clean,dashboard,flat,jquery,modern,responsive,premium admin templates,responsive admin,ui,ui kit."
+    />
+
+    <!-- FAVICON -->
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="../assets/images/brand/favicon.ico"
+    />
+
+    <!-- TITLE -->
+    <title>Sash – Bootstrap 5 Admin & Dashboard Template</title>
+
+    <!-- BOOTSTRAP CSS -->
+    <link
+      id="style"
+      href="../assets/plugins/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- STYLE CSS -->
+    <link href="../assets/css/style.css" rel="stylesheet" />
+
+    <!-- Plugins CSS -->
+    <link href="../assets/css/plugins.css" rel="stylesheet" />
+
+    <!--- FONT-ICONS CSS -->
+    <link href="../assets/css/icons.css" rel="stylesheet" />
+
+    <!-- INTERNAL Switcher css -->
+    <link href="../assets/switcher/css/switcher.css" rel="stylesheet" />
+    <link href="../assets/switcher/demo.css" rel="stylesheet" />
+  </head>
+
+  <body class="app ltr landing-page horizontal">
+    <!-- GLOBAL-LOADER -->
+    <div id="global-loader">
+      <img src="../assets/images/loader.svg" class="loader-img" alt="Loader" />
+    </div>
+    <!-- /GLOBAL-LOADER -->
+
+    <!-- PAGE -->
+    <div class="page">
+      <div class="page-main">
+        <!-- app-Header -->
+        <div class="hor-header header">
+          <div class="container main-container">
+            <div class="d-flex">
+              <a
+                aria-label="Hide Sidebar"
+                class="app-sidebar__toggle"
+                data-bs-toggle="sidebar"
+                href="javascript:void(0)"
+              ></a>
+              <!-- sidebar-toggle-->
+              <a class="logo-horizontal" href="index.html">
+                <img
+                  src="../assets/images/brand/logo-white.png"
+                  class="header-brand-img desktop-logo"
+                  alt="logo"
+                />
+                <img
+                  src="../assets/images/brand/logo-dark.png"
+                  class="header-brand-img light-logo1"
+                  alt="logo"
+                />
+              </a>
+              <!-- LOGO -->
+              <div class="d-flex order-lg-2 ms-auto header-right-icons">
+                <button
+                  class="navbar-toggler navresponsive-toggler d-lg-none ms-auto"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#navbarSupportedContent-4"
+                  aria-controls="navbarSupportedContent-4"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <span class="navbar-toggler-icon fe fe-more-vertical"></span>
+                </button>
+                <div class="navbar navbar-collapse responsive-navbar p-0">
+                  <div
+                    class="collapse navbar-collapse bg-white px-0"
+                    id="navbarSupportedContent-4"
+                  >
+                    <!-- SEARCH -->
+                    <div class="header-nav-right p-5">
+                      <a
+                        href="inscription_etudiant.html"
+                        class="btn ripple btn-min w-sm btn-outline-primary me-2 my-auto"
+                        target="_blank"
+                        >S'inscrire
+                      </a>
+                      <a
+                        href="login.html"
+                        class="btn ripple btn-min w-sm btn-primary me-2 my-auto"
+                        target="_blank"
+                        >Se connecter
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /app-Header -->
+
+        <div class="overflow-hidden bg-white">
+          <div class="top sticky">
+            <!--APP-SIDEBAR-->
+            <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
+            <div class="app-sidebar bg-transparent horizontal-main">
+              <div class="container">
+                <div class="row">
+                  <div class="main-sidemenu navbar px-0">
+                    <a
+                      class="navbar-brand ps-0 d-none d-lg-block"
+                      href="index.html"
+                    >
+                      <img
+                        alt=""
+                        class="logo-2"
+                        src="../assets/images/brand/logo-dark.png"
+                      />
+                      <img
+                        src="../assets/images/brand/logo-white.png"
+                        class="logo-3"
+                        alt="logo"
+                      />
+                    </a>
+                    <ul class="side-menu">
+                      <li class="slide">
+                        <a
+                          class="side-menu__item active"
+                          data-bs-toggle="slide"
+                          href="#home"
+                          ><span class="side-menu__label">Accueil</span></a
+                        >
+                      </li>
+
+                      <li class="slide">
+                        <a
+                          class="side-menu__item"
+                          data-bs-toggle="slide"
+                          href="#About"
+                          ><span class="side-menu__label">Mission</span></a
+                        >
+                      </li>
+                      <li class="slide">
+                        <a
+                          class="side-menu__item"
+                          data-bs-toggle="slide"
+                          href="#avantages"
+                          ><span class="side-menu__label">Avantages</span></a
+                        >
+                      </li>
+                    </ul>
+                    <div class="header-nav-right d-none d-lg-flex">
+                      <a
+                        href="inscription_etudiant.html"
+                        class="btn ripple btn-min w-sm btn-outline-primary me-2 my-auto d-lg-none d-xl-block d-block"
+                        >S'inscrire
+                      </a>
+                      <a
+                        href="login.html"
+                        class="btn ripple btn-min w-sm btn-primary me-2 my-auto d-lg-none d-xl-block d-block"
+                        target="_blank"
+                        >Se connecter
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--/APP-SIDEBAR-->
+          </div>
+          <div
+            class="demo-screen-headline main-demo main-demo-1 spacing-top overflow-hidden reveal"
+            id="home"
+          >
+            <div class="container px-sm-0">
+              <div class="row">
+                <div
+                  class="col-xl-6 col-lg-6 mb-5 pb-5 animation-zidex pos-relative"
+                >
+                  <h4 class="fw-semibold mt-7">SYNAMB</h4>
+                  <h1 class="text-start fw-bold">
+                    La plateforme des étudiants et ambassadeurs en Tunisie
+                  </h1>
+                  <h6 class="pb-3">
+                    SynAmb est la passerelle numérique entre les ambassades et
+                    les étudiants. Que vous soyez étudiant en mobilité ou
+                    représentant d'une ambassade, notre plateforme vous
+                    accompagne, facilite vos démarches et renforce le lien entre
+                    pays d’origine et pays d’accueil.
+                  </h6>
+
+                  <a
+                    href="login.html"
+                    target="_blank"
+                    class="btn ripple btn-min w-lg mb-3 me-2 btn-primary"
+                    ><i class="fe fe-play me-2"></i> Rejoignez la communauté
+                  </a>
+                </div>
+                <div class="col-xl-6 col-lg-6 my-auto">
+                  <img src="../assets/images/landing/etudiantbg.jpg" alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--app-content open-->
+        <div class="main-content mt-0">
+          <div class="side-app">
+            <!-- CONTAINER -->
+            <div class="main-container">
+              <div class="">
+                <!-- ROW-1 OPEN -->
+                <div class="section pb-0">
+                  <div class="container">
+                    <div class="row">
+                      <h4 class="text-center fw-semibold">Statistiques</h4>
+                      <span class="landing-title"></span>
+                      <h2 class="text-center fw-semibold mb-7">
+                        Quelques chiffres clés.
+                      </h2>
+                    </div>
+                    <div
+                      class="row text-center services-statistics landing-statistics"
+                    >
+                      <div class="col-xl-3 col-md-6 col-lg-6">
+                        <div class="card">
+                          <div class="card-body bg-primary-transparent">
+                            <div class="counter-status">
+                              <div
+                                class="counter-icon bg-primary-transparent box-shadow-primary"
+                              >
+                                <i class="fe fe-layers text-primary fs-23"></i>
+                              </div>
+                              <div class="test-body text-center">
+                                <h1 class="mb-0">
+                                  <span class="counter fw-semibold counter"
+                                    >20</span
+                                  >+
+                                </h1>
+                                <div class="counter-text">
+                                  <h5 class="font-weight-normal mb-0">
+                                    Etudiants accompagnés
+                                  </h5>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-3 col-md-6 col-lg-6">
+                        <div class="card">
+                          <div class="card-body bg-secondary-transparent">
+                            <div class="counter-status">
+                              <div
+                                class="counter-icon bg-secondary-transparent box-shadow-secondary"
+                              >
+                                <i class="fe fe-wind text-secondary fs-23"></i>
+                              </div>
+                              <div class="text-body text-center">
+                                <h1 class="mb-0">
+                                  <span class="counter fw-semibold counter"
+                                    >10</span
+                                  >+
+                                </h1>
+                                <div class="counter-text">
+                                  <h5 class="font-weight-normal mb-0">
+                                    ambassades connectés
+                                  </h5>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-3 col-md-6 col-lg-6">
+                        <div class="card">
+                          <div class="card-body bg-success-transparent">
+                            <div class="counter-status">
+                              <div
+                                class="counter-icon bg-success-transparent box-shadow-success"
+                              >
+                                <i
+                                  class="fe fe-file-text text-success fs-23"
+                                ></i>
+                              </div>
+                              <div class="text-body text-center">
+                                <h1 class="mb-0">
+                                  <span class="counter fw-semibold counter"
+                                    >30</span
+                                  >+
+                                </h1>
+                                <div class="counter-text">
+                                  <h5 class="font-weight-normal mb-0">
+                                    Utilisateurs actifs
+                                  </h5>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-3 col-md-6 col-lg-6">
+                        <div class="card">
+                          <div class="card-body bg-danger-transparent">
+                            <div class="counter-status">
+                              <div
+                                class="counter-icon bg-danger-transparent box-shadow-danger"
+                              >
+                                <i class="fe fe-grid text-danger fs-23"></i>
+                              </div>
+                              <div class="text-body text-center">
+                                <h1 class="mb-0">
+                                  <span class="counter fw-semibold counter"
+                                    >50</span
+                                  >+
+                                </h1>
+                                <div class="counter-text">
+                                  <h5 class="font-weight-normal mb-0">
+                                   Annonces Publiées 
+                                  </h5>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- ROW-1 CLOSED -->
+
+                <!-- ROW-3 OPEN -->
+                <div class="section bg-landing pb-0 bg-image-style" id="About">
+                  <div class="container">
+                    <div class="row">
+                      <h4 class="text-center fw-semibold">Notre Mission</h4>
+                      <span class="landing-title"></span>
+                      <div class="text-center">
+                        <h2 class="text-center fw-semibold">
+                          Simplifier les demarches administratives
+                        </h2>
+                      </div>
+                      <div class="col-lg-12">
+                        <div class="card bg-transparent">
+                          <div class="card-body text-dark">
+                            <div class="statistics-info">
+                              <div class="row">
+                                <div class="col-xl-6 col-lg-6 ps-0">
+                                  <div
+                                    class="text-center reveal revealleft mb-3"
+                                  >
+                                    <img
+                                      src="../assets/images/landing/etudiant1.jpg"
+                                      alt=""
+                                      class="br-5"
+                                    />
+                                  </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 pe-0 my-auto">
+                                  <div class="ps-5 reveal revealright">
+                                    <div class="d-flex"></div>
+                                    <div class="d-flex">
+                                      <div class="ms-5 mb-4">
+                                        <p class="fs-18">
+                                          Chez SynAmb, nous croyons que chaque
+                                          étudiant mérite un accompagnement
+                                          digne, quel que soit son pays
+                                          d'origine. Notre mission est de
+                                          connecter les jeunes talents avec
+                                          leurs ambassades, de simplifier leurs
+                                          démarches et de créer un pont solide
+                                          entre les citoyens et leurs
+                                          représentations à l’étranger.
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- ROW-3 CLOSED -->
+
+                <!-- ROW-5 OPEN -->
+                <div class="section">
+                  <div class="container">
+                    <div class="row">
+                      <section class="sptb demo-screen-demo" id="avantages">
+                        <div class="container">
+                          <div class="row align-items-center">
+                            <h4 class="text-center fw-semibold">Avantages</h4>
+                            <span class="landing-title"></span>
+                            <h2 class="text-center fw-semibold">
+                              Ce que nous vous offrons
+                            </h2>
+                            <div class="col-lg-12">
+                              <div class="row justify-content-center"></div>
+                              <div class="row" id="grid">
+                                <div class="col-lg-6">
+                                  <div class="col-md-12 grid-item px-0">
+                                    <div
+                                      class="card card-collapsed bg-primary-transparent p-0 reveal"
+                                    >
+                                      <div
+                                        class="card-header grid-link"
+                                        data-bs-toggle="card-collapse"
+                                      >
+                                        <a
+                                          href="#"
+                                          class="card-options-collapse h5 fw-bold card-title mb-0 text-primary"
+                                          ><span class="badge"
+                                            ><i
+                                              class="fe fe-chevron-up fs-15 me-3"
+                                            ></i
+                                          ></span>
+                                          Sécurité & confidentialité
+                                        </a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-12 grid-item px-0">
+                                    <div
+                                      class="card card-collapsed bg-success-transparent p-0 reveal"
+                                    >
+                                      <div
+                                        class="card-header grid-link"
+                                        data-bs-toggle="card-collapse"
+                                      >
+                                        <a
+                                          href="#"
+                                          class="card-options-collapse h5 fw-bold card-title mb-0 text-success"
+                                          ><span class="badge"
+                                            ><i
+                                              class="fe fe-chevron-up fs-15 me-3"
+                                            ></i></span
+                                          >Accompagnement personnalisé</a
+                                        >
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-12 grid-item px-0">
+                                    <div
+                                      class="card card-collapsed bg-info-transparent p-0 reveal"
+                                    >
+                                      <div
+                                        class="card-header grid-link"
+                                        data-bs-toggle="card-collapse"
+                                      >
+                                        <a
+                                          href="#"
+                                          class="card-options-collapse h5 fw-bold card-title mb-0 text-info"
+                                          ><span class="badge"
+                                            ><i
+                                              class="fe fe-chevron-up fs-15 me-3"
+                                            ></i></span
+                                          >Connexion internationale
+                                        </a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-lg-6">
+                                  <div class="col-md-12 grid-item px-0">
+                                    <div
+                                      class="card card-collapsed bg-secondary-transparent p-0 reveal"
+                                    >
+                                      <div
+                                        class="card-header grid-link"
+                                        data-bs-toggle="card-collapse"
+                                      >
+                                        <a
+                                          href="#"
+                                          class="card-options-collapse h5 fw-bold card-title mb-0 text-secondary"
+                                          ><span class="badge"
+                                            ><i
+                                              class="fe fe-chevron-up fs-15 me-3"
+                                            ></i
+                                          ></span>
+                                          Démarches simplifiées</a
+                                        >
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-12 grid-item px-0"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </div>
+                </div>
+                <!-- ROW-5 CLOSED -->
+
+                <!-- ROW-8 CLOSED -->
+
+                <!-- ROW-11 OPEN -->
+
+                <!-- ROW-11 CLOSED -->
+              </div>
+            </div>
+            <!-- CONTAINER CLOSED-->
+          </div>
+        </div>
+        <!--app-content closed-->
+      </div>
+
+      <!-- FOOTER OPEN -->
+      <div class="demo-footer">
+        <div class="container">
+          <div class="row">
+            <div class="card">
+              <div class="card-body">
+                <footer class="main-footer px-0 pb-0 text-center">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                      SynAmb © 2025 — Tous droits réservés.
+                      <span id="year"></span>
+                    </div>
+                  </div>
+                </footer>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- FOOTER CLOSED -->
+    </div>
+
+    <!-- BACK-TO-TOP -->
+    <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
+
+    <!-- JQUERY JS -->
+    <script src="../assets/js/jquery.min.js"></script>
+
+    <!-- BOOTSTRAP JS -->
+    <script src="../assets/plugins/bootstrap/js/popper.min.js"></script>
+    <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- COUNTERS JS-->
+    <script src="../assets/plugins/counters/counterup.min.js"></script>
+    <script src="../assets/plugins/counters/waypoints.min.js"></script>
+    <script src="../assets/plugins/counters/counters-1.js"></script>
+
+    <!-- Perfect SCROLLBAR JS-->
+    <script src="../assets/plugins/owl-carousel/owl.carousel.js"></script>
+    <script src="../assets/plugins/company-slider/slider.js"></script>
+
+    <!-- Star Rating Js-->
+    <script src="../assets/plugins/rating/jquery-rate-picker.js"></script>
+    <script src="../assets/plugins/rating/rating-picker.js"></script>
+
+    <!-- Star Rating-1 Js-->
+    <script src="../assets/plugins/ratings-2/jquery.star-rating.js"></script>
+    <script src="../assets/plugins/ratings-2/star-rating.js"></script>
+
+    <!-- Sticky js -->
+    <script src="../assets/js/sticky.js"></script>
+
+    <!-- CUSTOM JS -->
+    <script src="../assets/js/landing.js"></script>
+  </body>
+</html>

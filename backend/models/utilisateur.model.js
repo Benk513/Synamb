@@ -5,7 +5,7 @@ const schemaUtilsateur = new mongoose.Schema(
   {
     photo: {
       type: String,
-      default: "default.jpg",
+      default: "default.webp",
     },
     email: {
       type: String,
@@ -53,7 +53,7 @@ const schemaUtilsateur = new mongoose.Schema(
     },
     telephone: {
       type: String,
-      validate: [validator.isNumeric, "Only number allowed"],
+      // validate: [true, "Veuillez inserer votre telephone "],
     },
 
     nom: {
@@ -88,30 +88,21 @@ const schemaUtilsateur = new mongoose.Schema(
     },
     motDePasseChangeLe: { type: String },
 
-    informationPersonnel: {
-      // Définir l'objet imbriqué directement
-      dateNaissance: String,
-      telephone: String,
-      nationalite: String,
-      adresse: {
-        rue: String,
-        ville: String,
-        codePostal: String,
-      },
-      sexe: String,
-    },
-    informationAdministratif: {
-      dateEntree: Date,
-      nombreVisas: Number,
-      numeroCarteSejour: String,
-      sejourEnCours: Boolean,
-    },
-    informationAcademique: {
-      niveauEtude: String,
-      domaine: String,
-      etablissement: String,
-      anneeUniversitaire: String,
-    },
+    // Définir l'objet imbriqué directement
+    dateNaissance: String,
+    telephone: String,
+
+    sexe: String,
+
+    dateEntree: Date,
+    nombreVisas: Number,
+    numeroCarteSejour: String,
+    sejourEnCours: Boolean,
+
+    niveauEtude: String,
+    domaine: String,
+    etablissement: String,
+    anneeUniversitaire: String,
 
     resetPasswordToken: String,
     resetPasswordExpiresAt: Date,

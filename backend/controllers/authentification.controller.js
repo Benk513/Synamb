@@ -52,13 +52,13 @@ export const inscription = catchAsync(async (req, res, next) => {
   //
   if (!email || !motDePasse)
     return next(new AppError("veuillez renseigner ces champs !", 400));
-  
-  
+
   const utilisateurExistant = await Utilisateur.findOne({ email });
 
-
-  if (utilisateurExistant) return next(new AppError("cet adresse email est deja inscrit dans notre systeme", 400));
-
+  if (utilisateurExistant)
+    return next(
+      new AppError("cet adresse email est deja inscrit dans notre systeme", 400)
+    );
 
   console.log(req.body);
   const nouvelEtudiant = await Utilisateur.create({
@@ -72,48 +72,26 @@ export const inscription = catchAsync(async (req, res, next) => {
     role: "etudiant",
   });
 
-  // 3️⃣ Récupérer l'ambassade correspondante
-  // const ambassade = await Ambassade.findOne({ codePays });
-  // if (!ambassade) {
-  //   // rollback si aucune ambassade
-  //   // await Utilisateur.findByIdAndDelete(nouvelEtudiant._id);
-  //   return next(new AppError("Aucune ambassade trouvée pour ce codePays", 400));
-  // }
 
-  // // 4️⃣ Ajout dans la liste des étudiants (statut en attente)
-  // await Ambassade.findByIdAndUpdate(
-  //   ambassade._id,
-  //   {
-  //     $push: {
-  //       listeEtudiants: {
-  //         etudiant: nouvelEtudiant._id,
-  //         estConfirme: false,
-  //         dateDemande: Date.now(),
-  //       },
-  //     },
-  //   },
-  //   { new: true }
-  // );
+  // Chercher une ambassade correspondant au codePays
+  const ambassadeCorrespondante = await Ambassade.findOne({ codePays });
 
-    // Chercher une ambassade correspondant au codePays
-    const ambassadeCorrespondante = await Ambassade.findOne({ codePays });
-
-    if (ambassadeCorrespondante) {
-      ambassadeCorrespondante.listeEtudiants.push({
-        etudiant: nouvelEtudiant._id,
-        estConfirme: false,
-        dateDemande: new Date(),
-      });
-  
-      await ambassadeCorrespondante.save();
-    }
-  
-    await notifier({
-      destinataire: ambassadeCorrespondante.ambassadeur,
-      type: "nouvelle_inscription",
-      message: `Nouvelle demande d'inscription de l'étudiant ${nouvelEtudiant.nom}`,
+  if (ambassadeCorrespondante) {
+    ambassadeCorrespondante.listeEtudiants.push({
+      etudiant: nouvelEtudiant._id,
+      estConfirme: false,
+      dateDemande: new Date(),
     });
-    
+
+    await ambassadeCorrespondante.save();
+  }
+
+  // await notifier({
+  //   destinataire: ambassadeCorrespondante.ambassadeur,
+  //   type: "nouvelle_inscription",
+  //   message: `Nouvelle demande d'inscription de l'étudiant ${nouvelEtudiant.nom}`,
+  // });
+
   creerEtEnvoyerToken(
     nouvelEtudiant,
     201,

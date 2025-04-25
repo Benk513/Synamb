@@ -1,0 +1,188 @@
+import { Annonce } from "../models/annonce.model.js";
+import multer from "multer";
+import AppError from "../utils/appError.js";
+import catchAsync from "../utils/catchAsync.js";
+import APIFeatures from "../utils/apiFeatures.js";
+const multerStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads/annonces/");
+  },
+  filename: (req, file, cb) => {
+    // const extName = file.mimetype.split('/')[1]
+    const fileName = file.originalname;
+    cb(null, `${fileName.toLowerCase()}`);
+  },
+});
+
+const multerFilter = (req, file, cb) => {
+  if (file.mimetype.startsWith("image")) {
+    cb(null, true);
+  } else {
+    cb(new AppError("Uniquement les images sont autorisées", 400), false);
+  }
+};
+const upload = multer({
+  storage: multerStorage,
+  fileFilter: multerFilter,
+  limits: { fileSize: 500000 },
+});
+export const televerserImageCouverture = upload.single("imageCouverture");
+
+// creer une annonce
+export const creerAnnonce = catchAsync(async (req, res, next) => {
+  // extraction de la donnée.
+  const { titre, type, contenu } = req.body;
+
+  if (!titre || !type || !contenu)
+    return next(new AppError("Veuillez remplir tous les champs", 400));
+
+  let imageCouverture;
+  if (req.file) imageCouverture = req.file.filename;
+
+  console.log(req.file);
+  //nouvelle annonce creé
+  const annonce = await Annonce.create({
+    auteur: req.user._id,
+    titre,
+    type,
+    contenu,
+    imageCouverture: imageCouverture,
+  });
+
+  // renvoie le message de creation reussie
+  res.status(201).json({
+    statut: "succes",
+    data: annonce,
+  });
+});
+
+//lister toutes les annonces
+export const listeAnnonces = catchAsync(async (req, res, next) => {
+  // la methode find permet de trouver toutes les annonces present dans la BD
+
+  const features = new APIFeatures(Annonce.find(), req.query)
+    .filter()
+    .sort()
+    .limitFields()
+    .paginate();
+  const annonces = await features.query.populate({
+    path: "auteur",
+    select: "nom photo",
+  });
+
+  res.status(200).json({
+    resultats: annonces.length,
+    statut: "succes",
+    data: annonces,
+  });
+});
+
+// export const listeAnnonces = catchAsync(async (req, res, next) => {
+//   const utilisateurConnecteId = req.user._id;
+//   const utilisateurRole = req.user.role;
+
+//   // 1. Récupérer toutes les annonces avec leur auteur
+//   const toutesLesAnnonces = await Annonce.find()
+//     .populate({
+//       path: "auteur",
+//       select: "nom photo",
+//     })
+//     .lean(); // pour manipulation facile
+
+//   let annoncesFiltrees = [];
+
+//   if (utilisateurRole === "etudiant") {
+//     // 2. Pour chaque annonce, vérifier si l’étudiant est confirmé dans l’ambassade de l’auteur
+//     for (let annonce of toutesLesAnnonces) {
+//       const ambassade = await Ambassade.findOne({
+//         ambassadeur: annonce.auteur._id,
+//       });
+
+//       if (!ambassade) continue;
+
+//       const estEtudiantConfirme = ambassade.listeEtudiants.some(
+//         (e) =>
+//           e.etudiant.toString() === utilisateurConnecteId.toString() &&
+//           e.estConfirme
+//       );
+
+//       if (estEtudiantConfirme) {
+//         annoncesFiltrees.push(annonce);
+//       }
+//     }
+//   } else {
+//     // Si ce n’est pas un étudiant (ex: admin ou ambassadeur), on retourne tout
+//     annoncesFiltrees = toutesLesAnnonces;
+//   }
+
+//   res.status(200).json({
+//     resultats: annoncesFiltrees.length,
+//     statut: "succes",
+//     data: annoncesFiltrees,
+//   });
+// });
+
+// consulter une annonce en detail
+export const detailAnnonce = catchAsync(async (req, res, next) => {
+  const annonce = await Annonce.findById(req.params.id).populate({
+    path: "auteur",
+    select: "nom photo",
+  });
+  if (!annonce) return res.status(404).json({ message: "Annonce non trouvée" });
+  res.status(200).json({ data: annonce, status: "sucess" });
+});
+
+// mettre a jour
+export const mettreAJourAnnonce = catchAsync(async (req, res, next) => {
+  const annonce = await Annonce.findOneAndUpdate(
+    { _id: req.params.id, auteur: req.user._id },
+    req.body,
+    { new: true }
+  );
+  if (!annonce)
+    return res
+      .status(404)
+      .json({ message: "Annonce non trouvée ou non autorisée" });
+  res.status(200).json(annonce);
+});
+// supprimer annonce
+export const supprimerAnnonce = catchAsync(async (req, res, next) => {
+  const deleted = await Annonce.findOneAndDelete({
+    _id: req.params.id,
+    auteur: req.user._id,
+  });
+  if (!deleted)
+    return res
+      .status(404)
+      .json({ message: "Annonce non trouvée ou non autorisée" });
+  res.status(204).json({ message: "Annonce supprimée" });
+});
+
+// lister les 3 dernieres annonces
+export const liste3DernieresAnnonces = catchAsync(async (req, res, next) => {
+  const annonces = await Annonce.find()
+    .sort({ createdAt: -1 })
+    .limit(3)
+    .populate({ path: "auteur", select: "nom photo" });
+  res.status(200).json(annonces);
+});
+
+// lister les annonces par categorie
+export const listerAnnoncesParCategorie = catchAsync(async (req, res, next) => {
+  const { categorie } = req.params;
+  const annonces = await Annonce.find({ categorie })
+    .sort({ createdAt: -1 })
+    .populate({ path: "auteur", select: "nom photo" });
+  res.status(200).json(annonces);
+});
+
+// annonces epinglé par utilisateur
+export const annoncesEpingléesParUtilisateur = catchAsync(
+  async (req, res, next) => {
+    const { _id } = req.user;
+    const annonces = await Annonce.find({ proprietaire: _id })
+      .sort({ createdAt: -1 })
+      .populate({ path: "auteur", select: "nom photo" });
+    res.status(200).json(annonces);
+  }
+);
