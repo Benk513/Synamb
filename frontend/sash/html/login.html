@@ -1,7 +1,7 @@
 <script>
   const token = localStorage.getItem("token");
   if (token) {
-    window.location.href = "/frontend/sash/html/index.html"; // Redirige vers login
+    window.location.href = "/frontend/sash/html/index.html"; // Redirige vers page acceuil
   }
 </script>
 
@@ -217,7 +217,7 @@
     </div>
     <!-- BACKGROUND-IMAGE CLOSED -->
 
-    <!-- JQUERY JS -->
+    <!-- importation JQUERY JS -->
     <script src="../assets/js/jquery.min.js"></script>
 
     <!-- BOOTSTRAP JS -->
@@ -244,6 +244,7 @@
 
     <!-- Switcher js -->
     <script src="../assets/switcher/js/switcher.js"></script>
+
     <script>
       const backendUrl = "http://localhost:5001"; // Mets ici l'URL de ton backend  /api/utilisateurs/connexion
 
@@ -273,18 +274,20 @@
 
               // Redirection vers le bon dashboard
               if (utilisateur.role === "etudiant") {
-                window.location.href = "/frontend/sash/html/espace_etudiant.html";
+                window.location.href =
+                  "/frontend/sash/html/espace_etudiant.html";
               } else if (utilisateur.role === "ambassadeur") {
-                window.location.href = "/frontend/sash/html/espace_etudiant.html";
+                window.location.href =
+                  "/frontend/sash/html/espace_etudiant.html";
               } else if (utilisateur.role === "administrateur") {
                 window.location.href = "/frontend/sash/html/espace_admin.html";
               }
 
               $("#message").text("Connexion réussie");
               $("#message").css("color", "green");
-               setTimeout(function () {
-                 window.location.href = "/frontend/sash/html/index.html";
-               }, 1000);
+              setTimeout(function () {
+                window.location.href = "/frontend/sash/html/index.html";
+              }, 1000);
             },
             error: function (xhr) {
               const message =

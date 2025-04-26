@@ -481,6 +481,12 @@
                                 <h3>General</h3>
                             </li>
                           
+                              
+                            <li>
+                                <button class=" text-dark   btn"    ><i
+                                        class="side-menu__icon fa fa-sign-out "></i><span
+                                        class="side-menu__label" id="deconnexion">Se deconnecter</span> </button>
+                            </li>
                             
                           
                         </ul>
@@ -522,13 +528,10 @@
                                                 <div class="d-flex">
                                                     <div class="mt-2">
                                                         <h6 class="">Utilisateurs totales</h6>
-                                                        <h2 class="mb-0 number-font">44</h2>
+                                                        <h2 class="mb-0 number-font" id="totalUtilisateurs"></h2>
                                                     </div>
                                                     <div class="ms-auto">
-                                                        <div class="chart-wrapper mt-1">
-                                                            <canvas id="saleschart"
-                                                                class="h-8 w-9 chart-dropshadow"></canvas>
-                                                        </div>
+                                                       
                                                     </div>
                                                 </div>
                                                
@@ -541,7 +544,7 @@
                                                 <div class="d-flex">
                                                     <div class="mt-2">
                                                         <h6 class="">Total Ambassades</h6>
-                                                        <h2 class="mb-0 number-font">67</h2>
+                                                        <h2 class="mb-0 number-font" id="totalAmbassades"></h2>
                                                     </div>
                                                     <div class="ms-auto">
                                                         <div class="chart-wrapper mt-1">
@@ -554,44 +557,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
-                                        <div class="card overflow-hidden">
-                                            <div class="card-body">
-                                                <div class="d-flex">
-                                                    <div class="mt-2">
-                                                        <h6 class="">Annonces Publiées</h6>
-                                                        <h2 class="mb-0 number-font">965</h2>
-                                                    </div>
-                                                    <div class="ms-auto">
-                                                        <div class="chart-wrapper mt-1">
-                                                            <canvas id="profitchart"
-                                                                class="h-8 w-9 chart-dropshadow"></canvas>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
-                                        <div class="card overflow-hidden">
-                                            <div class="card-body">
-                                                <div class="d-flex">
-                                                    <div class="mt-2">
-                                                        <h6 class="">Demandes Traités</h6>
-                                                        <h2 class="mb-0 number-font">45</h2>
-                                                    </div>
-                                                    <div class="ms-auto">
-                                                        <div class="chart-wrapper mt-1">
-                                                            <canvas id="costchart"
-                                                                class="h-8 w-9 chart-dropshadow"></canvas>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                              
-                                            </div>
-                                        </div>
-                                    </div>
+                                  
                                 </div>
                             </div>
                         </div>
@@ -621,24 +587,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-md-6">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Gerer les etudiants</h5>
-                                            <p class="card-text">Creer, supprimer, lister et mettre a jour.</p>
-                                            <a href="javascript:void(0)" class="btn btn-primary">Gerer</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-md-6">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Gerer les annonces</h5>
-                                            <p class="card-text">supprimer, lister et mettre a jour.</p>
-                                            <a href="tableau-annonces.html" class="btn btn-primary">Gerer</a>
-                                        </div>
-                                    </div>
-                                </div></div>
+                                
+                              
+                            </div>
 
                                 <!-- <div class="card">
                                     <div class="card-header">
@@ -860,6 +811,39 @@
 
     <!-- Switcher js -->
     <script src="../assets/switcher/js/switcher.js"></script>
+
+    <script>
+
+$("#deconnexion").click(function () {
+  alert("À bientôt !");
+  localStorage.clear();
+  window.location.href = "login.html";
+});
+
+
+    </script>
+
+<script>
+    
+  
+    $.ajax({
+      url: "http://localhost:5001/api/utilisateurs/statistiques",
+      method: "GET",
+      headers: {
+        Authorization: "Bearer " + token
+      },
+      success: function (res) {
+        const stats = res.data;
+        $("#totalUtilisateurs").text(stats.totalUtilisateurs);
+        $("#totalAmbassades").text(stats.totalAmbassades);
+      },
+      error: function (err) {
+        console.error("Erreur lors de la récupération des statistiques admin :", err);
+        alert("Impossible de charger les statistiques administrateur.");
+      }
+    });
+  </script>
+  
 
 </body>
 

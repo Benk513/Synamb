@@ -2,6 +2,8 @@ import { Utilisateur } from "../models/utilisateur.model.js";
 import catchAsync from "../utils/catchAsync.js";
 import AppError from "../utils/appError.js";
 import { Ambassade } from "../models/ambassade.model.js";
+import { Annonce } from "../models/annonce.model.js";
+import { Demande } from "../models/demande.model.js";
 // to get rid of try catch block we wrap around a catchAsync function , retunr anonymupouis function wjhich will be to create tour
 
 //creer un utilisateur
@@ -173,16 +175,35 @@ export const creerAmbassadeur = catchAsync(async (req, res, next) => {
       )
     );
 
-  const nouvelAmbassadeur = await Utilisateur.create({
+  // const nouvelAmbassadeur = await Utilisateur({
+  //   nom,
+  //   email,
+  //   lipasa,
+  //   motDePasse,
+
+  //   pays,
+  //   codePays,
+  //   confirmationMotDePasse,
+  // });
+
+  // nouvelAmbassadeur.role = "ambassadeur";
+
+  // await nouvelAmbassadeur.save();
+
+
+  const nouvelAmbassadeur = new Utilisateur({
     nom,
     email,
     lipasa,
     motDePasse,
-    role: "ambassadeur",
     pays,
     codePays,
     confirmationMotDePasse,
   });
+  
+  nouvelAmbassadeur.role = "ambassadeur";
+  
+  await nouvelAmbassadeur.save();
   res.status(201).json({ status: "success", data: nouvelAmbassadeur });
 });
 
@@ -232,3 +253,56 @@ export const supprimerAmbassadeur = async (req, res) => {
   if (!ambassadeur) return next(new AppError("Ambassadeur non trouvé", 404));
   res.status(200).json({ status: "success", data: ambassadeur });
 };
+
+
+
+export const obtenirStatistiquesAmbassadeur = catchAsync(async (req, res, next) => {
+  const ambassadeurId = req.user._id;
+
+  // 1. Récupérer l'ambassade associée
+  const ambassade = await Ambassade.findOne({ ambassadeur: ambassadeurId });
+
+  if (!ambassade) {
+    return next(new AppError("Aucune ambassade associée à cet utilisateur.", 404));
+  }
+
+  const ambassadeId = ambassade._id;
+
+  // 2. Nombre total d'étudiants confirmés dans cette ambassade
+  const totalEtudiants = ambassade.listeEtudiants.filter(e => e.estConfirme).length;
+
+  // 3. Nombre d'annonces publiées par l'ambassadeur
+  const totalAnnonces = await Annonce.countDocuments({ auteur: ambassadeurId });
+
+  // 4. Nombre de demandes traitées
+  const demandesTraitees = await Demande.countDocuments({
+    ambassadeDestinataire: ambassadeId,
+    statut: { $in: ['acceptée', 'rejetée'] }
+  });
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      totalEtudiants,
+      totalAnnonces,
+      demandesTraitees
+    }
+  });
+});
+
+
+
+
+
+export const statistiquesAdmin = catchAsync(async (req, res, next) => {
+  const totalUtilisateurs = await Utilisateur.countDocuments();
+  const totalAmbassades = await Ambassade.countDocuments();
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      totalUtilisateurs,
+      totalAmbassades,
+    },
+  });
+});

@@ -14,6 +14,7 @@ import {
   miseAJourProfile,
   modifierAmbassadeur,
   obtenirMonProfil,
+  statistiquesAdmin,
   supprimerAmbassadeur,
 } from "../controllers/utilisateur.controller.js";
 import { uploadFormData } from "../middlewares/uploadFormData.js";
@@ -38,6 +39,13 @@ router.post(
   creerAmbassadeur
 );
 
+
+router.get(
+  "/statistiques",
+  proteger,
+  restreindreA("admin"),
+  statistiquesAdmin
+);
 
 // ------------------------- AUTHENTIFICATIONS --------------------------
 router.post("/inscription", uploadFormData.none(), inscription);

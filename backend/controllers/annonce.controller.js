@@ -3,6 +3,7 @@ import multer from "multer";
 import AppError from "../utils/appError.js";
 import catchAsync from "../utils/catchAsync.js";
 import APIFeatures from "../utils/apiFeatures.js";
+import { Utilisateur } from "../models/utilisateur.model.js";
 const multerStorage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "uploads/annonces/");
@@ -24,7 +25,7 @@ const multerFilter = (req, file, cb) => {
 const upload = multer({
   storage: multerStorage,
   fileFilter: multerFilter,
-  limits: { fileSize: 500000 },
+  limits: { fileSize: 1_000_000 },
 });
 export const televerserImageCouverture = upload.single("imageCouverture");
 
@@ -58,25 +59,29 @@ export const creerAnnonce = catchAsync(async (req, res, next) => {
 
 //lister toutes les annonces
 export const listeAnnonces = catchAsync(async (req, res, next) => {
-  // la methode find permet de trouver toutes les annonces present dans la BD
+ 
+  const etudiantCodePays = req.user.codePays;
+  const ambassadeur = await Utilisateur.findOne({
+    role: "ambassadeur",
+    codePays: etudiantCodePays,
+  })
+  
 
-  const features = new APIFeatures(Annonce.find(), req.query)
-    .filter()
-    .sort()
-    .limitFields()
-    .paginate();
-  const annonces = await features.query.populate({
+  if (!ambassadeur) return next(new AppError("Vous devez etre integré a votre ambassade respective pour voir les annonces",400));
+
+  const annonces = await Annonce.find({ auteur: ambassadeur._id }).populate({
     path: "auteur",
-    select: "nom photo",
-  });
+    select: "nom photo"})
+
+  if (!annonces) return next(new AppError("Pas encore d'annonces pour vous", 400));
 
   res.status(200).json({
     resultats: annonces.length,
     statut: "succes",
     data: annonces,
   });
+ 
 });
-
 // export const listeAnnonces = catchAsync(async (req, res, next) => {
 //   const utilisateurConnecteId = req.user._id;
 //   const utilisateurRole = req.user.role;

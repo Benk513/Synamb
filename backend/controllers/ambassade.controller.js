@@ -54,10 +54,19 @@ export const modifierAmbassade = async (req, res) => {
 
 // Lister toutes les ambassades 🟩
 export const listerAmbassades = async (req, res) => {
-  const ambassades = await Ambassade.find();
+  const ambassades = await Ambassade.find().populate({ path: "ambassadeur", select: "nom photo email" });
   res.status(200).json({
     status: "success",
     results: ambassades.length,
+    data: ambassades,
+  });
+};
+export const consulterUneAmbassade = async (req, res) => {
+  const ambassadeId = req.params.ambassadeId
+  const ambassades = await Ambassade.findById(ambassadeId).populate({ path: "ambassadeur", select: "nom photo email" });
+  res.status(200).json({
+    status: "success",
+     
     data: ambassades,
   });
 };

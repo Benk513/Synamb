@@ -72,7 +72,6 @@ export const inscription = catchAsync(async (req, res, next) => {
     role: "etudiant",
   });
 
-
   // Chercher une ambassade correspondant au codePays
   const ambassadeCorrespondante = await Ambassade.findOne({ codePays });
 

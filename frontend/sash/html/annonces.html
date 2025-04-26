@@ -1,17 +1,19 @@
-<!-- <script>
-    const token = localStorage.getItem("token");
-    if (!token) {
-      window.location.href = "login.html"; // Redirige vers login
-    }
-  </script> -->
+ 
 
-<!-- <script>
+  <script>
       const token = localStorage.getItem("token");
+
+      const role = localStorage.getItem("role");
     if (!token) {
       // Si un token est présent, on redirige
       window.location.href = "login.html"; // ou dashboard.html
     }
-  </script> -->
+
+
+  
+     
+    if(role ==="admin"){window.location.href = "/frontend/sash/html/index.html"; }
+  </script> 
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -2062,7 +2064,7 @@
               <!-- PAGE-HEADER -->
               <div class="page-header">
                 <h1 class="page-title">Les Annonces</h1>
-                <div id="boutonCreerAnnonce" style="display: none;">
+                <div id="boutonCreerAnnonce" style="display: none">
                   <div class="breadcrumb">
                     <a href="creer-annonce.html" class="btn btn-primary"
                       ><i class="fa fa-plus-square me-2"></i>Publier une
@@ -2225,7 +2227,7 @@
                             </div>
                           </div>
                         </div>
-<!-- 
+                        <!-- 
                         <div class="d-flex overflow-visible mt-5">
                           <a
                             href="blog-details.html"
@@ -3260,30 +3262,30 @@
       dayjs.extend(dayjs_plugin_relativeTime);
       dayjs.locale("fr");
 
-      const token = localStorage.getItem("token");
+       
 
-      const role = localStorage.getItem("role");
+      
 
-    
       if (!token) {
         window.location.href = "login.html";
       } // on suppose que le token est stocké ici
 
       console.log(token);
 
-      if(role==="ambassadeur"){
-        $('#boutonCreerAnnonce').show()
+      if (role === "ambassadeur") {
+        $("#boutonCreerAnnonce").show();
       }
       $.ajax({
-        url: `http://localhost:5001/api/annonces?page=${currentPage}&limit=${limit}`,
+        url: `http://localhost:5001/api/annonces/`,
         method: "GET",
         headers: {
-          Authorization: "Bearer" + token,
+          Authorization: "Bearer " + token,
+
         },
         success: function (res) {
           const annonces = res.data;
           const total = res.total; // total number of annonces
-          const totalPages = Math.ceil(total / limit);
+           
 
           const baseUrl = "http://localhost:5001/uploads/annonces/";
           const userProfileUrl = "http://localhost:5001/uploads/utilisateurs/";
@@ -3313,6 +3315,7 @@
                     0,
                     100
                   )}...</div>
+                
 
                   <div class="d-flex align-items-center pt-5 mt-auto">
                     <div class="avatar brround avatar-md me-3 cover-image"

@@ -20,6 +20,7 @@ import {
   traiterDemandeInscription,
 } from "../controllers/ambassade.controller.js";
 import { uploadFormData } from "../middlewares/uploadFormData.js";
+import { obtenirStatistiquesAmbassadeur } from "../controllers/utilisateur.controller.js";
 
 const router = express.Router();
 
@@ -45,6 +46,13 @@ router.get(
   consulterMonAmbassade
 );
 
+
+router.get(
+  "/statistiques/ambassadeur",
+  proteger,
+  restreindreA("ambassadeur"),
+  obtenirStatistiquesAmbassadeur
+);
 router.get(
   "/mesEtudiants",
   proteger,
@@ -81,7 +89,14 @@ router.get(
 );
 
 
- 
+router.get(
+  "/:",
+  uploadFormData.none(),
+  proteger,
+  restreindreA("admin", "ambassadeur"),
+  listerAmbassades
+);
+
 
 router.get("/:id", proteger, detailAnnonce);
 

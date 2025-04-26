@@ -1,6 +1,6 @@
 
 
-<!-- <script>
+ <script>
     const token = localStorage.getItem("token");
     const role= localStorage.getItem("role")
     if (!token) {
@@ -8,11 +8,11 @@
     }
 
 
-    if(role ==="etudiant"){
-        window.location.href = "/frontend/sash/html/espace_etudiant.html"; // Redirige vers login
-    }
-    if(role ==="ambassadeur"){window.location.href = "/frontend/sash/html/espace_ambassadeur.html"; }
-  </script>   -->
+    // if(role ==="etudiant"){
+    //     window.location.href = "/frontend/sash/html/espace_etudiant.html"; // Redirige vers login
+    // }
+    // if(role ==="ambassadeur"){window.location.href = "/frontend/sash/html/espace_ambassadeur.html"; }
+  </script>  
 
 <!doctype html>
 <html lang="en" dir="ltr">
@@ -105,13 +105,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="d-flex country">
-                                            <a class="nav-link icon text-center" data-bs-target="#country-selector"
-                                                data-bs-toggle="modal">
-                                                <i class="fe fe-globe"></i><span
-                                                    class="fs-16 ms-2 d-none d-xl-block">English</span>
-                                            </a>
-                                        </div>
+                                       
                                         <!-- COUNTRY -->
                                         <div class="d-flex">
                                             <a class="nav-link icon theme-layout nav-link-bg layout-setting">
@@ -135,59 +129,7 @@
                                             <a class="nav-link icon" data-bs-toggle="dropdown"><i
                                                     class="fe fe-bell"></i><span class=" pulse"></span>
                                             </a>
-                                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                                <div class="drop-heading border-bottom">
-                                                    <div class="d-flex">
-                                                        <h6 class="mt-1 mb-0 fs-16 fw-semibold text-dark">Notifications
-                                                        </h6>
-                                                    </div>
-                                                </div>
-                                                <div class="notifications-menu">
-                                                    <a class="dropdown-item d-flex" href="notify-list.html">
-                                                        <div class="me-3 notifyimg  bg-primary brround box-shadow-primary">
-                                                            <i class="fe fe-mail"></i>
-                                                        </div>
-                                                        <div class="mt-1 wd-80p">
-                                                            <h5 class="notification-label mb-1">New Application received
-                                                            </h5>
-                                                            <span class="notification-subtext">3 days ago</span>
-                                                        </div>
-                                                    </a>
-                                                    <a class="dropdown-item d-flex" href="notify-list.html">
-                                                        <div class="me-3 notifyimg  bg-secondary brround box-shadow-secondary">
-                                                            <i class="fe fe-check-circle"></i>
-                                                        </div>
-                                                        <div class="mt-1 wd-80p">
-                                                            <h5 class="notification-label mb-1">Project has been
-                                                                approved</h5>
-                                                            <span class="notification-subtext">2 hours ago</span>
-                                                        </div>
-                                                    </a>
-                                                    <a class="dropdown-item d-flex" href="notify-list.html">
-                                                        <div class="me-3 notifyimg  bg-success brround box-shadow-success">
-                                                            <i class="fe fe-shopping-cart"></i>
-                                                        </div>
-                                                        <div class="mt-1 wd-80p">
-                                                            <h5 class="notification-label mb-1">Your Product Delivered
-                                                            </h5>
-                                                            <span class="notification-subtext">30 min ago</span>
-                                                        </div>
-                                                    </a>
-                                                    <a class="dropdown-item d-flex" href="notify-list.html">
-                                                        <div class="me-3 notifyimg bg-pink brround box-shadow-pink">
-                                                            <i class="fe fe-user-plus"></i>
-                                                        </div>
-                                                        <div class="mt-1 wd-80p">
-                                                            <h5 class="notification-label mb-1">Friend Requests</h5>
-                                                            <span class="notification-subtext">1 day ago</span>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <div class="dropdown-divider m-0"></div>
-                                                <a href="notify-list.html"
-                                                    class="dropdown-item text-center p-3 text-muted">View all
-                                                    Notification</a>
-                                            </div>
+                                          
                                         </div>
                                         <!-- NOTIFICATIONS -->
                                         <div class="dropdown  d-flex message">
@@ -286,176 +228,7 @@
 												</ul>
 											</div>
 										</div>
-										<div class="panel-body tabs-menu-body p-0 border-0">
-											<div class="tab-content">
-												<div class="tab-pane active" id="side1">
-													<ul class="sidemenu-list">
-                                                        <li class="side-menu-label1"><a href="javascript:void(0)">Apps</a></li>
-                                                        <li><a href="cards.html" class="slide-item"> Cards design</a></li>
-                                                        <li><a href="calendar.html" class="slide-item"> Default calendar</a></li>
-                                                        <li><a href="calendar2.html" class="slide-item"> Full calendar</a></li>
-                                                        <li><a href="chat.html" class="slide-item"> Chat</a></li>
-                                                        <li><a href="notify.html" class="slide-item"> Notifications</a></li>
-                                                        <li><a href="sweetalert.html" class="slide-item"> Sweet alerts</a></li>
-                                                        <li><a href="rangeslider.html" class="slide-item"> Range slider</a></li>
-                                                        <li><a href="scroll.html" class="slide-item"> Content Scroll bar</a></li>
-                                                        <li><a href="loaders.html" class="slide-item"> Loaders</a></li>
-                                                        <li><a href="counters.html" class="slide-item"> Counters</a></li>
-                                                        <li><a href="rating.html" class="slide-item"> Rating</a></li>
-                                                        <li><a href="timeline.html" class="slide-item"> Timeline</a></li>
-                                                        <li><a href="treeview.html" class="slide-item"> Treeview</a></li>
-                                                        <li><a href="chart.html" class="slide-item"> Charts</a></li>
-                                                        <li><a href="footers.html" class="slide-item"> Footers</a></li>
-                                                        <li><a href="users-list.html" class="slide-item"> User List</a></li>
-                                                        <li><a href="search.html" class="slide-item">Search</a></li>
-                                                        <li><a href="crypto-currencies.html" class="slide-item"> Crypto-currencies</a></li>
-                                                        <li><a href="widgets.html" class="slide-item"> Widgets</a></li>
-													</ul>
-                                                    <div class="menutabs-content mt-5 p-0">
-                                                        <div class="Annoucement_card">
-                                                            <div class="text-center">
-                                                                <div>
-                                                                    <h5 class="title mt-0 mb-1 ms-2 font-weight-bold tx-12"> Go for Premium Account </h5>
-                                                                    <div class="bg-layer">
-                                                                        <img src="../assets/../assets/images/media/37.png" alt="img" class="text-center mx-auto">
-                                                                    </div>
-                                                                    <p class="subtext mt-0 mb-0 ms-2 fs-13 text-center my-2"> $399.9 /Monthly</p>
-                                                                </div>
-                                                            </div>
-                                                            <button class="btn btn-block btn-primary mt-4 fs-14"> Upgrade</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-												<div class="tab-pane" id="side2">
-													<h5 class="mt-3 fw-600 mb-4">Recent Chats</h5>
-                                                    <div class="main-chat-list tab-pane">
-                                                        <div class="media border-0 px-1 new border-top-0">
-                                                            <div class="main-img-user online">
-                                                                <img alt="" src="../assets/images/users/5.jpg">
-                                                            </div>
-                                                            <div class="media-body">
-                                                                <div class="media-contact-name">
-                                                                    <span>Raymart Santiago</span> <span>10 min</span>
-                                                                </div>
-                                                                <p> Hey! there I'm available </p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="media border-0 px-1 new">
-                                                            <div class="main-img-user">
-                                                                <img alt="" src="../assets/images/users/6.jpg"> <span>3</span>
-                                                            </div>
-                                                            <div class="media-body">
-                                                                <div class="media-contact-name">
-                                                                    <span>Ariana Monino</span> <span>30 min</span>
-                                                                </div>
-                                                                <p>Good Morning</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="media border-0 px-1 new">
-                                                            <div class="main-img-user online"><img alt="" src="../assets/images/users/9.jpg"></div>
-                                                            <div class="media-body">
-                                                                <div class="media-contact-name">
-                                                                    <span>Reynante Labares</span> <span>9.40 am</span>
-                                                                </div>
-                                                                <p> Nice to meet you </p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="media border-0 px-1 new">
-                                                            <span class="avatar avatar-md brround bg-danger-transparent text-danger">J</span>
-                                                            <div class="media-body">
-                                                                <div class="media-contact-name">
-                                                                    <span>Joyce Chua</span> <span>11.20 am</span>
-                                                                </div>
-                                                                <p> Hi, How are you? </p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="media border-0 px-1 new">
-                                                            <div class="main-img-user"><img alt="" src="../assets/images/users/4.jpg"></div>
-                                                            <div class="media-body">
-                                                                <div class="media-contact-name">
-                                                                    <span>Rolando Paloso</span> <span>1.38 pm</span>
-                                                                </div>
-                                                                <p> Hey! there I'm available </p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="media border-0 px-1 new">
-                                                            <div class="main-img-user">
-                                                                <div class="avatar avatar-md brround bg-primary-transparent text-primary">D</div><span>1</span>
-                                                            </div>
-                                                            <div class="media-body">
-                                                                <div class="media-contact-name">
-                                                                    <span>Dexter dela Cruz</span> <span>4.08 pm</span>
-                                                                </div>
-                                                                <p>Typing...</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="media border-0 px-1 new">
-                                                            <div class="main-img-user"><img alt="" src="../assets/images/users/21.jpg"></div>
-                                                            <div class="media-body">
-                                                                <div class="media-contact-name">
-                                                                    <span>Maricel Villalon</span> <span>8.09 pm</span>
-                                                                </div>
-                                                                <p> Hey! there I'm available </p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="media border-0 px-1 new">
-                                                            <span class="avatar avatar-md brround bg-success-transparent text-success">M</span>
-                                                            <div class="media-body">
-                                                                <div class="media-contact-name">
-                                                                    <span>Maryjane Pechon</span> <span>1 day ago</span>
-                                                                </div>
-                                                                <p>I have some work</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="media border-0 px-1 new">
-                                                            <div class="main-img-user"><img alt="" src="../assets/images/users/5.jpg"></div>
-                                                            <div class="media-body">
-                                                                <div class="media-contact-name">
-                                                                    <span>Lovely Dela Cruz</span> <span>3 days ago</span>
-                                                                </div>
-                                                                <p>I have some work</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="media border-0 px-1 new">
-                                                            <div class="avatar avatar-md brround bg-secondary-transparent"><i class="fe fe-user text-secondary"></i></div>
-                                                            <div class="media-body">
-                                                                <div class="media-contact-name">
-                                                                    <span>Daniel Padilla</span> <span>5 days ago</span>
-                                                                </div>
-                                                                <p>I have some work</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="media border-0 px-1 new">
-                                                            <div class="main-img-user"><img alt="" src="../assets/images/users/3.jpg"></div>
-                                                            <div class="media-body">
-                                                                <div class="media-contact-name">
-                                                                    <span>John Pratts</span> <span>20/06/2021</span>
-                                                                </div>
-                                                                <p>I have some work</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="media border-0 px-1 new">
-                                                            <div class="main-img-user"><img alt="" src="../assets/images/users/7.jpg"></div>
-                                                            <div class="media-body">
-                                                                <div class="media-contact-name">
-                                                                    <span>Socrates Itumay</span> <span>18/07/2021</span>
-                                                                </div>
-                                                                <p> Hey! there I'm available </p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="media border-0 px-1 new border-bottom-0">
-                                                            <div class="main-img-user"><img alt="" src="../assets/images/users/6.jpg"></div>
-                                                            <div class="media-body">
-                                                                <div class="media-contact-name">
-                                                                    <span>Samuel Lerin</span> <span>29/07/2021</span>
-                                                                </div>
-                                                                <p> Hey! there I'm available </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-												</div>
-											</div>
-										</div>
+										 
 									</li>
 								</ul>
                             </li>
@@ -478,17 +251,27 @@
                                  
                                     <span class="side-menu__label">Creer une annonce  </span></a>
                             </li>
+                            <li>
+                                <a class="side-menu__item has-link" href="landing-page.html" target="_blank">
+                                 
+                                    <span class="side-menu__label">Creer une annonce  </span></a>
+                            </li>
                           
                          
                              
                          
                             <li class="sub-category">
                                 <h3>Demandes</h3>
-                            </li>
+                                </li>
                            
                            
                             <li class="sub-category">
                                 <h3>General</h3>
+                            </li>
+                            <li>
+                                <button class=" text-dark   btn"    ><i
+                                        class="side-menu__icon fa fa-sign-out "></i><span
+                                        class="side-menu__label" id="deconnexion">Se deconnecter</span> </button>
                             </li>
                           
                             
@@ -524,21 +307,51 @@
 
                         <!-- ROW-1 -->
                         <div class="row">
+
+
+                          
+
+
+
+
+
+
+
+
+
+
+
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
-                                <div class="row">
+
+
+
+
+
+
+                                <div class="alert alert-info alert-dismissible fade show mb-0" role="alert" id="showAmbassadeurInfoToCreateAmbassy">
+                                    <span class="alert-inner--icon"><i class="fe fe-slash"></i></span>
+                                    <span class="alert-inner--text"><strong>Vous devez attacher une ambassade avant de faire une autre action!</strong> </span>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                </div>
+
+
+
+
+
+
+                                <div class="row" id="statsCards">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
                                         <div class="card overflow-hidden">
                                             <div class="card-body">
                                                 <div class="d-flex">
                                                     <div class="mt-2">
-                                                        <h6 class="">Utilisateurs totales</h6>
-                                                        <h2 class="mb-0 number-font">44</h2>
+                                                        <h6 class="">Etudiants totales</h6>
+                                                        <h2 class="mb-0 number-font" id="totalEtudiants">-</h2>
                                                     </div>
                                                     <div class="ms-auto">
-                                                        <div class="chart-wrapper mt-1">
-                                                            <canvas id="saleschart"
-                                                                class="h-8 w-9 chart-dropshadow"></canvas>
-                                                        </div>
+                                                         
                                                     </div>
                                                 </div>
                                                
@@ -552,12 +365,11 @@
                                                 <div class="d-flex">
                                                     <div class="mt-2">
                                                         <h6 class="">Annonces Publiées</h6>
-                                                        <h2 class="mb-0 number-font">1</h2>
+                                                        <h2 class="mb-0 number-font" id="totalAnnonces">-</h2>
                                                     </div>
                                                     <div class="ms-auto">
                                                         <div class="chart-wrapper mt-1">
-                                                            <canvas id="profitchart"
-                                                                class="h-8 w-9 chart-dropshadow"></canvas>
+                                                             
                                                         </div>
                                                     </div>
                                                 </div>
@@ -571,7 +383,7 @@
                                                 <div class="d-flex">
                                                     <div class="mt-2">
                                                         <h6 class="">Demandes Traités</h6>
-                                                        <h2 class="mb-0 number-font">45</h2>
+                                                        <h2 class="mb-0 number-font"  id="demandesTraitees">-</h2>
                                                     </div>
                                                     <div class="ms-auto">
                                                         <div class="chart-wrapper mt-1">
@@ -600,13 +412,13 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <h5 class="card-title">Gerer mon Ambassade</h5>
-                                            <p class="card-text">Creer, supprimer, lister et mettre a jour.</p>
-                                            <a href="ambassades.html" class="btn btn-primary">Gerer</a>
+                                            <p class="card-text">Ajouter, et consulter son ambassade.</p>
+                                            <a href="creer_ambassade.html" class="btn btn-primary">Gerer</a>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="col-xl-4 col-md-6">
+                                <div class="col-xl-4 col-md-6 ambassadeursActions">
                                     <div class="card">
                                         <div class="card-body">
                                             <h5 class="card-title">Gerer mes etudiants</h5>
@@ -616,7 +428,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-md-6">
+                                <div class="col-xl-4 col-md-6 ambassadeursActions">
                                     <div class="card">
                                         <div class="card-body">
                                             <h5 class="card-title">Gerer mes annonces</h5>
@@ -625,7 +437,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-md-6">
+                                <div class="col-xl-4 col-md-6 ambassadeursActions">
                                     <div class="card">
                                         <div class="card-body">
                                             <h5 class="card-title">Gerer mes demandes</h5>
@@ -860,6 +672,12 @@
 
         <script>
 
+$("#deconnexion").click(function () {
+  alert("À bientôt !");
+  localStorage.clear();
+  window.location.href = "login.html";
+});
+
       
 $(document).ready(function () {
             // Charger les données du profil
@@ -902,6 +720,41 @@ $(document).ready(function () {
             });
         </script>
 
+
+
+<script>
+     
+  
+    $.ajax({
+      url: "http://localhost:5001/api/ambassades/statistiques/ambassadeur",
+      method: "GET",
+      headers: {
+        Authorization: "Bearer " + token
+      },
+      success: function (res) {
+          $("#showAmbassadeurInfoToCreateAmbassy").hide();
+        const stats = res.data;
+        $("#totalEtudiants").text(stats.totalEtudiants);
+        $("#totalAnnonces").text(stats.totalAnnonces);
+        $("#demandesTraitees").text(stats.demandesTraitees);
+
+
+
+                 // Affichage conditionnel
+                 if (stats.totalEtudiants === 0) {
+        $("#statsCards").hide(); }    // Masquer mot de passe
+         
+        
+      },
+      error: function (err) {
+        console.error("Erreur lors de la récupération des statistiques :", err);
+        $("#statsCards").hide();
+        $(".ambassadeursActions").hide();
+        $("#showAmbassadeurInfoToCreateAmbassy").show();
+      }
+    });
+  </script>
+  
 </body>
 
 </html>
