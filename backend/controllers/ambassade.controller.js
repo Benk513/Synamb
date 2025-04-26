@@ -155,6 +155,10 @@ export const traiterDemandeInscription = catchAsync(async (req, res, next) => {
     .json({ status: "success", message: `Demande ${action}ée avec succès.` });
 });
 
+
+
+
+
 //lister les demandes des etudiants confirmé dans l'ambassade par l'ambassadeur 🟩
 export const listerMesDemandes = catchAsync(async (req, res, next) => {
   const ambassadeurId = req.user._id;
