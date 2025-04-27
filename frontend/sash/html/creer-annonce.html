@@ -1,3 +1,10 @@
+<script>
+  const role= localStorage.getItem("role")
+  if (!token) {
+    window.location.href = "/frontend/sash/html/login.html"; // Redirige vers login
+  }
+
+</script>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -296,7 +303,7 @@
                               >5</span
                             >
                           </a>
-                         
+
                           <a class="dropdown-item" href="login.html">
                             <i class="dropdown-icon fe fe-alert-circle"></i>
                             Se deconnecter
@@ -389,18 +396,7 @@
               <div class="page-header">
                 <h1 class="page-title">Nouvelle Annonce</h1>
 
-                <div id="messageAnnonce">
-
-                  
-                </div>
-
-
-
-
-
-
-
-
+                <div id="messageAnnonce"></div>
 
                 <div>
                   <ol class="breadcrumb">
@@ -412,7 +408,6 @@
                     </li>
                   </ol>
                 </div>
-                
               </div>
               <!-- PAGE-HEADER END -->
 
@@ -444,8 +439,6 @@
                           />
                         </div>
                       </div>
-                       
-
 
                       <div class="row mb-4">
                         <label class="col-md-3 form-label">Type :</label>
@@ -461,7 +454,6 @@
                           </select>
                         </div>
                       </div>
-                      
 
                       <!-- Row -->
                       <div class="row">
@@ -480,7 +472,9 @@
                       <!--End Row-->
 
                       <div class="form-group mb-0">
-                        <label class="col-md-3 form-label mb-4">Image de couverture :</label>
+                        <label class="col-md-3 form-label mb-4"
+                          >Image de couverture :</label
+                        >
                         <input
                           type="file"
                           id="photo"
@@ -491,14 +485,11 @@
                         />
                       </div>
                     </div>
-                    <div class="card-footer ">
-                       
-                      <button class="btn btn-primary" type="submit">Publier l'annonce</button>
-                      <button
-                        
-                        class="btn btn-default "
-                        >Annuler</button
-                      >
+                    <div class="card-footer">
+                      <button class="btn btn-primary" type="submit">
+                        Publier l'annonce
+                      </button>
+                      <button class="btn btn-default">Annuler</button>
                     </div>
                   </form>
                 </div>
@@ -509,8 +500,6 @@
         </div>
         <!--app-content closed-->
       </div>
-
-  
 
       <!-- Country-selector modal-->
       <div class="modal fade" id="country-selector">
@@ -741,46 +730,58 @@
     <script src="../assets/switcher/js/switcher.js"></script>
 
     <script>
-        const token = localStorage.getItem("token");
-      
-        $("#formAnnonce").on("submit", function (e) {
-          e.preventDefault();
-      
-          const formData = new FormData(this); 
-          // Inspect the FormData contents using its methods
-      for (const pair of formData.entries()) {
-        console.log(pair[0] + ', ' + pair[1]);
-      }
-          
-      
-          $.ajax({
-            url: "http://localhost:5001/api/annonces",
-            method: "POST",
-            headers: {
-              Authorization: "Bearer " + token,
-            },
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function (res) {
-              $("#messageAnnonce").html(`
+      const token = localStorage.getItem("token");
+
+      $("#formAnnonce").on("submit", function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        // Inspect the FormData contents using its methods
+        for (const pair of formData.entries()) {
+          console.log(pair[0] + ", " + pair[1]);
+        }
+
+        $.ajax({
+          url: "http://localhost:5001/api/annonces",
+          method: "POST",
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+          data: formData,
+          contentType: false,
+          processData: false,
+          success: function (res) {
+            $("#messageAnnonce").html(`
                 <div class="alert alert-success">
                   ✅ Annonce publiée avec succès !
                 </div>
               `);
-              $("#formAnnonce")[0].reset();
-            },
-            error: function (err) {
-              console.error(err);
-              $("#messageAnnonce").html(`
+            $("#formAnnonce")[0].reset();
+
+            $("#messageBox")
+              .html(` <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
+        <span class="alert-inner--icon"><i class="fe fe-slash"></i></span>
+        <span class="alert-inner--text"><strong>Erreur!</strong> Ambassade crée avec succes!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">×</span>
+          </button>
+          </div>`);
+
+            setTimeout(() => {
+              location.reload(); // pour recharger et afficher les nouvelles données
+              window.location.href()
+            }, 2000);
+          },
+          error: function (err) {
+            console.error(err);
+            $("#messageAnnonce").html(`
                 <div class="alert alert-danger">
                   ❌ Une erreur est survenue lors de la publication.
                 </div>
               `);
-            },
-          });
+          },
         });
-      </script>
-      
+      });
+    </script>
   </body>
 </html>

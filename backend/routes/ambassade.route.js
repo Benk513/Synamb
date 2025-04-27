@@ -14,6 +14,7 @@ import {
   consulterUneDemande,
   creerAmbassade,
   listerAmbassades,
+  listerEtudiantsRejetes,
   listerMesDemandes,
   listerMesEtudiants,
   traiterDemandeAccompagnement,
@@ -46,7 +47,6 @@ router.get(
   consulterMonAmbassade
 );
 
-
 router.get(
   "/statistiques/ambassadeur",
   proteger,
@@ -58,6 +58,13 @@ router.get(
   proteger,
   restreindreA("ambassadeur"),
   listerMesEtudiants
+);
+
+router.get(
+  "/etudiantsRejetes",
+  proteger,
+  restreindreA("ambassadeur"),
+  listerEtudiantsRejetes
 );
 
 router.patch(
@@ -88,7 +95,6 @@ router.get(
   consulterUneDemande
 );
 
-
 router.get(
   "/:",
   uploadFormData.none(),
@@ -96,7 +102,6 @@ router.get(
   restreindreA("admin", "ambassadeur"),
   listerAmbassades
 );
-
 
 router.get("/:id", proteger, detailAnnonce);
 

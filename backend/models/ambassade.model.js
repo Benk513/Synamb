@@ -35,6 +35,11 @@ const schemaAmbassade = new mongoose.Schema(
         dateDemande: { type: Date, default: Date.now },
       },
     ],
+    listeEtudiantsRejete: [
+      {
+        etudiant: { type: mongoose.Schema.Types.ObjectId, ref: "Utilisateur" },
+      },
+    ],
   },
   { timestamps: true }
 );

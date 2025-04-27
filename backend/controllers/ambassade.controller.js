@@ -124,38 +124,94 @@ export const suspendreAmbassadeur = async (req, res) => {
   }
 };
 
-// Traiter une demande d'inscription (accepter ou refuser) pour un étudiant (ambassadeur uniquement) 🟩
-export const traiterDemandeInscription = catchAsync(async (req, res, next) => {
-  const etudiantId= req.params.etudiantId // id de l'étudiant
-  const {  action } = req.body; // action = 'accepter' ou 'refuser'
+// // Traiter une demande d'inscription (accepter ou refuser) pour un étudiant (ambassadeur uniquement) 🟩
+// export const traiterDemandeInscription = catchAsync(async (req, res, next) => {
+//   const etudiantId= req.params.etudiantId // id de l'étudiant
+//   const {  action } = req.body; // action = 'accepter' ou 'refuser'
 
-  // Récupérer l'ambassade de l'ambassadeur
+//   // Récupérer l'ambassade de l'ambassadeur
+//   const amb = await Ambassade.findOne({ ambassadeur: req.user._id });
+//   if (!amb) return next(new AppError("Ambassade introuvable", 404));
+
+//   // Trouver l'entrée correspondante
+//   const index = amb.listeEtudiants.findIndex(
+//     (entry) => entry.etudiant.toString() === etudiantId.toString()
+//   );
+//   if (index === -1) return next(new AppError("Demande non trouvée", 404));
+
+//   if (action === "accepter") {
+//     // Marquer comme confirmé
+//     amb.listeEtudiants[index].estConfirme = true;
+//   } else if (action === "refuser") {
+//     // Retirer du tableau
+//     amb.listeEtudiants.splice(index, 1);
+//   } else {
+//     return next(new AppError("Action invalide", 400));
+//   }
+
+//   await amb.save();
+//   res
+//     .status(200)
+//     .json({ status: "success", message: `Demande ${action}ée avec succès.` });
+// });
+
+
+
+export const traiterDemandeInscription = catchAsync(async (req, res, next) => {
+  const etudiantId = req.params.etudiantId;
+  const { action } = req.body;
+
+  // Récupérer l'ambassade du user connecté (ambassadeur)
   const amb = await Ambassade.findOne({ ambassadeur: req.user._id });
   if (!amb) return next(new AppError("Ambassade introuvable", 404));
 
-  // Trouver l'entrée correspondante
+  // Chercher l'étudiant dans les demandes
   const index = amb.listeEtudiants.findIndex(
     (entry) => entry.etudiant.toString() === etudiantId.toString()
   );
+
   if (index === -1) return next(new AppError("Demande non trouvée", 404));
 
+  const etudiantRef = amb.listeEtudiants[index].etudiant;
+
   if (action === "accepter") {
-    // Marquer comme confirmé
     amb.listeEtudiants[index].estConfirme = true;
   } else if (action === "refuser") {
-    // Retirer du tableau
+    // Ajouter dans la liste des rejetés
+    amb.listeEtudiantsRejete.push({ etudiant: etudiantRef });
+    // Supprimer de la liste principale
     amb.listeEtudiants.splice(index, 1);
   } else {
     return next(new AppError("Action invalide", 400));
   }
 
   await amb.save();
-  res
-    .status(200)
-    .json({ status: "success", message: `Demande ${action}ée avec succès.` });
+
+  res.status(200).json({
+    status: "success",
+    message: `Demande ${action}ée avec succès.`,
+  });
 });
 
 
+export const listerEtudiantsRejetes = catchAsync(async (req, res, next) => {
+  const ambassade = await Ambassade.findOne({ ambassadeur: req.user._id }).populate({
+    path: "listeEtudiantsRejete.etudiant",
+    select: "nom email pays ",
+  });
+
+  if (!ambassade) {
+    return next(new AppError("Ambassade introuvable", 404));
+  }
+
+  const etudiantsRejetes = ambassade.listeEtudiantsRejete.map((entry) => entry.etudiant);
+
+  res.status(200).json({
+    status: "success",
+    results: etudiantsRejetes.length,
+    data: etudiantsRejetes,
+  });
+});
 
 
 

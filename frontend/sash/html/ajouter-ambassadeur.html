@@ -1,3 +1,11 @@
+<script>
+    const token = localStorage.getItem("token");
+    const role= localStorage.getItem("role")
+    if (!token) {
+      window.location.href = "/frontend/sash/html/login.html"; // Redirige vers login
+    }
+ 
+  </script>
 <!doctype html>
 <html lang="en" dir="ltr">
 

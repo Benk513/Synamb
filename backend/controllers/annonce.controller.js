@@ -4,6 +4,7 @@ import AppError from "../utils/appError.js";
 import catchAsync from "../utils/catchAsync.js";
 import APIFeatures from "../utils/apiFeatures.js";
 import { Utilisateur } from "../models/utilisateur.model.js";
+import { Ambassade } from "../models/ambassade.model.js";
 const multerStorage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "uploads/annonces/");
@@ -25,7 +26,7 @@ const multerFilter = (req, file, cb) => {
 const upload = multer({
   storage: multerStorage,
   fileFilter: multerFilter,
-  limits: { fileSize: 1_000_000 },
+  limits: { fileSize: 10_000_000 },
 });
 export const televerserImageCouverture = upload.single("imageCouverture");
 
@@ -47,6 +48,7 @@ export const creerAnnonce = catchAsync(async (req, res, next) => {
     titre,
     type,
     contenu,
+    datePublication:new Date(),
     imageCouverture: imageCouverture,
   });
 
@@ -58,30 +60,163 @@ export const creerAnnonce = catchAsync(async (req, res, next) => {
 });
 
 //lister toutes les annonces
-export const listeAnnonces = catchAsync(async (req, res, next) => {
+// export const listeAnnonces = catchAsync(async (req, res, next) => {
  
+//   const etudiantCodePays = req.user.codePays;
+//   const ambassadeur = await Utilisateur.findOne({
+//     role: "ambassadeur",
+//     codePays: etudiantCodePays,
+//   })
+  
+
+//   if (!ambassadeur) return next(new AppError("Vous devez etre integré a votre ambassade respective pour voir les annonces",400));
+
+//   const annonces = await Annonce.find({ auteur: ambassadeur._id }).populate({
+//     path: "auteur",
+//     select: "nom photo"})
+
+//   if (!annonces) return next(new AppError("Pas encore d'annonces pour vous", 400));
+
+//   res.status(200).json({
+//     resultats: annonces.length,
+//     statut: "succes",
+//     data: annonces,
+//   });
+ 
+// });
+
+
+export const listeAnnonces = catchAsync(async (req, res, next) => {
   const etudiantCodePays = req.user.codePays;
+  const etudiantId = req.user._id;
+
+  // Trouver l'ambassade du codePays
+  const ambassade = await Ambassade.findOne({ codePays: etudiantCodePays });
+
+  if (!ambassade) {
+    return next(
+      new AppError(
+        "Vous devez être intégré à une ambassade pour voir les annonces.",
+        400
+      )
+    );
+  }
+
+  // ⚡ Ne vérifier la confirmation que si l'utilisateur N'EST PAS ambassadeur
+  if (req.user.role !== "ambassadeur") {
+    const estConfirme = ambassade.listeEtudiants.some(
+      (entry) => entry.etudiant.toString() === etudiantId.toString() && entry.estConfirme === true
+    );
+
+    if (!estConfirme) {
+      return next(
+        new AppError(
+          "Votre demande d'intégration à l'ambassade n'a pas encore été confirmée.",
+          403
+        )
+      );
+    }
+  }
+
+  // Récupérer l'ambassadeur qui a posté les annonces
   const ambassadeur = await Utilisateur.findOne({
     role: "ambassadeur",
     codePays: etudiantCodePays,
-  })
-  
+  });
 
-  if (!ambassadeur) return next(new AppError("Vous devez etre integré a votre ambassade respective pour voir les annonces",400));
+  if (!ambassadeur) {
+    return next(
+      new AppError(
+        "Aucun ambassadeur n'est associé à votre pays pour le moment.",
+        400
+      )
+    );
+  }
 
+  // Récupérer les annonces postées par l’ambassadeur
   const annonces = await Annonce.find({ auteur: ambassadeur._id }).populate({
     path: "auteur",
-    select: "nom photo"})
+    select: "nom photo",
+  });
 
-  if (!annonces) return next(new AppError("Pas encore d'annonces pour vous", 400));
+  if (!annonces || annonces.length === 0) {
+    return next(new AppError("Pas encore d'annonces pour votre ambassade.", 400));
+  }
 
+  // Réponse finale
   res.status(200).json({
     resultats: annonces.length,
-    statut: "succes",
+    statut: "succès",
     data: annonces,
   });
- 
 });
+
+
+// export const listeAnnonces = catchAsync(async (req, res, next) => {
+//   const etudiantCodePays = req.user.codePays;
+//   const etudiantId = req.user._id;
+
+//   // Trouver l'ambassade correspondant au codePays
+//   const ambassade = await Ambassade.findOne({ codePays: etudiantCodePays });
+
+//   if (!ambassade) {
+//     return next(
+//       new AppError(
+//         "Vous devez être intégré à une ambassade pour voir les annonces.",
+//         400
+//       )
+//     );
+//   }
+
+//   // Vérifier si l'étudiant est dans la liste des étudiants confirmés
+//   const estConfirme = ambassade.listeEtudiants.some(
+//     (entry) => entry.etudiant.toString() === etudiantId.toString() && entry.estConfirme === true
+//   );
+
+//   if (!estConfirme) {
+//     return next(
+//       new AppError(
+//         "Votre demande d'intégration à l'ambassade n'a pas encore été confirmée.",
+//         403
+//       )
+//     );
+//   }
+
+//   // Récupérer l'ambassadeur qui a posté les annonces
+//   const ambassadeur = await Utilisateur.findOne({
+//     role: "ambassadeur",
+//     codePays: etudiantCodePays,
+//   });
+
+//   if (!ambassadeur) {
+//     return next(
+//       new AppError(
+//         "Aucun ambassadeur n'est associé à votre pays pour le moment.",
+//         400
+//       )
+//     );
+//   }
+
+//   // Récupérer les annonces postées par cet ambassadeur
+//   const annonces = await Annonce.find({ auteur: ambassadeur._id }).populate({
+//     path: "auteur",
+//     select: "nom photo",
+//   });
+
+//   if (!annonces || annonces.length === 0) {
+//     return next(new AppError("Pas encore d'annonces pour votre ambassade.", 400));
+//   }
+
+//   // Réponse finale
+//   res.status(200).json({
+//     resultats: annonces.length,
+//     statut: "succès",
+//     data: annonces,
+//   });
+// });
+
+
+
 // export const listeAnnonces = catchAsync(async (req, res, next) => {
 //   const utilisateurConnecteId = req.user._id;
 //   const utilisateurRole = req.user.role;
