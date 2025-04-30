@@ -89,7 +89,7 @@
                 />
               </a>
               <!-- LOGO -->
-           
+
               <div class="d-flex order-lg-2 ms-auto header-right-icons">
                 <!-- SEARCH -->
                 <button
@@ -134,9 +134,7 @@
                       </div>
 
                       <!-- COUNTRY -->
-                     
-              
-                   
+
                       <!-- SIDE-MENU -->
                       <div class="dropdown d-flex profile-1">
                         <a
@@ -217,40 +215,80 @@
               <!-- LOGO -->
             </div>
             <div class="main-sidemenu">
-              <div class="slide-left disabled" id="slide-left">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="#7b8191"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"
-                  />
-                </svg>
-              </div>
-
-              <!--  put your final sidebar menu here -->
+              <div class="slide-left disabled" id="slide-left"><svg xmlns="http://www.w3.org/2000/svg"
+                      fill="#7b8191" width="24" height="24" viewBox="0 0 24 24">
+                      <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z" />
+                  </svg></div>
               <ul class="side-menu">
-                <li class="sub-category">
-                  <h3>Main</h3>
-                </li>
+                  <li class="sub-category">
+                      <h3>PRINCIPALE</h3>
+                  </li>
+                  <li class="slide">
+                      <a class="side-menu__item has-link" data-bs-toggle="slide" href="index.html"> <span
+                              class="side-menu__label">Tableau de bord</span></a>
+                  </li>
+                  
+                 
+                 
+                 
+                  
+                  <li class="sub-category">
+                      <h3>Annonces</h3>
+                  </li>
+
+                    
+                  <li>
+                      <a class="side-menu__item has-link" href="annonces.html" >
+                       
+                          <span class="side-menu__label">Liste des annonces publiées</span></a>
+                  </li>
+                    
+                
+                  <li>
+                      <a class="side-menu__item has-link" href="creer-annonce.html"  >
+                       
+                          <span class="side-menu__label">Creer une annonce  </span></a>
+                  </li>
+                  
+                  
+                  
+                  
+                  
+                  <li class="sub-category">
+                      <h3>Demandes</h3>
+                  </li>
+                  
+                  <li>
+                      <a class="side-menu__item has-link" href="tableau-MesDemandes.html"  >
+                       
+                          <span class="side-menu__label">Liste des demandes  </span></a>
+                  </li>
+                  <li class="sub-category">
+                      <h3>Mes etudiants</h3>
+                  </li>
+                  
+                  <li>
+                      <a class="side-menu__item has-link" href="tableau-MesEtudiants.html"  >
+                       
+                          <span class="side-menu__label">Liste des etudiants  </span></a>
+                  </li>
+                 
+                  <li class="sub-category">
+                      <h3>General</h3>
+                  </li>
+                  <li>
+                      <button class=" text-dark   btn"    > <span
+                              class="side-menu__label" id="deconnexion">Se deconnecter</span> </button>
+                  </li>
+                
+                  
+                
               </ul>
-              <div class="slide-right" id="slide-right">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="#7b8191"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"
-                  />
-                </svg>
-              </div>
-            </div>
+              <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191"
+                      width="24" height="24" viewBox="0 0 24 24">
+                      <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z" />
+                  </svg></div>
+          </div>
           </div>
         </div>
         <!--/APP-SIDEBAR-->
@@ -309,35 +347,25 @@
                           Description :</label
                         >
                         <div class="mb-4">
-                          <p>
-                            
-                          </p>
+                          <p></p>
                         </div>
-                        
                       </div>
                       <div class="row">
                         <label class="col-md-3 form-label mb-4">
                           Etudiant :</label
                         >
                         <div class="mb-4">
-                          <p id="nom">
-                            
-                          </p>
+                          <p id="nom"></p>
                           <p id="email"></p>
                         </div>
-
                       </div>
                       <div class="row">
                         <label class="col-md-3 form-label mb-4">
                           Statut de la demande :</label
                         >
                         <div class="mb-4">
-                          <p id="status">
-                            
-                          </p>
-                           
+                          <p id="status"></p>
                         </div>
-
                       </div>
                       <!--End Row-->
 
@@ -345,25 +373,26 @@
                         <label class="col-md-3 form-label mb-4"
                           >Document:</label
                         >
-                        <img src="/frontend/sash/assets/images/png/1.png" alt="">
+                        <img
+                          src="/frontend/sash/assets/images/png/1.png"
+                          alt=""
+                        />
                       </div>
                     </div>
                     <div class="card-footer">
-                      <button class="btn btn-success" type="submit">
-                        Valider la demande                      </button>
+                      <button class="btn btn-success" type="submit" id="validerDemandeButton">
+                        Valider la demande
+                      </button>
                       <button class="btn btn-danger">Rejeter la demande</button>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>             
+            </div>
           </div>
         </div>
-       
       </div>
 
-     
- 
       <!-- FOOTER CLOSED -->
     </div>
 
@@ -426,7 +455,7 @@
     <script src="../assets/switcher/js/switcher.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<!-- <script>
+    <!-- <script>
   $(document).ready(function () {
     const urlDetailDemande = "http://localhost:5001/api/ambassades/listerMesDemandes/680e9826d29b730453e85112";
     const urlTraitementDemande = "http://localhost:5001/api/ambassades/traiterDemandeAccompagnement/680d8e092505f8e1d8897565";
@@ -506,117 +535,128 @@
   });
 </script> -->
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+      $(function () {
+        const token = localStorage.getItem("token");
+        if (!token) return (window.location.href = "login.html");
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script>
-$(function() {
-  const token = localStorage.getItem("token");
-  if (!token) return window.location.href = "login.html";
+        // 1️⃣ Récupère l'ID depuis l'URL ?id=...
+        const params = new URLSearchParams(window.location.search);
+        const demandeId = params.get("id");
+        if (!demandeId) {
+          $("#messageAnnonce").html(
+            '<div class="alert alert-danger">ID de demande manquant dans l’URL.</div>'
+          );
+          return;
+        }
 
-  // 1️⃣ Récupère l'ID depuis l'URL ?id=...
-  const params = new URLSearchParams(window.location.search);
-  const demandeId = params.get("id");
-  if (!demandeId) {
-    $("#messageAnnonce").html(
-      '<div class="alert alert-danger">ID de demande manquant dans l’URL.</div>'
-    );
-    return;
-  }
+        const urlDetail = `http://localhost:5001/api/ambassades/listerMesDemandes/${demandeId}`;
+        const urlTraitementBase = `http://localhost:5001/api/ambassades/traiterDemandeAccompagnement/`;
 
-  const urlDetail = `http://localhost:5001/api/ambassades/listerMesDemandes/${demandeId}`;
-  const urlTraitementBase = `http://localhost:5001/api/ambassades/traiterDemandeAccompagnement/`;
+        // 2️⃣ Charger les détails
+        $.ajax({
+          url: urlDetail,
+          method: "GET",
+          headers: { Authorization: "Bearer " + token },
+          success: function (res) {
+            const d = res.data;
+            console.log(d);
+            // Titre de la page et card
+            $(".page-title").text("Détail de la demande");
+            $(".card-title").text("Détail de la demande");
+            $(".breadcrumb-item.active").text("Consulter une demande");
 
-  // 2️⃣ Charger les détails
-  $.ajax({
-    url: urlDetail,
-    method: "GET",
-    headers: { Authorization: "Bearer " + token },
-    success: function(res) {
-      const d = res.data;
-      console.log(d);
-      // Titre de la page et card
-      $(".page-title").text("Détail de la demande");
-      $(".card-title").text("Détail de la demande");
-      $(".breadcrumb-item.active").text("Consulter une demande");
+            // Remplir le contenu
+            //  ➜ Titre (on ré-utilise le label “Titre de l'annonce” pour afficher le type)
+            $("label:contains('Titre de l\\'annonce')")
+              .next()
+              .text(d.type || "N/A");
+            $("#nom").text(d?.etudiant?.nom || "Aucun nom");
+            $("#email").text(d?.etudiant?.email || "Aucun Email");
+            $("#status").text(d?.status || "Non renseigné");
 
-      // Remplir le contenu
-      //  ➜ Titre (on ré-utilise le label “Titre de l'annonce” pour afficher le type)
-      $("label:contains('Titre de l\\'annonce')").next().text(d.type || "N/A");
-$("#nom").text(d?.etudiant?.nom || "Aucun nom");
-$("#email").text(d?.etudiant?.email || "Aucun Email");
-$("#status").text(d?.status || "Non renseigné");
+            //  ➜ Type
+            $("label:contains('Type')")
+              .next()
+              .text(d.type || "N/A");
 
-      //  ➜ Type
-      $("label:contains('Type')").next().text(d.type || "N/A");
+            //  ➜ Description
+            $("label:contains('Description')")
+              .next()
+              .find("p")
+              .text(d.message || "Aucune description");
 
-      //  ➜ Description
-      $("label:contains('Description')").next().find("p").text(d.message || "Aucune description");
+            //  ➜ Document (affiche l'image/PDF s'il y en a)
+            if (d.document) {
+              const src = `/uploads/demandes/${d.document}`;
+              $(".form-group img").attr("src", src).show();
+            } else {
+              $(".form-group img").hide();
+            }
+// i want to hide this button when the status is "approuvée"
 
+            if (d.status === "approuvée") {
+              $("#validerDemandeButton").hide();
+            }
+            // 3️⃣ Activer les boutons
+            activerBoutons(d._id);
+          },
+          error: function (xhr) {
+            console.error(xhr.responseText);
+            $("#messageAnnonce").html(
+              '<div class="alert alert-danger">Impossible de charger la demande.</div>'
+            );
+          },
+        });
 
+        // Initialise les événements sur les boutons
+        function activerBoutons(id) {
+          $(".btn-success")
+            .off("click")
+            .on("click", function (e) {
+              e.preventDefault();
+              traiter(id, "approuvée");
+            });
+          $(".btn-danger")
+            .off("click")
+            .on("click", function (e) {
+              e.preventDefault();
+              traiter(id, "rejetée");
+            });
+        }
 
-      //  ➜ Document (affiche l'image/PDF s'il y en a)
-      if (d.document) {
-        const src = `/uploads/demandes/${d.document}`;
-        $(".form-group img").attr("src", src).show();
-      } else {
-        $(".form-group img").hide();
-      }
+        // 4️⃣ Fonction de traitement (PATCH)
+        function traiter(id, status) {
+          $.ajax({
+            url: urlTraitementBase + id,
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + token,
+            },
+            data: JSON.stringify({ status }),
+            success: function (res) {
+              $("#messageAnnonce").html(
+                `<div class="alert alert-success">Demande <strong>${status}</strong> avec succès.</div>`
+              );
+              // Optionnel : rediriger après 2 s
+              setTimeout(
+                () => (window.location.href = "tableau-MesDemandes.html"),
+                2000
+              );
+            },
+            error: function (xhr) {
+              console.error(xhr.responseText);
+              $("#messageAnnonce").html(
+                '<div class="alert alert-danger">Erreur lors du traitement.</div>'
+              );
+            },
+          });
+        }
+      });
+    </script>
 
-      // 3️⃣ Activer les boutons
-      activerBoutons(d._id);
-    },
-    error: function(xhr) {
-      console.error(xhr.responseText);
-      $("#messageAnnonce").html(
-        '<div class="alert alert-danger">Impossible de charger la demande.</div>'
-      );
-    }
-  });
-
-  // Initialise les événements sur les boutons
-  function activerBoutons(id) {
-    $(".btn-success").off("click").on("click", function(e) {
-      e.preventDefault();
-      traiter(id, "approuvée");
-    });
-    $(".btn-danger").off("click").on("click", function(e) {
-      e.preventDefault();
-      traiter(id, "rejetée");
-    });
-  }
-
-  // 4️⃣ Fonction de traitement (PATCH)
-  function traiter(id, status) {
-    $.ajax({
-      url: urlTraitementBase + id,
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token
-      },
-      data: JSON.stringify({ status }),
-      success: function(res) {
-        $("#messageAnnonce").html(
-          `<div class="alert alert-success">Demande <strong>${status}</strong> avec succès.</div>`
-        );
-        // Optionnel : rediriger après 2 s
-        setTimeout(() => window.location.href = "tableau-MesDemandes.html", 2000);
-      },
-      error: function(xhr) {
-        console.error(xhr.responseText);
-        $("#messageAnnonce").html(
-          '<div class="alert alert-danger">Erreur lors du traitement.</div>'
-        );
-      }
-    });
-  }
-});
-</script>
-
-
-
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
-
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   </body>
 </html>

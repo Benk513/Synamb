@@ -896,17 +896,4 @@
     </div>
   </body>
 </html>
-
-// onEdit: function ($row) { // const id = $row.attr("data-id"); // const nom =
-$row.find("td:eq(0)").text(); // const email = $row.find("td:eq(1)").text(); //
-const telephone = $row.find("td:eq(2)").text(); // const pays =
-$row.find("td:eq(3)").text(); // console.log("ID:", id); // console.log("Nom:",
-nom); // console.log("Email:", email); // console.log("Téléphone:", telephone);
-// console.log("Pays:", pays); // $.ajax({ // url:
-`http://localhost:5001/api/admin/ambassadeurs/${id}`, // method: "PUT", //
-headers: { // Authorization: "Bearer " + localStorage.getItem("token"), //
-"Content-Type": "application/json", // }, // // data: JSON.stringify({ nom,
-email, telephone, pays }), // data: JSON.stringify({ nom, email, telephone, pays
-}), // success: function () { // alert("✅ Ambassadeur modifié !"); // }, //
-error: function () { // alert("❌ Erreur lors de la modification."); // }, //
-}); // }, // });
+ 

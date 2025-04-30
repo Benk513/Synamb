@@ -94,6 +94,38 @@ export const listerMesEtudiants = catchAsync(async (req, res, next) => {
   });
 });
 
+export const consulterProfilEtudiant = catchAsync(async (req, res, next) => {
+  const { etudiantId } = req.params;
+
+  // Vérifie d'abord si l'étudiant fait partie de la liste de l’ambassadeur connecté
+  const ambassade = await Ambassade.findOne({
+    ambassadeur: req.user._id,
+    "listeEtudiants.etudiant": etudiantId,
+  });
+
+  if (!ambassade) {
+    return res.status(403).json({
+      status: "fail",
+      message: "Vous n’avez pas accès à ce profil",
+    });
+  }
+
+  // Récupère les infos complètes de l'étudiant
+  const etudiant = await Utilisateur.findById(etudiantId).select("-motDePasse");
+
+  if (!etudiant) {
+    return res.status(404).json({
+      status: "fail",
+      message: "Étudiant introuvable",
+    });
+  }
+
+  res.status(200).json({
+    status: "success",
+    data: etudiant,
+  });
+});
+
 // consulter mon ambassade pour ambassadeur 🟩
 export const consulterMonAmbassade = catchAsync(async (req, res, next) => {
   await Ambassade.findOne({ ambassadeur: req.user._id })

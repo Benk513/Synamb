@@ -11,6 +11,7 @@ import {
 } from "../controllers/authentification.controller.js";
 import {
   consulterMonAmbassade,
+  consulterProfilEtudiant,
   consulterUneDemande,
   creerAmbassade,
   listerAmbassades,
@@ -72,6 +73,13 @@ router.patch(
   proteger,
   restreindreA("ambassadeur"),
   traiterDemandeInscription
+);
+
+router.get(
+  "/profilEtudiant/:etudiantId",
+  proteger,
+  restreindreA("ambassadeur"),
+  consulterProfilEtudiant
 );
 router.patch(
   "/traiterDemandeAccompagnement/:demandeId",
