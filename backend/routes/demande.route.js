@@ -1,8 +1,12 @@
 import express from "express";
 import {
   changerStatusDemande,
+  consulterDemandeAccompagnement,
+  consulterDemandeAccompagnementEtudiant,
   creerDemandeAccompagnement,
   listerDemandes,
+  listerDemandesEtudiant,
+  traiterDemandeAccompagnement,
 } from "../controllers/demande.controller.js";
 import {
   proteger,
@@ -13,13 +17,43 @@ import { uploadDocument } from "../middlewares/multerConfig.js";
 
 const routeur = express.Router();
 
-routeur.get("/", proteger, restreindreA("ambassadeur"), listerDemandes);
+// POUR ETUDIANT
 routeur.post(
   "/",
   proteger,
   restreindreA("etudiant"),
   uploadDocument,
   creerDemandeAccompagnement
+);
+
+routeur.get(
+  "/listerMesHistoriquesDemandes",
+  proteger,
+  restreindreA("etudiant"),
+  listerDemandesEtudiant
+);
+routeur.get(
+  "/listerMesHistoriquesDemandes/:idDemande",
+  proteger,
+  restreindreA("etudiant"),
+  consulterDemandeAccompagnementEtudiant
+);
+
+// POUR AMBASSADEUR
+routeur.get("/", proteger, restreindreA("ambassadeur","etudiant"), listerDemandes);
+
+
+routeur.get(
+  "/consulterDemande/:idDemande",
+  proteger,
+  restreindreA("ambassadeur"),
+  consulterDemandeAccompagnement
+);
+routeur.patch(
+  "/traiterDemandeAccompagnement/:idDemande",
+  proteger,
+  restreindreA("ambassadeur"),
+  traiterDemandeAccompagnement
 );
 
 routeur.post(

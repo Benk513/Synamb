@@ -140,6 +140,143 @@ export const changerStatusDemande = catchAsync(async (req, res, next) => {
   });
 });
 
-//on va creer une nouvelle demande si il ya pas de
-// on va creer si l'ambassade a accepté notre inscription
-// on va creer si
+
+// ✅ Validation ou rejet d'une demande d'accompagnement
+export const traiterDemandeAccompagnement = catchAsync(
+  async (req, res, next) => {
+    const ambassadeurId = req.user._id;
+    const { idDemande } = req.params;
+    const { status } = req.body; // "approuvée" ou "rejetée"
+
+    if (!["approuvée", "rejetée"].includes(status)) {
+      return next(
+        new AppError("Status invalide. Utilisez 'approuvée' ou 'rejetée'", 400)
+      );
+    }
+
+    const ambassade = await Ambassade.findOne({ ambassadeur: ambassadeurId });
+    if (!ambassade) {
+      return next(
+        new AppError("Aucune ambassade associée à cet utilisateur.", 404)
+      );
+    }
+
+    const demande = await Demande.findById(idDemande);
+    if (!demande) {
+      return next(new AppError("Demande introuvable.", 404));
+    }
+
+    if (demande.ambassadeDestinataire.toString() !== ambassade._id.toString()) {
+      return next(
+        new AppError("Cette demande n'appartient pas à votre ambassade.", 403)
+      );
+    }
+
+    demande.status = status;
+    demande.dateTraitement = new Date();
+    await demande.save();
+
+    res.status(200).json({
+      status: "succes",
+      message: `Demande ${status} avec succès`,
+      data: demande,
+    });
+  }
+);
+
+
+//  Liste des demandes rejetées (ambassadeur)
+export const listerDemandesRejeteesAmbassadeur = catchAsync(
+  async (req, res, next) => {
+    const ambassadeurId = req.user._id;
+    const amb = await Ambassade.findOne({ ambassadeur: ambassadeurId });
+    if (!amb) return next(new AppError("Ambassade introuvable", 404));
+
+    const demandesRejetees = await Demande.find({
+      ambassadeDestinataire: amb._id,
+      statut: "rejetée",
+    })
+      .sort("-dateCreation")
+      .populate("etudiant");
+
+    res.status(200).json({
+      status: "success",
+      results: demandesRejetees.length,
+      data: demandesRejetees,
+    });
+  }
+);
+
+//  Consulter une unique demande d'accompagnement (ambassadeur)
+export const consulterDemandeAccompagnement = catchAsync(
+  async (req, res, next) => {
+    const ambassadeurId = req.user._id;
+    const { idDemande } = req.params;
+
+    const ambassade = await Ambassade.findOne({ ambassadeur: ambassadeurId });
+    if (!ambassade) {
+      return next(
+        new AppError("Aucune ambassade associée à cet utilisateur.", 404)
+      );
+    }
+
+    const demande = await Demande.findById(idDemande)
+      .populate("etudiant")
+      .populate("ambassadeDestinataire");
+    if (!demande) {
+      return next(new AppError("Demande introuvable.", 404));
+    }
+
+    if (
+      demande.ambassadeDestinataire._id.toString() !== ambassade._id.toString()
+    ) {
+      return next(new AppError("Accès refusé à cette demande.", 403));
+    }
+
+    res.status(200).json({
+      status: "success",
+      data: demande,
+    });
+  }
+);
+
+// Consulter une unique demande d'accompagnement (etudiant)
+export const consulterDemandeAccompagnementEtudiant = catchAsync(
+  async (req, res, next) => {
+    const etudiantId = req.user._id;
+    const { idDemande } = req.params;
+
+    const demande = await Demande.findById(idDemande).populate(
+      "ambassadeDestinataire"
+    );
+
+    if (!demande) {
+      return next(new AppError("Demande introuvable.", 404));
+    }
+
+    if (demande.etudiant.toString() !== etudiantId.toString()) {
+      return next(new AppError("Accès refusé à cette demande.", 403));
+    }
+
+    res.status(200).json({
+      status: "success",
+      data: demande,
+    });
+  }
+);
+
+//  Liste de toutes les demandes (historiques) d'un étudiant
+export const listerDemandesEtudiant = catchAsync(async (req, res, next) => {
+  const etudiantId = req.user._id;
+
+  const demandes = await Demande.find({ etudiant: etudiantId })
+    .sort("-createdAt")
+    .populate("ambassadeDestinataire");
+
+  res.status(200).json({
+    status: "success",
+    results: demandes.length,
+
+    data: demandes,
+  });
+});

@@ -54,7 +54,10 @@ export const modifierAmbassade = async (req, res) => {
 
 // Lister toutes les ambassades 🟩
 export const listerAmbassades = async (req, res) => {
-  const ambassades = await Ambassade.find().populate({ path: "ambassadeur", select: "nom photo email" });
+  const ambassades = await Ambassade.find().populate({
+    path: "ambassadeur",
+    select: "nom photo email",
+  });
   res.status(200).json({
     status: "success",
     results: ambassades.length,
@@ -62,11 +65,14 @@ export const listerAmbassades = async (req, res) => {
   });
 };
 export const consulterUneAmbassade = async (req, res) => {
-  const ambassadeId = req.params.ambassadeId
-  const ambassades = await Ambassade.findById(ambassadeId).populate({ path: "ambassadeur", select: "nom photo email" });
+  const ambassadeId = req.params.ambassadeId;
+  const ambassades = await Ambassade.findById(ambassadeId).populate({
+    path: "ambassadeur",
+    select: "nom photo email",
+  });
   res.status(200).json({
     status: "success",
-     
+
     data: ambassades,
   });
 };
@@ -81,13 +87,11 @@ export const listerMesEtudiants = catchAsync(async (req, res, next) => {
     return res
       .status(404)
       .json({ status: "fail", message: "Ambassade introuvable" });
-  res
-    .status(200)
-    .json({
-      status: "success",
-      resultats: ambassadeur.listeEtudiants.length,
-      data: ambassadeur.listeEtudiants,
-    });
+  res.status(200).json({
+    status: "success",
+    resultats: ambassadeur.listeEtudiants.length,
+    data: ambassadeur.listeEtudiants,
+  });
 });
 
 // consulter mon ambassade pour ambassadeur 🟩
@@ -155,8 +159,6 @@ export const suspendreAmbassadeur = async (req, res) => {
 //     .json({ status: "success", message: `Demande ${action}ée avec succès.` });
 // });
 
-
-
 export const traiterDemandeInscription = catchAsync(async (req, res, next) => {
   const etudiantId = req.params.etudiantId;
   const { action } = req.body;
@@ -193,9 +195,10 @@ export const traiterDemandeInscription = catchAsync(async (req, res, next) => {
   });
 });
 
-
 export const listerEtudiantsRejetes = catchAsync(async (req, res, next) => {
-  const ambassade = await Ambassade.findOne({ ambassadeur: req.user._id }).populate({
+  const ambassade = await Ambassade.findOne({
+    ambassadeur: req.user._id,
+  }).populate({
     path: "listeEtudiantsRejete.etudiant",
     select: "nom email pays ",
   });
@@ -204,7 +207,9 @@ export const listerEtudiantsRejetes = catchAsync(async (req, res, next) => {
     return next(new AppError("Ambassade introuvable", 404));
   }
 
-  const etudiantsRejetes = ambassade.listeEtudiantsRejete.map((entry) => entry.etudiant);
+  const etudiantsRejetes = ambassade.listeEtudiantsRejete.map(
+    (entry) => entry.etudiant
+  );
 
   res.status(200).json({
     status: "success",
@@ -212,8 +217,6 @@ export const listerEtudiantsRejetes = catchAsync(async (req, res, next) => {
     data: etudiantsRejetes,
   });
 });
-
-
 
 //lister les demandes des etudiants confirmé dans l'ambassade par l'ambassadeur 🟩
 export const listerMesDemandes = catchAsync(async (req, res, next) => {
@@ -249,10 +252,6 @@ export const listerMesDemandes = catchAsync(async (req, res, next) => {
   });
 });
 
-
-
-
-
 export const consulterUneDemande = catchAsync(async (req, res, next) => {
   const ambassadeurId = req.user._id;
   const demandeId = req.params.demandeId;
@@ -268,7 +267,7 @@ export const consulterUneDemande = catchAsync(async (req, res, next) => {
 
   // Étape 2 : Récupérer la demande et la peupler
   const demande = await Demande.findById(demandeId)
-    .populate("etudiant")
+    .populate("etudiant", "nom email")
     .populate("ambassadeDestinataire");
 
   if (!demande) {
@@ -276,10 +275,10 @@ export const consulterUneDemande = catchAsync(async (req, res, next) => {
   }
 
   // Étape 3 : Vérifier que la demande est bien pour cette ambassade
-  if (demande.ambassadeDestinataire._id.toString() !== ambassade._id.toString()) {
-    return next(
-      new AppError("Vous n'avez pas accès à cette demande.", 403)
-    );
+  if (
+    demande.ambassadeDestinataire._id.toString() !== ambassade._id.toString()
+  ) {
+    return next(new AppError("Vous n'avez pas accès à cette demande.", 403));
   }
 
   // Étape 4 : Retourner la demande
@@ -288,29 +287,6 @@ export const consulterUneDemande = catchAsync(async (req, res, next) => {
     data: demande,
   });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // ✅ Validation ou rejet d'une demande d'accompagnement
 export const traiterDemandeAccompagnement = catchAsync(

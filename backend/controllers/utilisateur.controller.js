@@ -277,7 +277,7 @@ export const obtenirStatistiquesAmbassadeur = catchAsync(async (req, res, next) 
   // 4. Nombre de demandes traitées
   const demandesTraitees = await Demande.countDocuments({
     ambassadeDestinataire: ambassadeId,
-    statut: { $in: ['acceptée', 'rejetée'] }
+    status: { $in: ['approuvée', 'rejetée'] }
   });
 
   res.status(200).json({

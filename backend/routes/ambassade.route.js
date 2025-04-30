@@ -91,15 +91,14 @@ router.get(
   "/listerMesDemandes/:demandeId",
   uploadFormData.none(),
   proteger,
-  restreindreA("ambassadeur"),
   consulterUneDemande
 );
 
 router.get(
-  "/:",
+  "/",
   uploadFormData.none(),
   proteger,
-  restreindreA("admin", "ambassadeur"),
+  restreindreA("admin"),
   listerAmbassades
 );
 

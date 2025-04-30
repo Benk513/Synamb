@@ -34,6 +34,9 @@ const schemaDemande = new mongoose.Schema(
       type: Date,
       default: Date.now,
     },
+    dateTraitement: {
+      type: Date,       
+    },
   },
   { timestamps: true }
 );
