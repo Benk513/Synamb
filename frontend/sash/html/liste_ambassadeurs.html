@@ -72,28 +72,18 @@
               <!-- sidebar-toggle-->
               <a class="logo-horizontal" href="index.html">
                 <img
-                  src="../assets/images/brand/logo-white.png"
+                  src="../assets/images/brand/synamb.png"
                   class="header-brand-img desktop-logo"
                   alt="logo"
                 />
                 <img
-                  src="../assets/images/brand/logo-dark.png"
+                  src="../assets/images/brand/synamb.png"
                   class="header-brand-img light-logo1"
                   alt="logo"
                 />
               </a>
               <!-- LOGO -->
-              <div class="main-header-center ms-3 d-none d-lg-block">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="typehead"
-                  placeholder="Search for results..."
-                />
-                <button class="btn px-0 pt-2">
-                  <i class="fe fe-search" aria-hidden="true"></i>
-                </button>
-              </div>
+
               <div class="d-flex order-lg-2 ms-auto header-right-icons">
                 <!-- SEARCH -->
                 <button
@@ -137,174 +127,41 @@
                         </div>
                       </div>
 
-                      <!-- COUNTRY -->
-                      <div class="d-flex">
-                        <a
-                          class="nav-link icon theme-layout nav-link-bg layout-setting"
-                        >
-                          <span class="dark-layout"
-                            ><i class="fe fe-moon"></i
-                          ></span>
-                          <span class="light-layout"
-                            ><i class="fe fe-sun"></i
-                          ></span>
-                        </a>
-                      </div>
                       <!-- Theme-Layout -->
+                      <div class="dropdown d-flex shopping-cart"></div>
 
-                      <!-- CART -->
-                      <div class="dropdown d-flex">
-                        <a class="nav-link icon full-screen-link nav-link-bg">
-                          <i class="fe fe-minimize fullscreen-button"></i>
-                        </a>
-                      </div>
-                      <!-- FULL-SCREEN -->
-                      <div class="dropdown d-flex notifications">
-                        <a class="nav-link icon" data-bs-toggle="dropdown"
-                          ><i class="fe fe-bell"></i><span class="pulse"></span>
-                        </a>
-                        <div
-                          class="dropdown-menu dropdown-menu-end dropdown-menu-arrow"
-                        >
-                          <div class="drop-heading border-bottom">
-                            <div class="d-flex">
-                              <h6 class="mt-1 mb-0 fs-16 fw-semibold text-dark">
-                                Notifications
-                              </h6>
-                            </div>
-                          </div>
-                          <div class="notifications-menu">
-                            <a
-                              class="dropdown-item d-flex"
-                              href="notify-list.html"
-                            >
-                              <div
-                                class="me-3 notifyimg bg-primary brround box-shadow-primary"
-                              >
-                                <i class="fe fe-mail"></i>
-                              </div>
-                              <div class="mt-1 wd-80p">
-                                <h5 class="notification-label mb-1">
-                                  New Application received
-                                </h5>
-                                <span class="notification-subtext"
-                                  >3 days ago</span
-                                >
-                              </div>
-                            </a>
-                            <a
-                              class="dropdown-item d-flex"
-                              href="notify-list.html"
-                            >
-                              <div
-                                class="me-3 notifyimg bg-secondary brround box-shadow-secondary"
-                              >
-                                <i class="fe fe-check-circle"></i>
-                              </div>
-                              <div class="mt-1 wd-80p">
-                                <h5 class="notification-label mb-1">
-                                  Project has been approved
-                                </h5>
-                                <span class="notification-subtext"
-                                  >2 hours ago</span
-                                >
-                              </div>
-                            </a>
-                            <a
-                              class="dropdown-item d-flex"
-                              href="notify-list.html"
-                            >
-                              <div
-                                class="me-3 notifyimg bg-success brround box-shadow-success"
-                              >
-                                <i class="fe fe-shopping-cart"></i>
-                              </div>
-                              <div class="mt-1 wd-80p">
-                                <h5 class="notification-label mb-1">
-                                  Your Product Delivered
-                                </h5>
-                                <span class="notification-subtext"
-                                  >30 min ago</span
-                                >
-                              </div>
-                            </a>
-                            <a
-                              class="dropdown-item d-flex"
-                              href="notify-list.html"
-                            >
-                              <div
-                                class="me-3 notifyimg bg-pink brround box-shadow-pink"
-                              >
-                                <i class="fe fe-user-plus"></i>
-                              </div>
-                              <div class="mt-1 wd-80p">
-                                <h5 class="notification-label mb-1">
-                                  Friend Requests
-                                </h5>
-                                <span class="notification-subtext"
-                                  >1 day ago</span
-                                >
-                              </div>
-                            </a>
-                          </div>
-                          <div class="dropdown-divider m-0"></div>
-                          <a
-                            href="notify-list.html"
-                            class="dropdown-item text-center p-3 text-muted"
-                            >View all Notification</a
-                          >
-                        </div>
-                      </div>
                       <!-- NOTIFICATIONS -->
-                      <div class="dropdown d-flex message">
-                        <a
-                          class="nav-link icon text-center"
-                          data-bs-toggle="dropdown"
-                        >
-                          <i class="fe fe-message-square"></i
-                          ><span class="pulse-danger"></span>
-                        </a>
-                        <div
-                          class="dropdown-menu dropdown-menu-end dropdown-menu-arrow"
-                        >
-                          <div class="dropdown-divider m-0"></div>
-                          <a
-                            href="javascript:void(0)"
-                            class="dropdown-item text-center p-3 text-muted"
-                            >See all Messages</a
-                          >
-                        </div>
-                      </div>
-                      <!-- MESSAGE-BOX -->
-                      <div class="dropdown d-flex header-settings">
-                        <a
-                          href="javascript:void(0);"
-                          class="nav-link icon"
-                          data-bs-toggle="sidebar-right"
-                          data-target=".sidebar-right"
-                        >
-                          <i class="fe fe-align-right"></i>
-                        </a>
-                      </div>
+
                       <!-- SIDE-MENU -->
                       <div class="dropdown d-flex profile-1">
-                        <a href="javascript:void(0)" data-bs-toggle="dropdown" class="nav-link leading-none d-flex">
-                            <img src="../assets/images/users/21.jpg" id="photo" alt="profile-user"
-                                class="avatar  profile-user brround cover-image">
+                        <a
+                          href="javascript:void(0)"
+                          data-bs-toggle="dropdown"
+                          class="nav-link leading-none d-flex"
+                        >
+                          <img
+                            src="../assets/images/users/21.jpg"
+                            id="photo"
+                            alt="profile-user"
+                            class="avatar profile-user brround cover-image"
+                          />
                         </a>
-                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                        
-                            <div class="dropdown-divider m-0"></div>
-                            <a class="dropdown-item" href="profile.html">
-                                <i class="dropdown-icon fe fe-user"></i> Profile
-                            </a>
-                           
-                          
-                            <button class=" dropdown-item text-dark   btn"    ><i
-                                class="side-menu__icon fa fa-sign-out "></i><span
-                                class="side-menu__label" id="deconnexion">Se deconnecter</span> </button>
+                        <div
+                          class="dropdown-menu dropdown-menu-end dropdown-menu-arrow"
+                        >
+                          <div class="dropdown-divider m-0"></div>
+                          <a class="dropdown-item" href="profile.html">
+                            <i class="dropdown-icon fe fe-user"></i> Profile
+                          </a>
+
+                          <button class="dropdown-item text-dark btn">
+                            <i class="side-menu__icon fa fa-sign-out"></i
+                            ><span class="side-menu__label" id="deconnexion"
+                              >Se deconnecter</span
+                            >
+                          </button>
                         </div>
-                    </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -320,74 +177,117 @@
           <div class="app-sidebar">
             <div class="side-header">
               <a class="header-brand1" href="index.html">
-                  <img src="../assets/images/brand/synamb.png" class="header-brand-img desktop-logo img-fluid" alt="logo" style="max-width: 50%;
-height: auto;">
-                  <img src="../assets/images/brand/synamb.png" class="header-brand-img toggle-logo img-fluid"  style="max-width: 50%;
-height: auto;"
-                      alt="logo">
-                  <img src="../assets/images/brand/synamb.png" class="header-brand-img light-logo img-fluid" alt="logo"  style="max-width: 50%;
-height: auto;">
-                  <img src="../assets/images/brand/synamb.png" class="header-brand-img light-logo1 img-fluid"  style="max-width: 50%;
-height: auto;"
-                      alt="logo">
+                <img
+                  src="../assets/images/brand/synamb.png"
+                  class="header-brand-img desktop-logo img-fluid"
+                  alt="logo"
+                  style="max-width: 50%; height: auto"
+                />
+                <img
+                  src="../assets/images/brand/synamb.png"
+                  class="header-brand-img toggle-logo img-fluid"
+                  style="max-width: 50%; height: auto"
+                  alt="logo"
+                />
+                <img
+                  src="../assets/images/brand/synamb.png"
+                  class="header-brand-img light-logo img-fluid"
+                  alt="logo"
+                  style="max-width: 50%; height: auto"
+                />
+                <img
+                  src="../assets/images/brand/synamb.png"
+                  class="header-brand-img light-logo1 img-fluid"
+                  style="max-width: 50%; height: auto"
+                  alt="logo"
+                />
               </a>
               <!-- LOGO -->
-          </div>
+            </div>
             <div class="main-sidemenu">
-              <div class="slide-left disabled" id="slide-left"><svg xmlns="http://www.w3.org/2000/svg"
-                      fill="#7b8191" width="24" height="24" viewBox="0 0 24 24">
-                      <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z" />
-                  </svg></div>
+              <div class="slide-left disabled" id="slide-left">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="#7b8191"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"
+                  />
+                </svg>
+              </div>
               <ul class="side-menu">
-                  <li class="sub-category">
-                      <h3>PRINCIPALE</h3>
-                  </li>
-                  <li class="slide">
-                      <a class="side-menu__item has-link" data-bs-toggle="slide" href="index.html"> <span
-                              class="side-menu__label">Tableau de bord</span></a>
-                  </li>
-                 
-                 
-                  <li class="sub-category">
-                      <h3>Ambassades</h3>
-                  </li>
-                  <li>
-                      <a class="side-menu__item has-link" href="ambassades.html" > <span
-                              class="side-menu__label">Liste des ambassades</span> </a>
-                  </li>
-                  
-                  
-                  <li class="sub-category">
-                      <h3>Ambassadeurs</h3>
-                  </li>
-                  <li>
-                      <a class="side-menu__item has-link" href="ajouter-ambassadeur.html" > <span
-                              class="side-menu__label">Ajouter un ambassadeur</span> </a>
-                  </li>
-                  
-                  <li>
-                      <a class="side-menu__item has-link" href="liste_ambassadeurs.html" > <span
-                              class="side-menu__label">Liste des ambassadeurs</span> </a>
-                  </li>
-                  
-                 
-                  <li class="sub-category">
-                      <h3>General</h3>
-                  </li>
-                
-                    
-                  <li>
-                      <button class=" text-dark   btn"    > <span
-                              class="side-menu__label" id="deconnexion">Se deconnecter</span> </button>
-                  </li>
-                  
-                
+                <li class="sub-category">
+                  <h3>PRINCIPALE</h3>
+                </li>
+                <li class="slide">
+                  <a
+                    class="side-menu__item has-link"
+                    data-bs-toggle="slide"
+                    href="index.html"
+                  >
+                    <span class="side-menu__label">Tableau de bord</span></a
+                  >
+                </li>
+
+                <li class="sub-category">
+                  <h3>Ambassades</h3>
+                </li>
+                <li>
+                  <a class="side-menu__item has-link" href="ambassades.html">
+                    <span class="side-menu__label">Liste des ambassades</span>
+                  </a>
+                </li>
+
+                <li class="sub-category">
+                  <h3>Ambassadeurs</h3>
+                </li>
+                <li>
+                  <a
+                    class="side-menu__item has-link"
+                    href="ajouter-ambassadeur.html"
+                  >
+                    <span class="side-menu__label">Ajouter un ambassadeur</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="side-menu__item has-link"
+                    href="liste_ambassadeurs.html"
+                  >
+                    <span class="side-menu__label">Liste des ambassadeurs</span>
+                  </a>
+                </li>
+
+                <li class="sub-category">
+                  <h3>General</h3>
+                </li>
+
+                <li>
+                  <button class="text-dark btn">
+                    <span class="side-menu__label" id="deconnexion"
+                      >Se deconnecter</span
+                    >
+                  </button>
+                </li>
               </ul>
-              <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191"
-                      width="24" height="24" viewBox="0 0 24 24">
-                      <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z" />
-                  </svg></div>
-          </div>
+              <div class="slide-right" id="slide-right">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="#7b8191"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"
+                  />
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
         <!--/APP-SIDEBAR-->
@@ -414,37 +314,12 @@ height: auto;"
               <!-- PAGE-HEADER END -->
 
               <!-- Row -->
-              <div class="row">
+              <!-- <div class="row">
                 <div class="col-lg-12">
                   <div class="card">
                     <div class="card-header">
                       <h3 class="card-title">Liste d'ambassadeurs</h3>
                     </div>
-
-                    <!-- Button trigger modal
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-    Launch static backdrop modal
-  </button>
-  
- 
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          Les informations personnel du patients sont ici
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Understood</button>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
                     <div class="card-body">
                       <a
                         href="ajouter-ambassadeur.html"
@@ -468,6 +343,43 @@ height: auto;"
                             </tr>
                           </thead>
                           <tbody></tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+              <div class="row row-sm">
+                <div class="col-lg-12">
+                  <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                      <h3 class="card-title" id="resultats"></h3>
+
+                      <a
+                      href="ajouter-ambassadeur.html"
+                      id="table2-new-row-button"
+                      class="btn btn-primary mb-4"
+                    >
+                      Ajouter un ambassadeur</a
+                    >
+                    </div>
+                  
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <div id="messageAnnonce"></div>
+                        <table class="table table-bordered" id="tableDemandes">
+                          <thead>
+                            <tr>
+                              <th>Nom et prenom</th>
+                              <th>Email</th>
+                              <th>Telephone</th>
+                              <th>Pays</th>
+                              <th>Actions</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <!-- Les demandes seront injectées ici -->
+                          </tbody>
                         </table>
                       </div>
                     </div>
@@ -706,7 +618,7 @@ height: auto;"
     <!-- Switcher js -->
     <script src="../assets/switcher/js/switcher.js"></script>
 
-    <script>
+    <!-- <script>
       $(document).ready(function () {
         $.ajax({
           url: "http://localhost:5001/api/utilisateurs/listerAmbassadeurs",
@@ -764,7 +676,6 @@ height: auto;"
                   },
                 });
               },
-              
             });
 
             table.init();
@@ -820,6 +731,136 @@ height: auto;"
           }
         });
       }
+    </script> -->
+
+    <script>
+      $(document).ready(function () {
+        $.ajax({
+          url: "http://localhost:5001/api/utilisateurs/listerAmbassadeurs",
+          method: "GET",
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+          success: function (res) {
+            const ambassadeurs = res.data;
+            let rows = "";
+
+            $("#resultats").text(
+              `${ambassadeurs.length} ambassadeur(s) trouvé(s)`
+            );
+
+            ambassadeurs.forEach((amb) => {
+              rows += `
+                <tr data-id="${amb._id}">
+                  <td>${amb.nom}</td>
+                  <td>${amb.email}</td>
+                  <td>${amb.telephone || ""}</td>
+                  <td>${amb.pays || ""}</td>
+                  <td>
+                    <button class="btn btn-sm btn-info consulter">👁️</button>
+                    <button class="btn btn-sm btn-danger supprimer">🗑️</button>
+                  </td>
+                </tr>`;
+            });
+
+            $("#tableDemandes tbody").html(rows);
+
+            // Attacher les handlers après injection
+            attachCustomHandlers();
+          },
+          error: function (err) {
+            console.error(err);
+            alert("❌ Erreur de chargement des ambassadeurs");
+          },
+        });
+      });
+
+      function attachCustomHandlers() {
+        // Consulter
+        $(document).on("click", ".consulter", function () {
+          const $row = $(this).closest("tr");
+          const nom = $row.find("td:eq(0)").text();
+          const email = $row.find("td:eq(1)").text();
+          const telephone = $row.find("td:eq(2)").text();
+          const pays = $row.find("td:eq(3)").text();
+
+          $("#modalNom").text(nom);
+          $("#modalEmail").text(email);
+          $("#modalTel").text(telephone);
+          $("#modalPays").text(pays);
+
+          const modal = new bootstrap.Modal(
+            document.getElementById("ambassadeurModal")
+          );
+          modal.show();
+        });
+
+        // Supprimer
+        $(document).on("click", ".supprimer", function () {
+          const id = $(this).closest("tr").data("id");
+          if (confirm("🗑️ Supprimer cet ambassadeur ?")) {
+            $.ajax({
+              url: `http://localhost:5001/api/utilisateurs/supprimerAmbassadeur/${id}`,
+              method: "DELETE",
+              headers: {
+                Authorization: "Bearer " + localStorage.getItem("token"),
+              },
+              success: function () {
+                alert("✅ Ambassadeur supprimé avec succès !");
+                location.reload();
+              },
+              error: function () {
+                alert("❌ Erreur lors de la suppression.");
+              },
+            });
+          }
+        });
+      }
+    </script>
+
+    <script>
+      $(document).ready(function () {
+        // Charger les données du profil
+
+        const userProfileUrl = "http://localhost:5001/uploads/utilisateurs/";
+
+        $.ajax({
+          url: "http://localhost:5001/api/utilisateurs/monProfil",
+          method: "GET",
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+          success: function (user) {
+            const profileUrl = userProfileUrl + user?.data.photo;
+            console.log(user?.data.nom);
+            $("#nom").text(user?.data?.nom);
+            $("#email").text(user?.data.email);
+            $("#lipasa").text(user?.data.lipasa || "Non renseigné.");
+            $("#photo").attr("src", profileUrl);
+            $("#pays").text(user?.data.pays || "Non renseigné.");
+            $("#dateNaissance").text(
+              user?.data.dateNaissance || "Non renseigné."
+            );
+            $("#biographie").text(
+              user?.data.biographie || "Aucune biographie fournie."
+            );
+            $("#adresse").text(user?.data.adresse || "Non renseigné.");
+            $("#codePays").val(user?.data.codePays || "Non renseigné.");
+            $("#telephone").text(user?.data.telephone || "Non renseignné.");
+            $("#role").text(user?.data.role || "Non renseignné.");
+
+            // Affichage conditionnel
+            if (user?.data.role === "admin") {
+              $("#info-administrative").hide(); // Masquer mot de passe
+              $("#info-academique").hide(); // Masquer mot de passe
+              $("#saveBtn").hide(); // Masquer bouton "Enregistrer"
+            }
+          },
+          error: function () {
+            alert("Erreur lors du chargement du profil !");
+          },
+        });
+      });
     </script>
 
     <div
@@ -862,4 +903,3 @@ height: auto;"
     </div>
   </body>
 </html>
- 
