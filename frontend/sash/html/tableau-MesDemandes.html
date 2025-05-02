@@ -151,40 +151,23 @@
                    
                       <!-- SIDE-MENU -->
                       <div class="dropdown d-flex profile-1">
-                        <a
-                          href="javascript:void(0)"
-                          data-bs-toggle="dropdown"
-                          class="nav-link leading-none d-flex"
-                        >
-                          <img
-                            src="../assets/images/users/21.jpg"
-                            alt="profile-user"
-                            class="avatar profile-user brround cover-image photo"
-                          />
+                        <a href="javascript:void(0)" data-bs-toggle="dropdown" class="nav-link leading-none d-flex">
+                            <img src="../assets/images/users/21.jpg" id="photo" alt="profile-user"
+                                class="avatar  profile-user brround cover-image">
                         </a>
-                        <div
-                          class="dropdown-menu dropdown-menu-end dropdown-menu-arrow"
-                        >
-                          <div class="drop-heading">
-                            <div class="text-center">
-                              <h5 class="text-dark mb-0 fs-14 fw-semibold nom">
-                                Percy Kewshun
-                              </h5>
-                              <small class="text-muted role">Senior Admin</small>
-                            </div>
-                          </div>
-                          <div class="dropdown-divider m-0"></div>
-                          <a class="dropdown-item" href="profile.html">
-                            <i class="dropdown-icon fe fe-user"></i> Profile
-                          </a>
-                         
-                       
-                          <a class="dropdown-item" href="login.html">
-                            <i class="dropdown-icon fe fe-alert-circle"></i>
-                           Se deconnecter
-                          </a>
+                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                        
+                            <div class="dropdown-divider m-0"></div>
+                            <a class="dropdown-item" href="profile.html">
+                                <i class="dropdown-icon fe fe-user"></i> Profile
+                            </a>
+                           
+                          
+                            <button class=" dropdown-item text-dark   btn"    ><i
+                                class="side-menu__icon fa fa-sign-out "></i><span
+                                class="side-menu__label" id="deconnexion">Se deconnecter</span> </button>
                         </div>
-                      </div>
+                    </div>
                     </div>
                   </div>
                 </div>
@@ -200,29 +183,19 @@
           <div class="app-sidebar">
             <div class="side-header">
               <a class="header-brand1" href="index.html">
-                <img
-                  src="../assets/images/brand/logo-white.png"
-                  class="header-brand-img desktop-logo"
-                  alt="logo"
-                />
-                <img
-                  src="../assets/images/brand/icon-white.png"
-                  class="header-brand-img toggle-logo"
-                  alt="logo"
-                />
-                <img
-                  src="../assets/images/brand/icon-dark.png"
-                  class="header-brand-img light-logo"
-                  alt="logo"
-                />
-                <img
-                  src="../assets/images/brand/logo-dark.png"
-                  class="header-brand-img light-logo1"
-                  alt="logo"
-                />
+                  <img src="../assets/images/brand/synamb.png" class="header-brand-img desktop-logo img-fluid" alt="logo" style="max-width: 50%;
+height: auto;">
+                  <img src="../assets/images/brand/synamb.png" class="header-brand-img toggle-logo img-fluid"  style="max-width: 50%;
+height: auto;"
+                      alt="logo">
+                  <img src="../assets/images/brand/synamb.png" class="header-brand-img light-logo img-fluid" alt="logo"  style="max-width: 50%;
+height: auto;">
+                  <img src="../assets/images/brand/synamb.png" class="header-brand-img light-logo1 img-fluid"  style="max-width: 50%;
+height: auto;"
+                      alt="logo">
               </a>
               <!-- LOGO -->
-            </div>
+          </div>
             <div class="main-sidemenu">
               <div class="slide-left disabled" id="slide-left"><svg xmlns="http://www.w3.org/2000/svg"
                       fill="#7b8191" width="24" height="24" viewBox="0 0 24 24">
@@ -471,6 +444,11 @@
     <script src="../assets/switcher/js/switcher.js"></script>
 
    
+    <script>$("#deconnexion").click(function () {
+      alert("À bientôt !");
+      localStorage.clear();
+      window.location.href = "login.html";
+    });</script>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>

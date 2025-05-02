@@ -1,0 +1,547 @@
+<script>
+    const role= localStorage.getItem("role")
+    if (!token) {
+      window.location.href = "/frontend/sash/html/login.html"; // Redirige vers login
+    }
+  
+  </script>
+  
+  <!DOCTYPE html>
+  <html lang="en" dir="ltr">
+    <head>
+      <!-- META DATA -->
+      <meta charset="UTF-8" />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0"
+      />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta
+        name="description"
+        content="Sash – Bootstrap 5  Admin & Dashboard Template"
+      />
+      <meta name="author" content="Spruko Technologies Private Limited" />
+      <meta
+        name="keywords"
+        content="admin,admin dashboard,admin panel,admin template,bootstrap,clean,dashboard,flat,jquery,modern,responsive,premium admin templates,responsive admin,ui,ui kit."
+      />
+  
+      <!-- FAVICON -->
+      <link
+        rel="shortcut icon"
+        type="image/x-icon"
+        href="../assets/images/brand/favicon.ico"
+      />
+  
+      <!-- TITLE -->
+      <title>Sash – Bootstrap 5 Admin & Dashboard Template</title>
+  
+      <!-- BOOTSTRAP CSS -->
+      <link
+        id="style"
+        href="../assets/plugins/bootstrap/css/bootstrap.min.css"
+        rel="stylesheet"
+      />
+  
+      <!-- STYLE CSS -->
+      <link href="../assets/css/style.css" rel="stylesheet" />
+  
+      <!-- Plugins CSS -->
+      <link href="../assets/css/plugins.css" rel="stylesheet" />
+  
+      <!--- FONT-ICONS CSS -->
+      <link href="../assets/css/icons.css" rel="stylesheet" />
+  
+      <!-- INTERNAL Switcher css -->
+      <link href="../assets/switcher/css/switcher.css" rel="stylesheet" />
+      <link href="../assets/switcher/demo.css" rel="stylesheet" />
+    </head>
+  
+    <body class="app sidebar-mini ltr light-mode">
+      <!-- GLOBAL-LOADER -->
+      <div id="global-loader">
+        <img src="../assets/images/loader.svg" class="loader-img" alt="Loader" />
+      </div>
+      <!-- /GLOBAL-LOADER -->
+  
+      <!-- PAGE -->
+      <div class="page">
+        <div class="page-main">
+          <!-- app-Header -->
+          <div class="app-header header sticky">
+            <div class="container-fluid main-container">
+              <div class="d-flex">
+                <a
+                  aria-label="Hide Sidebar"
+                  class="app-sidebar__toggle"
+                  data-bs-toggle="sidebar"
+                  href="javascript:void(0)"
+                ></a>
+                <!-- sidebar-toggle-->
+                <a class="logo-horizontal" href="index.html">
+                  <img
+                    src="../assets/images/brand/logo-white.png"
+                    class="header-brand-img desktop-logo"
+                    alt="logo"
+                  />
+                  <img
+                    src="../assets/images/brand/logo-dark.png"
+                    class="header-brand-img light-logo1"
+                    alt="logo"
+                  />
+                </a>
+                <!-- LOGO -->
+              
+                <div class="d-flex order-lg-2 ms-auto header-right-icons">
+                  <!-- SEARCH -->
+                  <button
+                    class="navbar-toggler navresponsive-toggler d-lg-none ms-auto"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent-4"
+                    aria-controls="navbarSupportedContent-4"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                  >
+                    <span class="navbar-toggler-icon fe fe-more-vertical"></span>
+                  </button>
+                  <div class="navbar navbar-collapse responsive-navbar p-0">
+                    <div
+                      class="collapse navbar-collapse"
+                      id="navbarSupportedContent-4"
+                    >
+                      <div class="d-flex order-lg-2">
+                        <div class="dropdown d-lg-none d-flex">
+                          <a
+                            href="javascript:void(0)"
+                            class="nav-link icon"
+                            data-bs-toggle="dropdown"
+                          >
+                            <i class="fe fe-search"></i>
+                          </a>
+                          <div
+                            class="dropdown-menu header-search dropdown-menu-start"
+                          >
+                            <div class="input-group w-100 p-2">
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Search...."
+                              />
+                              <div class="input-group-text btn btn-primary">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                
+                 
+                        <!-- Theme-Layout -->
+                        
+                        <!-- CART -->
+                        <div class="dropdown d-flex">
+                          <a class="nav-link icon full-screen-link nav-link-bg">
+                            <i class="fe fe-minimize fullscreen-button"></i>
+                          </a>
+                        </div>
+                        <!-- FULL-SCREEN -->
+                         
+                        <!-- NOTIFICATIONS -->
+                      
+                     
+                        <!-- SIDE-MENU -->
+                        <div class="dropdown d-flex profile-1">
+                            <a href="javascript:void(0)" data-bs-toggle="dropdown" class="nav-link leading-none d-flex">
+                                <img src="../assets/images/users/21.jpg" id="photo" alt="profile-user"
+                                    class="avatar  profile-user brround cover-image">
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                            
+                                <div class="dropdown-divider m-0"></div>
+                                <a class="dropdown-item" href="profile.html">
+                                    <i class="dropdown-icon fe fe-user"></i> Profile
+                                </a>
+                               
+                              
+                                <button class=" dropdown-item text-dark   btn"    ><i
+                                    class="side-menu__icon fa fa-sign-out "></i><span
+                                    class="side-menu__label" id="deconnexion">Se deconnecter</span> </button>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /app-Header -->
+  
+          <!--APP-SIDEBAR-->
+          <div class="sticky">
+            <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
+            <div class="app-sidebar">
+              <div class="side-header">
+                <a class="header-brand1" href="index.html">
+                    <img src="../assets/images/brand/synamb.png" class="header-brand-img desktop-logo img-fluid" alt="logo" style="max-width: 50%;
+height: auto;">
+                    <img src="../assets/images/brand/synamb.png" class="header-brand-img toggle-logo img-fluid"  style="max-width: 50%;
+height: auto;"
+                        alt="logo">
+                    <img src="../assets/images/brand/synamb.png" class="header-brand-img light-logo img-fluid" alt="logo"  style="max-width: 50%;
+height: auto;">
+                    <img src="../assets/images/brand/synamb.png" class="header-brand-img light-logo1 img-fluid"  style="max-width: 50%;
+height: auto;"
+                        alt="logo">
+                </a>
+                <!-- LOGO -->
+            </div>
+              <div class="main-sidemenu">
+                <div class="slide-left disabled" id="slide-left"><svg xmlns="http://www.w3.org/2000/svg"
+                        fill="#7b8191" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z" />
+                    </svg></div>
+                <ul class="side-menu">
+                    <li class="sub-category">
+                        <h3>PRINCIPALE</h3>
+                    </li>
+                    <li class="slide">
+                        <a class="side-menu__item has-link" data-bs-toggle="slide" href="index.html"><i
+                                class="side-menu__icon fe fe-home"></i><span
+                                class="side-menu__label">Tableau de bord</span></a>
+                    </li>
+                    
+                   
+                   
+                  
+                    
+                    <li class="sub-category actionButtons">
+                        <h3>Annonces</h3>
+                    </li>
+                    <li class="actionButtons">
+                        <a class="side-menu__item has-link" href="annonces.html"  ><i
+                                class="side-menu__icon fe fe-zap"></i><span
+                                class="side-menu__label">Liste des annonces</span> </a>
+                    </li>
+                  
+                     
+                 
+                    <li class="sub-category actionButtons">
+                        <h3>Demandes</h3>
+                    </li><li class="actionButtons">
+                        <a class="side-menu__item has-link" href="creer_demande.html"  ><i
+                                class="side-menu__icon fe fe-zap"></i><span
+                                class="side-menu__label">Envoyer une demande</span> </a>
+                    </li>
+                    <li class="actionButtons">
+                        <a class="side-menu__item has-link" href="historiquesMesDemandes.html"><i
+                                class="side-menu__icon fe fe-zap"></i><span
+                                class="side-menu__label">Historiques des demandes</span> </a>
+                    </li>
+                    
+                    
+                    <li class="sub-category">
+                        <h3>General</h3>
+                    </li>
+                    
+                    <li>
+                        <button class=" text-dark   btn"    ><i
+                                class="side-menu__icon fa fa-sign-out "></i><span
+                                class="side-menu__label" id="deconnexion">Se deconnecter</span> </button>
+                    </li>
+                    
+                  
+                </ul>
+                <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191"
+                        width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z" />
+                    </svg></div>
+            </div>
+            </div>
+          </div>
+          <!--/APP-SIDEBAR-->
+  
+          <!--app-content open-->
+          <div class="main-content app-content mt-0">
+            <div class="side-app">
+              <!-- CONTAINER -->
+              <div class="main-container container-fluid">
+                <!-- PAGE-HEADER -->
+                <div class="page-header">
+                  <h1 class="page-title">Historiques des demandes</h1>
+                  <div>
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item">
+                        <a href="javascript:void(0)">Demandes</a>
+                      </li>
+                      <li class="breadcrumb-item active" aria-current="page">
+                        Liste
+                      </li>
+                    </ol>
+                  </div>
+                </div>
+                <!-- PAGE-HEADER END -->
+  
+                <!-- End Row -->
+                <!-- Row -->
+                <div class="row row-sm">
+                  <div class="col-lg-12">
+                    <!-- <div class="card">
+                      <div class="card-header d-flex justify-content-between">
+                        <h3 class="card-title" id="resultats">
+                           
+                        </h3>
+                        
+                      </div>
+  
+                      <div class="card-body">
+                        <div class="table-responsive">                    
+  
+                          <div id="messageAnnonce"></div>
+                          <table class="table table-bordered" id="tableDemandes">
+                            <thead>
+                              <tr>
+                                <th>#</th>
+                                <th>Titre</th>
+                                <th>Type de demande</th>
+                                <th>Statut</th>
+                                <th>Date de création</th>
+                                <th>Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+  
+                      
+  
+  
+                    </div> -->
+                    <div class="card">
+                      <div class="card-header d-flex justify-content-between">
+                        <h3 class="card-title" id="resultatsDemandesEtudiant">
+                          <!-- Résultat affiché ici -->
+                        </h3>
+                      </div>
+                    
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table table-bordered border text-nowrap mb-0" id="tableDemandesEtudiant">
+                            <thead>
+                              <tr>
+                                <th>N°</th>
+                                <th>Type</th>
+                                <th>Message</th>
+                                <th>Statut</th>
+                                <th>Date</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <!-- Données dynamiques ici -->
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    
+                  
+                  </div>
+                </div>
+                      
+                
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- End Row -->
+              </div>
+              <!-- CONTAINER CLOSED -->
+            </div>
+          </div>
+          <!--app-content closed-->
+        </div>
+  
+        <!-- Sidebar-right -->
+        <div class="sidebar sidebar-right sidebar-animate">
+          <div class="panel panel-primary card mb-0 shadow-none border-0">
+           
+             
+          </div>
+        </div>
+        <!--/Sidebar-right-->
+  
+      
+        <!-- FOOTER CLOSED -->
+      </div>
+  
+      <!-- BACK-TO-TOP -->
+      <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
+  
+      <!-- JQUERY JS -->
+      <script src="../assets/js/jquery.min.js"></script>
+  
+      <!-- BOOTSTRAP JS -->
+      <script src="../assets/plugins/bootstrap/js/popper.min.js"></script>
+      <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+  
+      <!-- INPUT MASK JS-->
+      <script src="../assets/plugins/input-mask/jquery.mask.min.js"></script>
+  
+      <!-- TypeHead js -->
+      <script src="../assets/plugins/bootstrap5-typehead/autocomplete.js"></script>
+      <script src="../assets/js/typehead.js"></script>
+  
+      <!-- INTERNAL SELECT2 JS -->
+      <script src="../assets/plugins/select2/select2.full.min.js"></script>
+  
+      <!-- DATA TABLE JS-->
+      <script src="../assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+      <script src="../assets/plugins/datatable/js/dataTables.bootstrap5.js"></script>
+      <script src="../assets/plugins/datatable/js/dataTables.buttons.min.js"></script>
+      <script src="../assets/plugins/datatable/js/buttons.bootstrap5.min.js"></script>
+      <script src="../assets/plugins/datatable/js/jszip.min.js"></script>
+      <script src="../assets/plugins/datatable/pdfmake/pdfmake.min.js"></script>
+      <script src="../assets/plugins/datatable/pdfmake/vfs_fonts.js"></script>
+      <script src="../assets/plugins/datatable/js/buttons.html5.min.js"></script>
+      <script src="../assets/plugins/datatable/js/buttons.print.min.js"></script>
+      <script src="../assets/plugins/datatable/js/buttons.colVis.min.js"></script>
+      <script src="../assets/plugins/datatable/dataTables.responsive.min.js"></script>
+      <script src="../assets/plugins/datatable/responsive.bootstrap5.min.js"></script>
+      <script src="../assets/js/table-data.js"></script>
+  
+      <!-- Perfect SCROLLBAR JS-->
+      <script src="../assets/plugins/p-scroll/perfect-scrollbar.js"></script>
+      <script src="../assets/plugins/p-scroll/pscroll.js"></script>
+      <script src="../assets/plugins/p-scroll/pscroll-1.js"></script>
+  
+      <!-- SIDE-MENU JS -->
+      <script src="../assets/plugins/sidemenu/sidemenu.js"></script>
+  
+      <!-- SIDEBAR JS -->
+      <script src="../assets/plugins/sidebar/sidebar.js"></script>
+  
+      <!-- Color Theme js -->
+      <script src="../assets/js/themeColors.js"></script>
+  
+      <!-- Sticky js -->
+      <script src="../assets/js/sticky.js"></script>
+  
+      <!-- CUSTOM JS -->
+      <script src="../assets/js/custom.js"></script>
+  
+      <!-- Custom-switcher -->
+      <script src="../assets/js/custom-swicher.js"></script>
+  
+      <!-- Switcher js -->
+      <script src="../assets/switcher/js/switcher.js"></script>
+  
+     
+      <script>
+        $("#deconnexion").click(function () {
+  alert("À bientôt !");
+  localStorage.clear();
+  window.location.href = "login.html";
+});
+      </script>
+  
+      <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+      <!-- <script>
+        $(document).ready(function () {
+          const urlListerDemandes = "http://localhost:5001/api/ambassades/listerMesDemandes";
+      
+          $.ajax({
+            url: urlListerDemandes,
+            method: "GET",
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+            success: function (response) {
+              const demandes = response.data;
+              const tbody = $("#tableDemandes tbody");
+              tbody.empty();
+      
+              demandes.forEach((demande, index) => {
+                const nouvelleLigne = `
+                  <tr>
+                    <td>${index + 1}</td>
+                    <td>${demande.type || "N/A"}</td>
+                    <td>${demande.etudiant ? demande.etudiant.nom  : "Non definie"}</td>
+                    <td>${demande.status}</td>
+                    <td>${new Date(demande.dateCreation).toLocaleDateString()}</td>
+                    <td>
+                      <a href="consulter_demande_accompagnement.html?id=${demande._id}" class="btn btn-primary btn-sm">
+                        Consulter
+                      </a>
+                    </td>
+                  </tr>
+                `;
+                tbody.append(nouvelleLigne);
+              });
+            },
+            error: function (xhr) {
+              console.error(xhr.responseText);
+              $("#messageAnnonce").html(
+                `<div class="alert alert-danger">Erreur lors du chargement des demandes.</div>`
+              );
+            },
+          });
+        });
+      </script> -->
+  
+  
+  
+  <script>
+    function chargerDemandesEtudiant() {
+
+      const token = localStorage.getItem("token");
+  $.ajax({
+    url: "http://localhost:5001/api/demandes/listerMesHistoriquesDemandes",
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`, // remplace `token` par ton vrai token
+    },
+    success: function (res) {
+      const demandes = res.data || [];
+      const tbody = $("#tableDemandesEtudiant tbody");
+
+      $("#resultatsDemandesEtudiant").text(`${demandes.length} demande(s) trouvée(s)`);
+      tbody.empty();
+
+      demandes.forEach((demande, index) => {
+        const ambassade = demande.ambassadeDestinataire || {};
+        const pays = ambassade.pays || "-";
+        const message = demande.message || "-";
+        const type = demande.type || "Autre";
+        const status = demande.status || "En attente";
+        const date = new Date(demande.createdAt).toLocaleDateString();
+        const row = `
+          <tr>
+            <td>${index + 1}</td>
+            <td>${type}</td>
+            <td>${message}</td>
+
+            <td>${status}</td>
+            <td>${date}</td>
+          </tr>
+        `;
+        tbody.append(row);
+      });
+    },
+    error: function () {
+      console.log("❌ Erreur lors du chargement des demandes.");
+    },
+  });
+}
+
+
+$(document).ready(function () {
+  chargerDemandesEtudiant();
+});
+
+  </script>
+    </body>
+  </html>
+  

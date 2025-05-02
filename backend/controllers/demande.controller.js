@@ -122,7 +122,9 @@ export const listerDemandes = catchAsync(async (req, res, next) => {
 // Lister les demandes d'accompagnement pour l'étudiant
 export const listerMesDemandes = catchAsync(async (req, res) => {
   const demandes = await Demande.find({ etudiant: req.user._id });
-  res.status(200).json({ status: "success", data: demandes });
+  res
+    .status(200)
+    .json({ status: "success", results: demandes.length, data: demandes });
 });
 
 export const changerStatusDemande = catchAsync(async (req, res, next) => {

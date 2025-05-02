@@ -6,6 +6,7 @@ import {
   creerDemandeAccompagnement,
   listerDemandes,
   listerDemandesEtudiant,
+  listerMesDemandes,
   traiterDemandeAccompagnement,
 } from "../controllers/demande.controller.js";
 import {
@@ -29,7 +30,7 @@ routeur.post(
 routeur.get(
   "/listerMesHistoriquesDemandes",
   proteger,
-  restreindreA("etudiant"),
+   
   listerDemandesEtudiant
 );
 routeur.get(
@@ -39,9 +40,14 @@ routeur.get(
   consulterDemandeAccompagnementEtudiant
 );
 
-// POUR AMBASSADEUR
-routeur.get("/", proteger, restreindreA("ambassadeur","etudiant"), listerDemandes);
 
+// POUR AMBASSADEUR
+routeur.get(
+  "/",
+  proteger,
+  restreindreA("ambassadeur", "etudiant"),
+  listerDemandes
+);
 
 routeur.get(
   "/consulterDemande/:idDemande",

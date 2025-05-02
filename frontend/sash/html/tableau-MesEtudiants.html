@@ -230,29 +230,19 @@
           <div class="app-sidebar">
             <div class="side-header">
               <a class="header-brand1" href="index.html">
-                <img
-                  src="../assets/images/brand/logo-white.png"
-                  class="header-brand-img desktop-logo"
-                  alt="logo"
-                />
-                <img
-                  src="../assets/images/brand/icon-white.png"
-                  class="header-brand-img toggle-logo"
-                  alt="logo"
-                />
-                <img
-                  src="../assets/images/brand/icon-dark.png"
-                  class="header-brand-img light-logo"
-                  alt="logo"
-                />
-                <img
-                  src="../assets/images/brand/logo-dark.png"
-                  class="header-brand-img light-logo1"
-                  alt="logo"
-                />
+                  <img src="../assets/images/brand/synamb.png" class="header-brand-img desktop-logo img-fluid" alt="logo" style="max-width: 50%;
+height: auto;">
+                  <img src="../assets/images/brand/synamb.png" class="header-brand-img toggle-logo img-fluid"  style="max-width: 50%;
+height: auto;"
+                      alt="logo">
+                  <img src="../assets/images/brand/synamb.png" class="header-brand-img light-logo img-fluid" alt="logo"  style="max-width: 50%;
+height: auto;">
+                  <img src="../assets/images/brand/synamb.png" class="header-brand-img light-logo1 img-fluid"  style="max-width: 50%;
+height: auto;"
+                      alt="logo">
               </a>
               <!-- LOGO -->
-            </div>
+          </div>
             <div class="main-sidemenu">
               <div class="slide-left disabled" id="slide-left"><svg xmlns="http://www.w3.org/2000/svg"
                       fill="#7b8191" width="24" height="24" viewBox="0 0 24 24">
@@ -585,6 +575,13 @@
 
    
 
+    <script>
+      $("#deconnexion").click(function () {
+  alert("À bientôt !");
+  localStorage.clear();
+  window.location.href = "login.html";
+});
+    </script>
 
 
 
