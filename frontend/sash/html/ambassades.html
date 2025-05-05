@@ -159,9 +159,9 @@
                             <i class="dropdown-icon fe fe-user"></i> Profile
                           </a>
 
-                          <button class="dropdown-item text-dark btn">
+                          <button class="dropdown-item text-dark btn deconnexion">
                             <i class="side-menu__icon fa fa-sign-out"></i
-                            ><span class="side-menu__label" id="deconnexion"
+                            ><span class="side-menu__label" 
                               >Se deconnecter</span
                             >
                           </button>
@@ -1369,15 +1369,17 @@
     <!-- Switcher js -->
     <script src="../assets/switcher/js/switcher.js"></script>
 
+    
+    
     <script>
-      $("#deconnexion").click(function () {
+      $(".deconnexion").click(function () {
         alert("À bientôt !");
         localStorage.clear();
         window.location.href = "login.html";
       });
-
-
-      
+          </script>
+    
+    <script>
 $(document).ready(function () {
             // Charger les données du profil
 

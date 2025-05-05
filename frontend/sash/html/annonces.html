@@ -160,7 +160,7 @@
                               <h5 class="text-dark mb-0 fs-14 fw-semibold nom">
                                 Percy Kewshun
                               </h5>
-                              <small class="text-muted role" >Senior Admin</small>
+                              <small class="text-muted role role" >Senior Admin</small>
                             </div>
                           </div>
                           <div class="dropdown-divider m-0"></div>
@@ -169,10 +169,10 @@
                           </a>
                        
                           
-                          <a class="dropdown-item" href="login.html">
+                          <button class="dropdown-item deconnexion"  >
                             <i class="dropdown-icon fe fe-alert-circle"></i>
                            Se deconnecter
-                          </a>
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -368,13 +368,14 @@ height: auto;"
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/relativeTime.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/locale/fr.js"></script>
 
+
     <script>
-      $("#deconnexion").click(function () {
-  alert("À bientôt !");
-  localStorage.clear();
-  window.location.href = "login.html";
-});
-    </script>
+      $(".deconnexion").click(function () {
+        alert("À bientôt !");
+        localStorage.clear();
+        window.location.href = "login.html";
+      });
+          </script>
     <script>
       let currentPage = 1;
       const limit = 6;

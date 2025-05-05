@@ -188,19 +188,3 @@ export const restreindreA = (...roles) => {
     next();
   };
 };
-
-// deleteUser	Supprimer un compte utilisateur	DELETE	/api/users/:id
-// getAllUsers	Récupérer la liste de tous les utilisateurs (Admin)	GET	/api/users
-// updateUserRole	Modifier le rôle d’un utilisateur (Admin)	PUT	/api/users/:id/role
-// uploadProfilePicture	Mettre à jour l’image de profil d’un utilisateur	POST	/api/users/upload-profile-picture
-// verifyEmail	Vérifier l’email d’un utilisateur via un code envoyé par email	POST	/api/users/verify-email
-// resetPassword	Demander une réinitialisation du mot de passe	POST	/api/users/reset-password
-// changePassword	Changer son mot de passe après vérification	PUT	/api/users/change-password
-// deactivateAccount	Désactiver temporairement un compte utilisateur	PUT	/api/users/deactivate/:id
-
-// Nom du Modèle	Description
-// User	Gestion des utilisateurs (locataires, propriétaires, admins)
-// Vehicle	Stocke les véhicules mis en location
-// Message	Stocke les conversations entre utilisateurs
-// Notification	Notifications des actions importantes
-// Admin	Gestion des administrateurs

@@ -149,27 +149,10 @@
                         </a>
                       </div>
                       <!-- Theme-Layout -->
-                      <div class="dropdown d-flex shopping-cart">
-                        <a
-                          class="nav-link icon text-center"
-                          data-bs-toggle="dropdown"
-                        >
-                          <i class="fe fe-shopping-cart"></i
-                          ><span class="badge bg-secondary header-badge"
-                            >4</span
-                          >
-                        </a>
-                        
-                      </div>
-                      <!-- CART -->
+                      
+                      
                      
-                      <!-- FULL-SCREEN -->
-                      <div class="dropdown d-flex notifications">
-                        <a class="nav-link icon" data-bs-toggle="dropdown"
-                          ><i class="fe fe-bell"></i><span class="pulse"></span>
-                        </a>
-                     
-                      </div>
+                   
                   
                     
                       <!-- SIDE-MENU -->
@@ -181,8 +164,8 @@
                         >
                           <img
                             src="../assets/images/users/21.jpg"
-                            alt="profile-user"
-                            class="avatar profile-user brround cover-image"
+                            alt="profile-user "
+                            class="avatar profile-user brround cover-image photo"
                           />
                         </a>
                         <div
@@ -190,29 +173,22 @@
                         >
                           <div class="drop-heading">
                             <div class="text-center">
-                              <h5 class="text-dark mb-0 fs-14 fw-semibold">
+                              <h5 class="text-dark mb-0 fs-14 fw-semibold nom ">
                                 Percy Kewshun
                               </h5>
-                              <small class="text-muted">Senior Admin</small>
+                              <small class="text-muted role">Senior Admin</small>
                             </div>
                           </div>
                           <div class="dropdown-divider m-0"></div>
                           <a class="dropdown-item" href="profile.html">
                             <i class="dropdown-icon fe fe-user"></i> Profile
                           </a>
-                          <a class="dropdown-item" href="email-inbox.html">
-                            <i class="dropdown-icon fe fe-mail"></i> Inbox
-                            <span class="badge bg-danger rounded-pill float-end"
-                              >5</span
-                            >
-                          </a>
-                          <a class="dropdown-item" href="lockscreen.html">
-                            <i class="dropdown-icon fe fe-lock"></i> Lockscreen
-                          </a>
-                          <a class="dropdown-item" href="login.html">
+                         
+                          
+                          <button class="dropdown-item deconnexion" href="login.html">
                             <i class="dropdown-icon fe fe-alert-circle"></i>
-                            Sign out
-                          </a>
+                           Se deconnecter
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -305,9 +281,9 @@ height: auto;"
                   <li class="sub-category">
                       <h3>General</h3>
                   </li>
-                  <li>
+                  <li class=" deconnexion">
                       <button class=" text-dark   btn"    > <span
-                              class="side-menu__label" id="deconnexion">Se deconnecter</span> </button>
+                              class="side-menu__label" >Se deconnecter</span> </button>
                   </li>
                 
                   
@@ -573,60 +549,20 @@ height: auto;"
     <!-- Switcher js -->
     <script src="../assets/switcher/js/switcher.js"></script>
 
-   
 
     <script>
-      $("#deconnexion").click(function () {
-  alert("À bientôt !");
-  localStorage.clear();
-  window.location.href = "login.html";
-});
-    </script>
+      $(".deconnexion").click(function () {
+        alert("À bientôt !");
+        localStorage.clear();
+        window.location.href = "login.html";
+      });
+          </script>
 
 
 
 
 <script>
   
-
-  // function chargerEtudiants() {
-  //   $.ajax({
-  //     url: "http://localhost:5001/api/ambassades/mesEtudiants", // ta route pour `listerMesEtudiants`
-  //     method: "GET",
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //     success: function (res) {
-  //       const etudiants = res.data;
-
-  //     $("#resultats").text(`${etudiants.length} etudiant(s) trouvé(s)`);
-
-  //       const tbody = $("#removecolumns-edit tbody");
-  //       tbody.empty();
-
-  //       etudiants.forEach((item, index) => {
-  //         const ligne = `
-  //           <tr>
-  //             <td>${index + 1}</td>
-  //             <td>${item.etudiant.nom}</td>
-  //             <td>${item.etudiant.email}</td>
-  //             <td>${item.estConfirme ? "Validé" : "En attente"}</td>
-  //             <td>${item.etudiant.telephone || "-"}</td>
-  //             <td>${new Date(item.dateDemande).toLocaleDateString()}</td>
-  //             <td>
-  //               <button class="btn btn-info btn-sm btn-consulter" data-id="${item.etudiant._id}">Consulter</button>
-  //               <button class="btn btn-success btn-sm btn-valider" data-id="${item.etudiant._id}">Valider</button>
-  //               <button class="btn btn-danger btn-sm btn-rejeter" data-id="${item.etudiant._id}">Rejeter</button>
-  //             </td>
-  //           </tr>`;
-  //         tbody.append(ligne);
-  //       });
-  //     },
-  //     error: function () {
-  //       alert("Erreur lors du chargement des étudiants.");
-  //     },
-  //   });
-  // }
   
   function chargerEtudiants() {
   $.ajax({
@@ -823,6 +759,51 @@ $(document).ready(function () {
 
 
     </script>
+
+<script>
+  
+      
+$(document).ready(function () {
+            // Charger les données du profil
+
+            const userProfileUrl = "http://localhost:5001/uploads/utilisateurs/";
+
+        $.ajax({
+          url: "http://localhost:5001/api/utilisateurs/monProfil",
+          method: "GET",
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+          success: function (user) {
+              const profileUrl = userProfileUrl + user?.data.photo;
+            console.log(user?.data.nom)
+            $(".nom").text(user?.data?.nom);
+            $(".email").text(user?.data.email);
+            $("#lipasa").text(user?.data.lipasa || "Non renseigné.");
+            $(".photo").attr("src", profileUrl);
+            $("#pays").text(user?.data.pays || "Non renseigné.");
+            $("#dateNaissance").text(user?.data.dateNaissance || "Non renseigné.");
+            $("#biographie").text(user?.data.biographie || "Aucune biographie fournie.");
+            $("#adresse").text(user?.data.adresse || "Non renseigné.");
+            $("#codePays").val(user?.data.codePays || "Non renseigné.");
+            $("#telephone").text(user?.data.telephone || "Non renseignné.");
+            $(".role").text(user?.data.role || "Non renseignné.");
+
+
+                 // Affichage conditionnel
+      if (user?.data.role === "admin") {
+        $("#info-administrative").hide();     // Masquer mot de passe
+        $("#info-academique").hide();     // Masquer mot de passe
+        $("#saveBtn").hide();         // Masquer bouton "Enregistrer"
+      }
+          },
+          error: function () {
+              alert("Erreur lors du chargement du profil !");
+                    }
+                });
+            });
+  </script>
+
 
     <script>
       $(document).on("click", ".btn-consulter", function () {

@@ -154,7 +154,7 @@
                             <i class="dropdown-icon fe fe-user"></i> Profile
                           </a>
 
-                          <button class="dropdown-item text-dark btn">
+                          <button class="dropdown-item text-dark btn deconnexion">
                             <i class="side-menu__icon fa fa-sign-out"></i
                             ><span class="side-menu__label" id="deconnexion"
                               >Se deconnecter</span
@@ -266,7 +266,7 @@
                   <h3>General</h3>
                 </li>
 
-                <li>
+                <li class="deconnexion">
                   <button class="text-dark btn">
                     <span class="side-menu__label" id="deconnexion"
                       >Se deconnecter</span
@@ -732,7 +732,13 @@
         });
       }
     </script> -->
-
+    <script>
+      $(".deconnexion").click(function () {
+        alert("À bientôt !");
+        localStorage.clear();
+        window.location.href = "login.html";
+      });
+          </script>
     <script>
       $(document).ready(function () {
         $.ajax({

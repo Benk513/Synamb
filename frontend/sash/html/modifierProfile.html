@@ -145,8 +145,8 @@
                       <!-- SIDE-MENU -->
                       <div class="dropdown d-flex profile-1">
                         <a href="javascript:void(0)" data-bs-toggle="dropdown" class="nav-link leading-none d-flex">
-                            <img src="../assets/images/users/21.jpg" id="photo" alt="profile-user"
-                                class="avatar  profile-user brround cover-image">
+                            <img src="../assets/images/users/21.jpg"  alt="profile-user"
+                                class="avatar  profile-user brround cover-image photo">
                         </a>
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                         
@@ -156,9 +156,9 @@
                             </a>
                            
                           
-                            <button class=" dropdown-item text-dark   btn"    ><i
+                            <button class=" dropdown-item text-dark   btn deconnexion"    ><i
                                 class="side-menu__icon fa fa-sign-out "></i><span
-                                class="side-menu__label" id="deconnexion">Se deconnecter</span> </button>
+                                class="side-menu__label" >Se deconnecter</span> </button>
                         </div>
                     </div>
                     </div>
@@ -275,7 +275,7 @@ height: auto;"
                         >
                           <a class="" href="profile.html"
                             ><img
-                              id="photo"
+                             
                               alt="avatar"
                               
                               class="brround  photo"
@@ -1807,6 +1807,14 @@ height: auto;"
     <!-- Switcher js -->
     <script src="../assets/switcher/js/switcher.js"></script>
 
+    
+    <script>
+      $(".deconnexion").click(function () {
+        alert("À bientôt !");
+        localStorage.clear();
+        window.location.href = "login.html";
+      });
+          </script>
     <script>
 
 
@@ -1828,7 +1836,7 @@ $(document).ready(function () {
             $("#lipasa").text(user?.data.lipasa || "Non renseigné.");
             $("#role").text(user?.data.role || "Non renseigné.");
             const profileUrl = userProfileUrl + user?.data.photo;
-            $("#photo").attr("src", profileUrl);
+            $(".photo").attr("src", profileUrl);
             $("#pays").text(user?.data.pays || "Non renseigné.");
             $("#dateNaissance").text(user?.data.dateNaissance || "Non renseigné.");
             $("#biographie").text(user?.data.biographie || "Aucune biographie fournie.");

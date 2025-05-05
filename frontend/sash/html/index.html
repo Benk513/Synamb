@@ -128,9 +128,9 @@
                                                 </a>
                                                
                                               
-                                                <button class=" dropdown-item text-dark   btn"    ><i
+                                                <button class=" dropdown-item text-dark deconnexion  btn"    ><i
                                                     class="side-menu__icon fa fa-sign-out "></i><span
-                                                    class="side-menu__label" id="deconnexion">Se deconnecter</span> </button>
+                                                    class="side-menu__label" >Se deconnecter</span> </button>
                                             </div>
                                         </div>
                                     </div>
@@ -204,11 +204,11 @@
                             </li>
                           
                               
-                            <li>
+                            <li class="deconnexion">
                                
                                 <button class=" dropdown-item text-dark   btn"    ><i
                                     class="side-menu__icon fa fa-sign-out "></i><span
-                                    class="side-menu__label" id="deconnexion">Se deconnecter</span> </button>
+                                    class="side-menu__label" id="">Se deconnecter</span> </button>
                             </li>
                             
                           
@@ -536,14 +536,11 @@
     <script src="../assets/switcher/js/switcher.js"></script>
 
     <script>
-
-$("#deconnexion").click(function () {
+$(".deconnexion").click(function () {
   alert("À bientôt !");
   localStorage.clear();
   window.location.href = "login.html";
 });
-
-
     </script>
 
 <script>

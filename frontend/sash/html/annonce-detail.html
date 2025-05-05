@@ -1265,13 +1265,14 @@ height: auto;"
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/relativeTime.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/locale/fr.js"></script>
 
+
     <script>
-      $("#deconnexion").click(function () {
-  alert("À bientôt !");
-  localStorage.clear();
-  window.location.href = "login.html";
-});
-    </script>
+      $(".deconnexion").click(function () {
+        alert("À bientôt !");
+        localStorage.clear();
+        window.location.href = "login.html";
+      });
+          </script>
     <script>
       // Configurer DayJS
       dayjs.extend(dayjs_plugin_relativeTime);

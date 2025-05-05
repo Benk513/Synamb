@@ -119,9 +119,9 @@
                                                     <i class="dropdown-icon fe fe-user"></i> Profile
                                                 </a>
                                                 
-                                                <a class="dropdown-item" href="login.html">
+                                                <button class="dropdown-item deconnexion" >
                                                     <i class="dropdown-icon fe fe-alert-circle"></i> Se deconnecter
-                                                </a>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -511,6 +511,14 @@
     <!-- Switcher js -->
     <script src="../assets/switcher/js/switcher.js"></script>
 
+
+    <script>
+        $(".deconnexion").click(function () {
+          alert("À bientôt !");
+          localStorage.clear();
+          window.location.href = "login.html";
+        });
+            </script>
     <script>
 
         $(document).ready(function () {
