@@ -175,7 +175,7 @@
                         >
                           <div class="drop-heading">
                             <div class="text-center">
-                              <h5 class="text-dark mb-0 fs-14 fw-semibold" id="nom">
+                              <h5 class="text-dark mb-0 fs-14 fw-semibold nom">
                                 Percy Kewshun
                               </h5>
                               <small class="text-muted" id="role">Senior Admin</small>
@@ -565,7 +565,7 @@ height: auto;"
           },
           success: function (user) {
             console.log(user?.data.nom)
-            $("#nom").text(user?.data?.nom);
+            $(".nom").text(user?.data?.nom);
             $("#email").text(user?.data.email);
             $("#lipasa").text(user?.data.lipasa || "Non renseigné.");
             $("#role").text(user?.data.role || "Non renseigné.");
@@ -684,9 +684,6 @@ const adresse = $('#adresse').val();
                                                 </div>`);
     }
   });
-});
-
-
-    </script>
+});    </script>
   </body>
 </html>
