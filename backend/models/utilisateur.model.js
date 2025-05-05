@@ -103,11 +103,6 @@ const schemaUtilsateur = new mongoose.Schema(
     domaine: String,
     etablissement: String,
     anneeUniversitaire: String,
-
-    resetPasswordToken: String,
-    resetPasswordExpiresAt: Date,
-    verificationTOken: String,
-    verificationTokenExpiresAt: Date,
   },
   { timestamps: true }
 );

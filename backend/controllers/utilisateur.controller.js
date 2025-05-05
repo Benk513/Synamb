@@ -174,23 +174,6 @@ export const creerAmbassadeur = catchAsync(async (req, res, next) => {
         "L'Ambassade du congo existe deja, plus moyen d'avoir un autre ambassadeur!"
       )
     );
-
-  // const nouvelAmbassadeur = await Utilisateur({
-  //   nom,
-  //   email,
-  //   lipasa,
-  //   motDePasse,
-
-  //   pays,
-  //   codePays,
-  //   confirmationMotDePasse,
-  // });
-
-  // nouvelAmbassadeur.role = "ambassadeur";
-
-  // await nouvelAmbassadeur.save();
-
-
   const nouvelAmbassadeur = new Utilisateur({
     nom,
     email,
@@ -206,6 +189,8 @@ export const creerAmbassadeur = catchAsync(async (req, res, next) => {
   await nouvelAmbassadeur.save();
   res.status(201).json({ status: "success", data: nouvelAmbassadeur });
 });
+
+
 
 // Suspendre un ambassadeur (changer son statut ou actif = false) 🟩
 export const suspendreAmbassadeur = catchAsync(async (req, res) => {

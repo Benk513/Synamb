@@ -255,7 +255,7 @@
                                             <div class=" row mb-4">
                                                 <label for="inputEmail3" class="col-md-3 form-label">Pays</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" class="form-control" id="pays" placeholder="Congolaise" autocomplete="username">
+                                                    <input type="text" class="form-control" id="pays" placeholder="Tunisie" autocomplete="username">
                                                 </div>
                                             </div>
                                             <div class=" row mb-4">
@@ -542,8 +542,11 @@ $(document).ready(function () {
           };
   
           $.ajax({
-            url: "http://localhost:5001/api/utilisateurs/inscription",
+            url: "http://localhost:5001/api/utilisateurs/creerAmbassadeur",
             method: "POST",
+            headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
             contentType: "application/json",
             data: JSON.stringify(data),
             success: function (res) {
