@@ -98,7 +98,7 @@
                 />
               </a>
               <!-- LOGO -->
-              <div class="main-header-center ms-3 d-none d-lg-block">
+              <!-- <div class="main-header-center ms-3 d-none d-lg-block">
                 <input
                   type="text"
                   class="form-control"
@@ -108,7 +108,7 @@
                 <button class="btn px-0 pt-2">
                   <i class="fe fe-search" aria-hidden="true"></i>
                 </button>
-              </div>
+              </div> -->
               <div class="d-flex order-lg-2 ms-auto header-right-icons">
                 <!-- SEARCH -->
                 <button
@@ -151,7 +151,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="d-flex country">
+                      <!-- <div class="d-flex country">
                         <a
                           class="nav-link icon text-center"
                           data-bs-target="#country-selector"
@@ -162,7 +162,7 @@
                             >English</span
                           >
                         </a>
-                      </div>
+                      </div> -->
                       <!-- COUNTRY -->
                       <div class="d-flex">
                         <a
@@ -178,7 +178,7 @@
                       </div>
                       <!-- Theme-Layout -->
                       <div class="dropdown d-flex shopping-cart">
-                        <a
+                        <!-- <a
                           class="nav-link icon text-center"
                           data-bs-toggle="dropdown"
                         >
@@ -186,11 +186,11 @@
                           ><span class="badge bg-secondary header-badge"
                             >4</span
                           >
-                        </a>
+                        </a> -->
                         <div
                           class="dropdown-menu dropdown-menu-end dropdown-menu-arrow"
                         >
-                          <div class="drop-heading border-bottom">
+                          <!-- <div class="drop-heading border-bottom">
                             <div class="d-flex">
                               <h6 class="mt-1 mb-0 fs-16 fw-semibold text-dark">
                                 My Shopping Cart
@@ -387,14 +387,14 @@
                             <span class="float-end p-2 fs-17 fw-semibold"
                               >Total: $6789</span
                             >
-                          </div>
+                          </div> -->
                         </div>
                       </div>
 
                       <!-- FULL-SCREEN -->
 
                       <!-- NOTIFICATIONS -->
-                      <div class="dropdown d-flex message">
+                      <!-- <div class="dropdown d-flex message">
                         <a
                           class="nav-link icon text-center"
                           data-bs-toggle="dropdown"
@@ -503,9 +503,9 @@
                             >See all Messages</a
                           >
                         </div>
-                      </div>
+                      </div> -->
                       <!-- MESSAGE-BOX -->
-                      <div class="dropdown d-flex header-settings">
+                      <!-- <div class="dropdown d-flex header-settings">
                         <a
                           href="javascript:void(0);"
                           class="nav-link icon"
@@ -514,7 +514,7 @@
                         >
                           <i class="fe fe-align-right"></i>
                         </a>
-                      </div>
+                      </div> -->
                       <!-- SIDE-MENU -->
                       <div class="dropdown d-flex profile-1">
                         <a
@@ -663,6 +663,13 @@
                     ><span class="side-menu__label">Se deconnecter</span>
                   </button>
                 </li>
+                <li>
+                  <a
+                    href="https://chat.whatsapp.com/FzhNb8s7la8KNiuoBAzPA5"
+                    class="btn btn-primary"
+                    >Rejoindre le groupe d'echange</a
+                  >
+                </li>
               </ul>
               <div class="slide-right" id="slide-right">
                 <svg
@@ -693,7 +700,7 @@
                 <div>
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                      <a href="javascript:void(0)">Pages</a>
+                      <a href="espace_etudiant.html">Pages</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
                       faire une demande
@@ -1840,31 +1847,32 @@
             headers: {
               Authorization: "Bearer " + localStorage.getItem("token"), // ou ta méthode d’auth
             },
-            beforeSend: function () {
-              $("#alertZone")
-                .hide()
-                .removeClass("success error")
-                .text("Envoi en cours...");
-            },
+            // beforeSend: function () {
+            //   $("#alertZone")
+            //     .hide()
+            //     .removeClass("success error")
+            //     .text("Envoi en cours...");
+            // },
             success: function (response) {
-              $("#alertZone")
-                .show()
-                .addClass("success")
-                .css("color", "green")
-                .text("✅ La demande a été envoyée avec succès !");
               $("#demandeForm")[0].reset();
-              $("#alerteMessage")
-                .html(` <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                        <span class="alert-inner--icon"><i class="fe fe-thumbs-up"></i></span>
-                                        <span class="alert-inner--text"><strong>Succes!</strong>Demande envoyée avec succès !</span>
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">×</span>
-                                            </button>
-                                    </div>`);
-              setTimeout(function () {
-                window.location.href =
-                  "/frontend/sash/html/espace_etudiant.html";
-              }, 1000);
+              alert("Votre demande a été envoyée avec succès !");
+              // $("#alertZone")
+              //   .show()
+              //   .addClass("success")
+              //   .css("color", "green")
+              //   .text("✅ La demande a été envoyée avec succès !");
+              // $("#alerteMessage")
+              //   .html(` <div class="alert alert-success alert-dismissible fade show" role="alert">
+              //                           <span class="alert-inner--icon"><i class="fe fe-thumbs-up"></i></span>
+              //                           <span class="alert-inner--text"><strong>Succes!</strong>Demande envoyée avec succès !</span>
+              //                           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+              //                                   <span aria-hidden="true">×</span>
+              //                               </button>
+              //                       </div>`);
+              // setTimeout(function () {
+              //   window.location.href =
+              //     "/frontend/sash/html/espace_etudiant.html";
+              // }, 1000);
             },
             error: function (xhr) {
               const message =

@@ -146,6 +146,7 @@
                             src="../assets/images/users/21.jpg"
                             alt="profile-user"
                             class="avatar profile-user brround cover-image"
+                            id="photo"
                           />
                         </a>
                         <div
@@ -153,10 +154,10 @@
                         >
                           <div class="drop-heading">
                             <div class="text-center">
-                              <h5 class="text-dark mb-0 fs-14 fw-semibold">
+                              <h5 class="text-dark mb-0 fs-14 fw-semibold" id="nom">
                                 Percy Kewshun
                               </h5>
-                              <small class="text-muted">Senior Admin</small>
+                              <small class="text-muted" id="role">Senior Admin</small>
                             </div>
                           </div>
                           <div class="dropdown-divider m-0"></div>
@@ -296,6 +297,7 @@
                     >
                   </button>
                 </li>
+                 <li><a href="https://chat.whatsapp.com/FzhNb8s7la8KNiuoBAzPA5" class="btn btn-primary">Rejoindre le groupe d'echange</a></li>
               </ul>
               <div class="slide-right" id="slide-right">
                 <svg
@@ -329,7 +331,7 @@
                 <div>
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                      <a href="javascript:void(0)">Demandes à accompagner</a>
+                      <a href="tableau-MesDemandes.html">Demandes à accompagner</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
                       Consulter une demande
@@ -431,10 +433,10 @@
     <!-- BOOTSTRAP JS -->
     <script src="../assets/plugins/bootstrap/js/popper.min.js"></script>
     <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-
+    
     <!-- INPUT MASK JS -->
     <script src="../assets/plugins/input-mask/jquery.mask.min.js"></script>
-
+    
     <!-- INTERNAL WYSIWYG Editor JS -->
     <script src="../assets/plugins/wysiwyag/jquery.richtext.js"></script>
     <script src="../assets/plugins/wysiwyag/wysiwyag.js"></script>
@@ -453,7 +455,7 @@
     <!-- TypeHead js -->
     <script src="../assets/plugins/bootstrap5-typehead/autocomplete.js"></script>
     <script src="../assets/js/typehead.js"></script>
-
+    
     <!-- Perfect SCROLLBAR JS-->
     <script src="../assets/plugins/p-scroll/perfect-scrollbar.js"></script>
     <script src="../assets/plugins/p-scroll/pscroll.js"></script>
@@ -461,16 +463,16 @@
 
     <!-- SIDE-MENU JS -->
     <script src="../assets/plugins/sidemenu/sidemenu.js"></script>
-
+    
     <!-- SIDEBAR JS -->
     <script src="../assets/plugins/sidebar/sidebar.js"></script>
-
+    
     <!-- Color Theme js -->
     <script src="../assets/js/themeColors.js"></script>
-
+    
     <!-- Sticky js -->
     <script src="../assets/js/sticky.js"></script>
-
+    
     <!-- CUSTOM JS -->
     <script src="../assets/js/custom.js"></script>
 
@@ -482,7 +484,7 @@
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <!-- <script>
-  $(document).ready(function () {
+      $(document).ready(function () {
     const urlDetailDemande = "http://localhost:5001/api/ambassades/listerMesDemandes/680e9826d29b730453e85112";
     const urlTraitementDemande = "http://localhost:5001/api/ambassades/traiterDemandeAccompagnement/680d8e092505f8e1d8897565";
 
@@ -568,7 +570,6 @@
         window.location.href = "login.html";
       });
     </script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>
       $(function () {
         const token = localStorage.getItem("token");
@@ -622,7 +623,7 @@
 
             //  ➜ Document (affiche l'image/PDF s'il y en a)
             if (d.document) {
-              const src = `/uploads/demandes/${d.document}`;
+              const src = `http://localhost:5001/uploads/demandes/${d.document}`;
               $(".form-group img").attr("src", src).show();
             } else {
               $(".form-group img").hide();
@@ -689,7 +690,57 @@
         }
       });
     </script>
+    
+        <script>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+$(".deconnexion").click(function () {
+  alert("À bientôt !");
+  localStorage.clear();
+  window.location.href = "login.html";
+});
+      
+$(document).ready(function () {
+            // Charger les données du profil
+
+            const userProfileUrl = "http://localhost:5001/uploads/utilisateurs/";
+
+        $.ajax({
+          url: "http://localhost:5001/api/utilisateurs/monProfil",
+          method: "GET",
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+          success: function (user) {
+              const profileUrl = userProfileUrl + user?.data.photo;
+            console.log(user?.data.nom)
+            $("#nom").text(user?.data?.nom);
+            $("#email").text(user?.data.email);
+            $("#lipasa").text(user?.data.lipasa || "Non renseigné.");
+            $("#photo").attr("src", profileUrl);
+            $("#pays").text(user?.data.pays || "Non renseigné.");
+            $("#dateNaissance").text(user?.data.dateNaissance || "Non renseigné.");
+            $("#biographie").text(user?.data.biographie || "Aucune biographie fournie.");
+            $("#adresse").text(user?.data.adresse || "Non renseigné.");
+            $("#codePays").val(user?.data.codePays || "Non renseigné.");
+            $("#telephone").text(user?.data.telephone || "Non renseignné.");
+            $("#role").text(user?.data.role || "Non renseignné.");
+
+
+                 // Affichage conditionnel
+      if (user?.data.role === "admin") {
+        $("#info-administrative").hide();     // Masquer mot de passe
+        $("#info-academique").hide();     // Masquer mot de passe
+        $("#saveBtn").hide();         // Masquer bouton "Enregistrer"
+      }
+          },
+          error: function () {
+              alert("Erreur lors du chargement du profil !");
+                    }
+                });
+            });
+        </script>
+
+<script>
+</script>
   </body>
 </html>

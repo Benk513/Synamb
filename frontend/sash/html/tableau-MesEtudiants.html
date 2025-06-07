@@ -302,7 +302,72 @@ height: auto;"
         <!--app-content open-->
         <div class="main-content app-content mt-0">
           <div class="side-app">
+             <div class="main-container container-fluid">
+              <!-- PAGE-HEADER -->
+              <div class="page-header">
+                <h1 class="page-title">Liste des etudiants en attente </h1>
+                <div>
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                      <a href="javascript:void(0)">Etudiants</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                      Liste
+                    </li>
+                  </ol>
+                </div>
+              </div>
+              <!-- PAGE-HEADER END -->
+
+              <!-- End Row -->
+              <!-- Row -->
+              <div class="row row-sm">
+                <div class="col-lg-12">
+                  <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                      <h3 class="card-title" id="resultatsEtudiantsEnAttente">
+                      </h3>
+                      
+                    </div>
+
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table
+                          class="table table-bordered border text-nowrap mb-0"
+                          id="etudiantsEnAttenteTable"
+                        >
+                          <thead>
+                            <tr>
+                              <th>N°</th>
+                              <th>Nom et Prenom</th>
+                              <th>Email</th>
+                              <th>Status</th>
+                              <th>Telephone</th>
+                              <th>Date de D'inscription</th>
+                        
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>...</td>
+                              <td>...</td>
+                              <td>...</td>
+                              <td>...</td>
+                              <td>...</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- End Row -->
+             
+            </div>
             <!-- CONTAINER -->
+
             <div class="main-container container-fluid">
               <!-- PAGE-HEADER -->
               <div class="page-header">
@@ -368,13 +433,15 @@ height: auto;"
               <!-- End Row -->
              
             </div>
+
             <!-- CONTAINER CLOSED -->
           <div class="side-app">
             <!-- CONTAINER -->
+           
             <div class="main-container container-fluid">
               <!-- PAGE-HEADER -->
               <div class="page-header">
-                <h1 class="page-title">Liste des etudiants refusé </h1>
+                <h1 class="page-title">Liste des etudiants rejetés </h1>
                 <div>
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item">
@@ -395,7 +462,7 @@ height: auto;"
                   <div class="card">
                     <div class="card-header d-flex justify-content-between">
                       <h3 class="card-title" id="resultatsEtudiantsRejete">
-                         
+
                       </h3>
                       
                     </div>
@@ -549,22 +616,15 @@ height: auto;"
 
     <!-- Switcher js -->
     <script src="../assets/switcher/js/switcher.js"></script>
-
-
     <script>
       $(".deconnexion").click(function () {
         alert("À bientôt !");
         localStorage.clear();
         window.location.href = "login.html";
       });
-          </script>
+    </script>
 
-
-
-
-<script>
-  
-  
+<script> 
   function chargerEtudiants() {
   $.ajax({
     url: "http://localhost:5001/api/ambassades/mesEtudiants",
@@ -603,9 +663,7 @@ height: auto;"
               <button  class="btn btn-info btn-sm btn-consulter" data-id="${etudiant._id}">
                 Consulter
               </button>
-              <button class="btn btn-success btn-sm btn-valider" data-id="${etudiant._id}">
-                Valider
-              </button>
+              
               <button class="btn btn-danger btn-sm btn-rejeter" data-id="${etudiant._id}">
                 Rejeter
               </button>
@@ -679,7 +737,63 @@ height: auto;"
   });
 }
 
- 
+function chargerEtudiantsEnAttente() {
+  $.ajax({
+    url: "http://localhost:5001/api/ambassades/etudiantsEnAttente",
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    success: function (res) {
+      const etudiants = res.data || [];
+
+      console.log('Étudiants en attente', etudiants);
+      const tbody = $("#etudiantsEnAttenteTable tbody");
+
+      // Affiche le nombre total d'étudiants en attente
+      $("#resultatsEtudiantsEnAttente").text(`${etudiants.length} étudiant(s) en attente`);
+
+      // Vide le contenu précédent du tableau
+      tbody.empty();
+
+      // Génère chaque ligne du tableau
+      etudiants.forEach((item, index) => {
+        const etudiant = item.etudiant;
+        const status = item.estConfirme ? "✅ Validé" : "⏳ En attente";
+        const telephone = etudiant?.telephone || "-";
+        const dateInscription = new Date(item.dateDemande).toLocaleDateString();
+
+        const row = `
+          <tr>
+            <td>${index + 1}</td>
+            <td>${etudiant?.nom}</td>
+            <td>${etudiant?.email}</td>
+            <td>${status}</td>
+            <td>${telephone}</td>
+            <td>${dateInscription}</td>
+                 <td>
+              <button  class="btn btn-info btn-sm btn-consulter" data-id="${etudiant._id}">
+                Consulter
+              </button>
+              <button class="btn btn-success btn-sm btn-valider" data-id="${etudiant._id}">
+                Valider
+              </button>
+              <button class="btn btn-danger btn-sm btn-rejeter" data-id="${etudiant._id}">
+                Rejeter
+              </button>
+            </td>
+          </tr>
+        `;
+
+        tbody.append(row);
+      });
+    },
+    error: function () {
+      alert("❌ Erreur lors du chargement des étudiants en attente.");
+    },
+  });
+}
+
   function mettreAJourConfirmation(id, action) {
   $.ajax({
     url: `http://localhost:5001/api/ambassades/traiterDemandeInscription/${id}`,
@@ -704,6 +818,7 @@ height: auto;"
 $(document).ready(function () {
   chargerEtudiants();
   chargerEtudiantsRejete()
+  chargerEtudiantsEnAttente()
 
   // ✅ Bouton Valider
   $(document).on("click", ".btn-valider", function () {
@@ -725,45 +840,11 @@ $(document).ready(function () {
     consulterEtudiant(id); // Appelle la fonction qui ouvre la modale
   });
 });
-
-
-
-
-
-
-
-
-  // $(document).ready(function () {
-  //   chargerEtudiants();
-
-  //   $(document).on("click", ".btn-valider", function () {
-  //     const id = $(this).data("id");
-  //     mettreAJourConfirmation(id, 'accepter');
-  //   });
-
-  //   $(document).on("click", ".btn-rejeter", function () {
-  //     const id = $(this).data("id");
-  //     if (confirm("Confirmez-vous le rejet de cet étudiant ?")) {
-  //       mettreAJourConfirmation(id, 'refuser');
-  //     }
-  //   });
-
-  //   $(document).on("click", ".btn-consulter", function () {
-  //     const id = $(this).data("id");
-  //     // Ex. : ouvrir une modale et charger les infos
-  //     alert(`Afficher les infos de l'étudiant ID: ${id}`);
-  //   });
-  // });
 </script>
-
-
-
 
     </script>
 
-<script>
-  
-      
+<script>     
 $(document).ready(function () {
             // Charger les données du profil
 
@@ -804,7 +885,6 @@ $(document).ready(function () {
                 });
             });
   </script>
-
 
     <script>
       $(document).on("click", ".btn-consulter", function () {
@@ -849,7 +929,6 @@ console.log(etudiant)
     },
   });
 });
-
     </script>
 
   <!-- Modal pour consulter le profil d’un étudiant -->
@@ -876,7 +955,6 @@ console.log(etudiant)
     </div>
   </div>
 </div>
-
   
   </body>
 </html>

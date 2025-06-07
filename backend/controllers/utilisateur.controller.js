@@ -183,14 +183,12 @@ export const creerAmbassadeur = catchAsync(async (req, res, next) => {
     codePays,
     confirmationMotDePasse,
   });
-  
+
   nouvelAmbassadeur.role = "ambassadeur";
-  
+
   await nouvelAmbassadeur.save();
   res.status(201).json({ status: "success", data: nouvelAmbassadeur });
 });
-
-
 
 // Suspendre un ambassadeur (changer son statut ou actif = false) 🟩
 export const suspendreAmbassadeur = catchAsync(async (req, res) => {
@@ -239,51 +237,64 @@ export const supprimerAmbassadeur = async (req, res) => {
   res.status(200).json({ status: "success", data: ambassadeur });
 };
 
+export const obtenirStatistiquesAmbassadeur = catchAsync(
+  async (req, res, next) => {
+    const ambassadeurId = req.user._id;
 
+    // 1. Récupérer l'ambassade associée
+    const ambassade = await Ambassade.findOne({ ambassadeur: ambassadeurId });
 
-export const obtenirStatistiquesAmbassadeur = catchAsync(async (req, res, next) => {
-  const ambassadeurId = req.user._id;
-
-  // 1. Récupérer l'ambassade associée
-  const ambassade = await Ambassade.findOne({ ambassadeur: ambassadeurId });
-
-  if (!ambassade) {
-    return next(new AppError("Aucune ambassade associée à cet utilisateur.", 404));
-  }
-
-  const ambassadeId = ambassade._id;
-
-  // 2. Nombre total d'étudiants confirmés dans cette ambassade
-  const totalEtudiants = ambassade.listeEtudiants.filter(e => e.estConfirme).length;
-  
-  // 2. Nombre total d'étudiants rejete dans cette ambassade
-  const etudiantsRejetes = ambassade.listeEtudiants.filter(e => e.estConfirme===false).length;
-  
-  // 2. Nombre total d'étudiants encours dans cette ambassade
-  // const etudiantsEnAttente = ambassade.listeEtudiants.filter(e => e.estConfirme).length;
-
-  // 3. Nombre d'annonces publiées par l'ambassadeur
-  const totalAnnonces = await Annonce.countDocuments({ auteur: ambassadeurId });
-
-  // 4. Nombre de demandes traitées
-  const demandesTraitees = await Demande.countDocuments({
-    ambassadeDestinataire: ambassadeId,
-    status: { $in: ['approuvée', 'rejetée'] }
-  });
-
-  res.status(200).json({
-    status: "success",
-    data: {
-      totalEtudiants,
-      totalAnnonces,
-      demandesTraitees,etudiantsRejetes
+    if (!ambassade) {
+      return next(
+        new AppError("Aucune ambassade associée à cet utilisateur.", 404)
+      );
     }
-  });
-});
 
+    const ambassadeId = ambassade._id;
 
+    // 2. Nombre total d'étudiants confirmés dans cette ambassade
+    const totalEtudiants = ambassade.listeEtudiants.filter(
+      (e) => e.estConfirme
+    ).length;
 
+    // 2. Nombre total d'étudiants rejete dans cette ambassade
+    // const etudiantsRejetes = ambassade.listeEtudiantsRejete.map(
+    //   (e) => e.statusEtudiant === "rejeté"
+    // ).length;
 
+     const etudiantsRejetes = ambassade.listeEtudiantsRejete.map(
+    (entry) => entry.etudiant
+  ).length;
+    const etudiantsEnAttentes = ambassade.listeEtudiants.filter(
+      (e) => e.statusEtudiant === "en attente"
+    ).length;
+
+    // 2. Nombre total d'étudiants encours dans cette ambassade
+    // const etudiantsEnAttente = ambassade.listeEtudiants.filter(e => e.estConfirme).length;
+
+    // 3. Nombre d'annonces publiées par l'ambassadeur
+    const totalAnnonces = await Annonce.countDocuments({
+      auteur: ambassadeurId,
+    });
+
+    // 4. Nombre de demandes traitées
+    const demandesTraitees = await Demande.countDocuments({
+      ambassadeDestinataire: ambassadeId,
+      status: { $in: ["approuvée", "rejetée"] },
+    });
+
+    res.status(200).json({
+      status: "success",
+      data: {
+        totalEtudiants,
+        totalAnnonces,
+        demandesTraitees,
+        etudiantsRejetes,
+        etudiantsEnAttentes,
+      },
+    });
+  }
+);
 
 export const statistiquesAdmin = catchAsync(async (req, res, next) => {
   const totalUtilisateurs = await Utilisateur.countDocuments();

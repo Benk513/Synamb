@@ -10,6 +10,7 @@ import {
   restreindreA,
 } from "../controllers/authentification.controller.js";
 import {
+  consulterEtudiantsEnAttente,
   consulterMonAmbassade,
   consulterProfilEtudiant,
   consulterUneDemande,
@@ -66,6 +67,12 @@ router.get(
   proteger,
   restreindreA("ambassadeur"),
   listerEtudiantsRejetes
+);
+router.get(
+  "/etudiantsEnAttente",
+  proteger,
+  restreindreA("ambassadeur"),
+  consulterEtudiantsEnAttente
 );
 
 router.patch(

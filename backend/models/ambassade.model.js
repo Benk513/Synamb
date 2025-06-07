@@ -33,6 +33,11 @@ const schemaAmbassade = new mongoose.Schema(
         etudiant: { type: mongoose.Schema.Types.ObjectId, ref: "Utilisateur" },
         estConfirme: { type: Boolean, default: false },
         dateDemande: { type: Date, default: Date.now },
+        statusEtudiant: {
+          type: String,
+          default: "en attente",
+          enum: ["en attente", "valide", "rejete"],
+        },
       },
     ],
     listeEtudiantsRejete: [

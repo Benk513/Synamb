@@ -11,7 +11,9 @@ const multerStorage = multer.diskStorage({
   },
   filename: (req, file, cb) => {
     // const extName = file.mimetype.split('/')[1]
-    const fileName = file.originalname;
+    const ext = file.mimetype.split("/")[1];
+
+    const fileName = `demande-${req.user.id}-${Date.now()}.${ext}`;
     cb(null, `${fileName.toLowerCase()}`);
   },
 });
@@ -21,7 +23,7 @@ const multerFilter = (req, file, cb) => {
     cb(null, true);
   } else {
     cb(
-      new AppError("Uniquement le format PNG, JPG et PDF sont autorisées", 400),
+      new AppError("Uniquement le format PNG etJPG  sont autorisées", 400),
       false
     );
   }
@@ -29,7 +31,7 @@ const multerFilter = (req, file, cb) => {
 const upload = multer({
   storage: multerStorage,
   fileFilter: multerFilter,
-  limits: { fileSize: 500000 },
+  limits: { fileSize: 5000000 },
 });
 export const uploadDocument = upload.single("document");
 

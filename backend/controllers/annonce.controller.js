@@ -63,31 +63,7 @@ export const creerAnnonce = catchAsync(async (req, res, next) => {
     data: annonce,
   });
 });
-
-//lister toutes les annonces
-// export const listeAnnonces = catchAsync(async (req, res, next) => {
-
-//   const etudiantCodePays = req.user.codePays;
-//   const ambassadeur = await Utilisateur.findOne({
-//     role: "ambassadeur",
-//     codePays: etudiantCodePays,
-//   })
-
-//   if (!ambassadeur) return next(new AppError("Vous devez etre integré a votre ambassade respective pour voir les annonces",400));
-
-//   const annonces = await Annonce.find({ auteur: ambassadeur._id }).populate({
-//     path: "auteur",
-//     select: "nom photo"})
-
-//   if (!annonces) return next(new AppError("Pas encore d'annonces pour vous", 400));
-
-//   res.status(200).json({
-//     resultats: annonces.length,
-//     statut: "succes",
-//     data: annonces,
-//   });
-
-// });
+ 
 
 export const listeAnnonces = catchAsync(async (req, res, next) => {
   const etudiantCodePays = req.user.codePays;

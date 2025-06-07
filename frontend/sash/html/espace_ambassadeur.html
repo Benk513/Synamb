@@ -147,6 +147,28 @@
                                                 <a class="dropdown-item" href="profile.html">
                                                     <i class="dropdown-icon fe fe-user"></i> Profile
                                                 </a>
+                                                 <div
+                          class="dropdown-menu dropdown-menu-end dropdown-menu-arrow"
+                        >
+                          <div class="drop-heading">
+                            <div class="text-center">
+                              <h5 class="text-dark mb-0 fs-14 fw-semibold" id="nom">
+                                Percy Kewshun
+                              </h5>
+                              <small class="text-muted" id="role">Senior Admin</small>
+                            </div>
+                          </div>
+                          <div class="dropdown-divider m-0"></div>
+                          <a class="dropdown-item" href="profile.html">
+                            <i class="dropdown-icon fe fe-user"></i> Profile
+                          </a>
+                         
+
+                          <button class="dropdown-item deconnexion" href="login.html">
+                            <i class="dropdown-icon fe fe-alert-circle"></i>
+                            Se deconnecter
+                          </button>
+                        </div>
                                                
                                               
                                                 <button class=" dropdown-item text-dark   btn deconnexion"    ><i
@@ -284,27 +306,7 @@
 
                         <!-- ROW-1 -->
                         <div class="row">
-
-
-                          
-
-
-
-
-
-
-
-
-
-
-
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
-
-
-
-
-
-
                                 <div class="alert alert-info alert-dismissible fade show mb-0" role="alert" id="showAmbassadeurInfoToCreateAmbassy">
                                     <span class="alert-inner--icon"><i class="fe fe-slash"></i></span>
                                     <span class="alert-inner--text"><strong>Vous devez attacher une ambassade avant de faire une autre action!</strong> </span>
@@ -312,19 +314,14 @@
                                             <span aria-hidden="true">×</span>
                                         </button>
                                 </div>
-
-
-
-
-
-
                                 <div class="row" id="statsCards">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
                                         <div class="card overflow-hidden">
                                             <div class="card-body">
                                                 <div class="d-flex">
                                                     <div class="mt-2">
-                                                        <h6 class="">Etudiants totales</h6>
+                                                        <h6 class="">Etudiants Acceptés
+                                                        </h6>
                                                         <h2 class="mb-0 number-font" id="totalEtudiants">-</h2>
                                                     </div>
                                                     <div class="ms-auto">
@@ -380,6 +377,25 @@
                                                     <div class="mt-2">
                                                         <h6 class="">Etudiants Réjétés</h6>
                                                         <h2 class="mb-0 number-font"  id="etudiantsRejetes">-</h2>
+                                                    </div>
+                                                    <div class="ms-auto">
+                                                        <div class="chart-wrapper mt-1">
+                                                            <canvas id="costchart"
+                                                                class="h-8 w-9 chart-dropshadow"></canvas>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                              
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                                        <div class="card overflow-hidden">
+                                            <div class="card-body">
+                                                <div class="d-flex">
+                                                    <div class="mt-2">
+                                                        <h6 class="">Etudiants En Attente</h6>
+                                                        <h2 class="mb-0 number-font"  id="etudiantsEnAttentes">-</h2>
                                                     </div>
                                                     <div class="ms-auto">
                                                         <div class="chart-wrapper mt-1">
@@ -564,7 +580,6 @@ $(".deconnexion").click(function () {
   window.location.href = "login.html";
 });
 
-      
 $(document).ready(function () {
             // Charger les données du profil
 
@@ -608,9 +623,7 @@ $(document).ready(function () {
 
 
 
-<script>
-     
-  
+<script>  
     $.ajax({
       url: "http://localhost:5001/api/ambassades/statistiques/ambassadeur",
       method: "GET",
@@ -624,14 +637,13 @@ $(document).ready(function () {
         $("#totalAnnonces").text(stats.totalAnnonces);
         $("#demandesTraitees").text(stats.demandesTraitees);
         $("#etudiantsRejetes").text(stats.etudiantsRejetes);
+        $("#etudiantsEnAttentes").text(stats.etudiantsEnAttentes);
 
 
 
                  // Affichage conditionnel
                  if (stats.totalEtudiants === 0) {
         $("#statsCards").hide(); }    // Masquer mot de passe
-         
-        
       },
       error: function (err) {
         console.error("Erreur lors de la récupération des statistiques :", err);
