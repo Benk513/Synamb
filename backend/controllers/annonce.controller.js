@@ -11,7 +11,12 @@ const multerStorage = multer.diskStorage({
   },
   filename: (req, file, cb) => {
     // const extName = file.mimetype.split('/')[1]
-    const fileName = file.originalname;
+    
+    const ext = file.mimetype.split("/")[1];
+
+    const fileName = `annonce-${req.user.id}-${Date.now()}.${ext}`;
+
+    
     cb(null, `${fileName.toLowerCase()}`);
   },
 });
@@ -48,7 +53,7 @@ export const creerAnnonce = catchAsync(async (req, res, next) => {
     titre,
     type,
     contenu,
-    datePublication:new Date(),
+    datePublication: new Date(),
     imageCouverture: imageCouverture,
   });
 
@@ -61,13 +66,12 @@ export const creerAnnonce = catchAsync(async (req, res, next) => {
 
 //lister toutes les annonces
 // export const listeAnnonces = catchAsync(async (req, res, next) => {
- 
+
 //   const etudiantCodePays = req.user.codePays;
 //   const ambassadeur = await Utilisateur.findOne({
 //     role: "ambassadeur",
 //     codePays: etudiantCodePays,
 //   })
-  
 
 //   if (!ambassadeur) return next(new AppError("Vous devez etre integré a votre ambassade respective pour voir les annonces",400));
 
@@ -82,9 +86,8 @@ export const creerAnnonce = catchAsync(async (req, res, next) => {
 //     statut: "succes",
 //     data: annonces,
 //   });
- 
-// });
 
+// });
 
 export const listeAnnonces = catchAsync(async (req, res, next) => {
   const etudiantCodePays = req.user.codePays;
@@ -105,7 +108,9 @@ export const listeAnnonces = catchAsync(async (req, res, next) => {
   // ⚡ Ne vérifier la confirmation que si l'utilisateur N'EST PAS ambassadeur
   if (req.user.role !== "ambassadeur") {
     const estConfirme = ambassade.listeEtudiants.some(
-      (entry) => entry.etudiant.toString() === etudiantId.toString() && entry.estConfirme === true
+      (entry) =>
+        entry.etudiant.toString() === etudiantId.toString() &&
+        entry.estConfirme === true
     );
 
     if (!estConfirme) {
@@ -134,13 +139,19 @@ export const listeAnnonces = catchAsync(async (req, res, next) => {
   }
 
   // Récupérer les annonces postées par l’ambassadeur
-  const annonces = await Annonce.find({ auteur: ambassadeur._id }).populate({
-    path: "auteur",
-    select: "nom photo",
-  });
+  const annonces = await Annonce.find({ auteur: ambassadeur._id })
+    .sort({
+      datePublication: -1,
+    })
+    .populate({
+      path: "auteur",
+      select: "nom photo",
+    });
 
   if (!annonces || annonces.length === 0) {
-    return next(new AppError("Pas encore d'annonces pour votre ambassade.", 400));
+    return next(
+      new AppError("Pas encore d'annonces pour votre ambassade.", 400)
+    );
   }
 
   // Réponse finale
@@ -150,7 +161,6 @@ export const listeAnnonces = catchAsync(async (req, res, next) => {
     data: annonces,
   });
 });
-
 
 // export const listeAnnonces = catchAsync(async (req, res, next) => {
 //   const etudiantCodePays = req.user.codePays;
@@ -214,8 +224,6 @@ export const listeAnnonces = catchAsync(async (req, res, next) => {
 //     data: annonces,
 //   });
 // });
-
-
 
 // export const listeAnnonces = catchAsync(async (req, res, next) => {
 //   const utilisateurConnecteId = req.user._id;

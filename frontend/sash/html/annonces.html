@@ -1,16 +1,16 @@
- 
+<script>
+  const token = localStorage.getItem("token");
 
-  <script>
-      const token = localStorage.getItem("token");
+  const role = localStorage.getItem("role");
+  if (!token) {
+    // Si un token est présent, on redirige
+    window.location.href = "login.html"; // ou dashboard.html
+  }
 
-      const role = localStorage.getItem("role");
-    if (!token) {
-      // Si un token est présent, on redirige
-      window.location.href = "login.html"; // ou dashboard.html
-    }
-     
-    if(role ==="admin"){window.location.href = "/frontend/sash/html/index.html"; }
-  </script> 
+  if (role === "admin") {
+    window.location.href = "/frontend/sash/html/index.html";
+  }
+</script>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -97,7 +97,7 @@
                 />
               </a>
               <!-- LOGO -->
-           
+
               <div class="d-flex order-lg-2 ms-auto header-right-icons">
                 <!-- SEARCH -->
                 <button
@@ -117,8 +117,6 @@
                     id="navbarSupportedContent-4"
                   >
                     <div class="d-flex order-lg-2">
-                   
-                      
                       <!-- COUNTRY -->
                       <div class="d-flex">
                         <a
@@ -137,8 +135,7 @@
                       <!-- CART -->
 
                       <!-- FULL-SCREEN -->
-                      
-               
+
                       <!-- SIDE-MENU -->
                       <div class="dropdown d-flex profile-1">
                         <a
@@ -160,18 +157,19 @@
                               <h5 class="text-dark mb-0 fs-14 fw-semibold nom">
                                 Percy Kewshun
                               </h5>
-                              <small class="text-muted role role" >Senior Admin</small>
+                              <small class="text-muted role role"
+                                >Senior Admin</small
+                              >
                             </div>
                           </div>
                           <div class="dropdown-divider m-0"></div>
                           <a class="dropdown-item" href="profile.html">
                             <i class="dropdown-icon fe fe-user"></i> Profile
                           </a>
-                       
-                          
-                          <button class="dropdown-item deconnexion"  >
+
+                          <button class="dropdown-item deconnexion">
                             <i class="dropdown-icon fe fe-alert-circle"></i>
-                           Se deconnecter
+                            Se deconnecter
                           </button>
                         </div>
                       </div>
@@ -190,19 +188,33 @@
           <div class="app-sidebar">
             <div class="side-header">
               <a class="header-brand1" href="index.html">
-                  <img src="../assets/images/brand/synamb.png" class="header-brand-img desktop-logo img-fluid" alt="logo" style="max-width: 50%;
-height: auto;">
-                  <img src="../assets/images/brand/synamb.png" class="header-brand-img toggle-logo img-fluid"  style="max-width: 50%;
-height: auto;"
-                      alt="logo">
-                  <img src="../assets/images/brand/synamb.png" class="header-brand-img light-logo img-fluid" alt="logo"  style="max-width: 50%;
-height: auto;">
-                  <img src="../assets/images/brand/synamb.png" class="header-brand-img light-logo1 img-fluid"  style="max-width: 50%;
-height: auto;"
-                      alt="logo">
+                <img
+                  src="../assets/images/brand/synamb.png"
+                  class="header-brand-img desktop-logo img-fluid"
+                  alt="logo"
+                  style="max-width: 50%; height: auto"
+                />
+                <img
+                  src="../assets/images/brand/synamb.png"
+                  class="header-brand-img toggle-logo img-fluid"
+                  style="max-width: 50%; height: auto"
+                  alt="logo"
+                />
+                <img
+                  src="../assets/images/brand/synamb.png"
+                  class="header-brand-img light-logo img-fluid"
+                  alt="logo"
+                  style="max-width: 50%; height: auto"
+                />
+                <img
+                  src="../assets/images/brand/synamb.png"
+                  class="header-brand-img light-logo1 img-fluid"
+                  style="max-width: 50%; height: auto"
+                  alt="logo"
+                />
               </a>
               <!-- LOGO -->
-          </div>
+            </div>
             <div class="main-sidemenu">
               <div class="slide-left disabled" id="slide-left">
                 <svg
@@ -233,9 +245,7 @@ height: auto;"
                 <li class="sub-category">
                   <h3>Annonces</h3>
                 </li>
-                
 
-               
                 <li>
                   <a
                     class="side-menu__item has-link"
@@ -245,16 +255,23 @@ height: auto;"
                     ><span class="side-menu__label">Annonces</span>
                   </a>
                 </li>
-                
-                 
-
-              
 
                 <li class="sub-category">
                   <h3>General</h3>
                 </li>
-
-                 <li><a href="https://chat.whatsapp.com/FzhNb8s7la8KNiuoBAzPA5" class="btn btn-primary">Rejoindre le groupe d'echange</a></li>
+  <li class="deconnexion">
+                  <button class="text-dark btn">
+                    <i class="side-menu__icon fa fa-sign-out"></i
+                    ><span class="side-menu__label">Se deconnecter</span>
+                  </button>
+                </li>
+                <li>
+                  <a
+                    href="https://chat.whatsapp.com/FzhNb8s7la8KNiuoBAzPA5"
+                    class="btn btn-primary"
+                    >Rejoindre le groupe d'echange</a
+                  >
+                </li>
               </ul>
               <div class="slide-right" id="slide-right">
                 <svg
@@ -297,17 +314,11 @@ height: auto;"
               <div class="row">
                 <div class="col-xl-12">
                   <div class="row">
-                    <div id="annoncesContainer" class="row">
-                      
-                      
-                    </div>
-
-                
+                    <div id="annoncesContainer" class="row"></div>
                   </div>
                 </div>
 
                 <!-- COL-END -->
-              
               </div>
               <!-- ROW-1 CLOSED -->
             </div>
@@ -316,10 +327,7 @@ height: auto;"
         </div>
         <!--app-content closed-->
       </div>
- 
-  
 
- 
       <!-- FOOTER CLOSED -->
     </div>
 
@@ -370,24 +378,19 @@ height: auto;"
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/relativeTime.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/locale/fr.js"></script>
 
-
     <script>
       $(".deconnexion").click(function () {
         alert("À bientôt !");
         localStorage.clear();
         window.location.href = "login.html";
       });
-          </script>
+    </script>
     <script>
       let currentPage = 1;
       const limit = 6;
 
       dayjs.extend(dayjs_plugin_relativeTime);
       dayjs.locale("fr");
-
-       
-
-      
 
       if (!token) {
         window.location.href = "login.html";
@@ -403,12 +406,12 @@ height: auto;"
         method: "GET",
         headers: {
           Authorization: "Bearer " + token,
-
         },
         success: function (res) {
           const annonces = res.data;
           const total = res.total; // total number of annonces
-           
+
+          console.log(annonces);
 
           const baseUrl = "http://localhost:5001/uploads/annonces/";
           const userProfileUrl = "http://localhost:5001/uploads/utilisateurs/";
@@ -468,55 +471,58 @@ height: auto;"
         },
         error: function (err) {
           console.error("Erreur:", err.message);
-          alert("Impossible de récupérer les annonces.");
+          alert(err.message);
         },
       });
     </script>
 
-    
-<script>
+    <script>
+      $(document).ready(function () {
+        // Charger les données du profil
 
-  $(document).ready(function () {
-      // Charger les données du profil
+        const userProfileUrl = "http://localhost:5001/uploads/utilisateurs/";
+        $.ajax({
+          url: "http://localhost:5001/api/utilisateurs/monProfil",
+          method: "GET",
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+          success: function (user) {
+            const profileUrl = userProfileUrl + user?.data.photo;
+            console.log(user?.data.nom);
+            $(".nom").text(user?.data?.nom);
+            $("#email").text(user?.data.email);
+            $("#lipasa").text(user?.data.lipasa || "Non renseigné.");
+            $(".photo").attr("src", profileUrl);
+            $("#photo").attr("src", profileUrl);
+            $("#pays").text(user?.data.pays || "Non renseigné.");
+            $("#dateNaissance").text(
+              user?.data.dateNaissance || "Non renseigné."
+            );
+            $("#biographie").text(
+              user?.data.biographie || "Aucune biographie fournie."
+            );
+            $("#adresse").text(user?.data.adresse || "Non renseigné.");
+            $("#codePays").val(user?.data.codePays || "Non renseigné.");
+            $("#telephone").text(user?.data.telephone || "Non renseignné.");
+            $(".role").text(user?.data.role || "Non renseignné.");
+            $("#sexe").text(user?.data.sexe || "Non renseignné.");
 
-      const userProfileUrl = "http://localhost:5001/uploads/utilisateurs/";
-
-  $.ajax({
-    url: "http://localhost:5001/api/utilisateurs/monProfil",
-    method: "GET",
-    headers: {
-      Authorization: "Bearer " + localStorage.getItem("token"),
-    },
-    success: function (user) {
-        const profileUrl = userProfileUrl + user?.data.photo;
-      console.log(user?.data.nom)
-      $(".nom").text(user?.data?.nom);
-      $("#email").text(user?.data.email);
-      $("#lipasa").text(user?.data.lipasa || "Non renseigné.");
-      $(".photo").attr("src", profileUrl);
-      $("#photo").attr("src", profileUrl);
-      $("#pays").text(user?.data.pays || "Non renseigné.");
-      $("#dateNaissance").text(user?.data.dateNaissance || "Non renseigné.");
-      $("#biographie").text(user?.data.biographie || "Aucune biographie fournie.");
-      $("#adresse").text(user?.data.adresse || "Non renseigné.");
-      $("#codePays").val(user?.data.codePays || "Non renseigné.");
-      $("#telephone").text(user?.data.telephone || "Non renseignné.");
-      $(".role").text(user?.data.role || "Non renseignné.");
-      $("#sexe").text(user?.data.sexe || "Non renseignné.");
-
-
-           // Affichage conditionnel
-if (user?.data.role === "admin" || user?.data.role === "ambassadeur") {
-  $("#info-administrative").hide();     // Masquer mot de passe
-  $("#info-academique").hide();     // Masquer mot de passe
-  $("#saveBtn").hide();         // Masquer bouton "Enregistrer"
-}
-    },
-    error: function () {
-        alert("Erreur lors du chargement du profil !");
-      },
-  });})
-  </script>
-
+            // Affichage conditionnel
+            if (
+              user?.data.role === "admin" ||
+              user?.data.role === "ambassadeur"
+            ) {
+              $("#info-administrative").hide(); // Masquer mot de passe
+              $("#info-academique").hide(); // Masquer mot de passe
+              $("#saveBtn").hide(); // Masquer bouton "Enregistrer"
+            }
+          },
+          error: function () {
+            alert("Erreur lors du chargement du profil !");
+          },
+        });
+      });
+    </script>
   </body>
 </html>

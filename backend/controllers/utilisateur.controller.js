@@ -255,6 +255,12 @@ export const obtenirStatistiquesAmbassadeur = catchAsync(async (req, res, next) 
 
   // 2. Nombre total d'étudiants confirmés dans cette ambassade
   const totalEtudiants = ambassade.listeEtudiants.filter(e => e.estConfirme).length;
+  
+  // 2. Nombre total d'étudiants rejete dans cette ambassade
+  const etudiantsRejetes = ambassade.listeEtudiants.filter(e => e.estConfirme===false).length;
+  
+  // 2. Nombre total d'étudiants encours dans cette ambassade
+  // const etudiantsEnAttente = ambassade.listeEtudiants.filter(e => e.estConfirme).length;
 
   // 3. Nombre d'annonces publiées par l'ambassadeur
   const totalAnnonces = await Annonce.countDocuments({ auteur: ambassadeurId });
@@ -270,7 +276,7 @@ export const obtenirStatistiquesAmbassadeur = catchAsync(async (req, res, next) 
     data: {
       totalEtudiants,
       totalAnnonces,
-      demandesTraitees
+      demandesTraitees,etudiantsRejetes
     }
   });
 });

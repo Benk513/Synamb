@@ -353,7 +353,7 @@
                 <div>
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                      <a href="javascript:void(0)">Pages</a>
+                      <a href="annonces.html">Annonces</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
                       Ajouter une annonce
@@ -710,26 +710,30 @@
           contentType: false,
           processData: false,
           success: function (res) {
-            $("#messageAnnonce").html(`
-                <div class="alert alert-success">
-                  ✅ Annonce publiée avec succès !
-                </div>
-              `);
+            // $("#messageAnnonce").html(`
+            //     <div class="alert alert-success">
+            //       ✅ Annonce publiée avec succès !
+            //     </div>
+            //   `);
+            alert("Annonce publiée avec succès !")
             $("#formAnnonce")[0].reset();
 
-            $("#messageBox")
-              .html(` <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
-        <span class="alert-inner--icon"><i class="fe fe-slash"></i></span>
-        <span class="alert-inner--text"><strong>Erreur!</strong> Ambassade crée avec succes!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">×</span>
-          </button>
-          </div>`);
+        //     $("#messageBox")
+        //       .html(` <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
+        // <span class="alert-inner--icon"><i class="fe fe-slash"></i></span>
+        // <span class="alert-inner--text"><strong>Erreur!</strong> Ambassade crée avec succes!</span>
+        // <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        //   <span aria-hidden="true">×</span>
+        //   </button>
+        //   </div>`);
+          // $("#messageBox").show();
 
-            setTimeout(() => {
-              location.reload(); // pour recharger et afficher les nouvelles données
-              window.location.href();
-            }, 2000);
+          // alert("Annonce publiée avec succès !");
+          //   setTimeout(() => {
+          //     location.reload(); // pour recharger et afficher les nouvelles données
+          //     window.location.href();
+          //   }, 2000);
+          // },
           },
           error: function (err) {
             console.error(err);
