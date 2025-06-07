@@ -786,7 +786,7 @@
                             id="document"
                             type="file"
                             name="document"
-                            accept=".jpg, .png, image/jpeg, image/png"
+                            accept=".jpg, .png, image/jpeg, image/png , image/webp"
                             multiple
                           />
                         </div>
@@ -1854,8 +1854,8 @@
             //     .text("Envoi en cours...");
             // },
             success: function (response) {
-              $("#demandeForm")[0].reset();
               alert("Votre demande a été envoyée avec succès !");
+              $("#demandeForm")[0].reset();
               // $("#alertZone")
               //   .show()
               //   .addClass("success")
@@ -1869,10 +1869,10 @@
               //                                   <span aria-hidden="true">×</span>
               //                               </button>
               //                       </div>`);
-              // setTimeout(function () {
-              //   window.location.href =
-              //     "/frontend/sash/html/espace_etudiant.html";
-              // }, 1000);
+              setTimeout(function () {
+                window.location.href =
+                  "/frontend/sash/html/espace_etudiant.html";
+              }, 1000);
             },
             error: function (xhr) {
               const message =

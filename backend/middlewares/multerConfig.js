@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
 
 // Définir le filtre MIME
 const fileFilter = (req, file, cb) => {
-  const allowedTypes = ['application/pdf', 'image/jpeg', 'image/jpg', 'image/png'];
+  const allowedTypes = ['application/pdf', 'image/jpeg', 'image/jpg', 'image/png','image/webp'];
   if (allowedTypes.includes(file.mimetype)) {
     cb(null, true);
   } else {
@@ -27,7 +27,7 @@ const fileFilter = (req, file, cb) => {
 
 // Définir les limites
 const limits = {
-  fileSize: 1024 * 500, // 500 KB max
+  fileSize: 1024 *1024 * 10, // 500 KB max
 };
 
 // Créer l'instance multer

@@ -77,22 +77,7 @@ export const consulterUneAmbassade = async (req, res) => {
   });
 };
 
-// Lister mes étudiants confirmés 🟩
-// export const listerMesEtudiants = catchAsync(async (req, res, next) => {
-//   // Récupère l'ambassade de l'ambassadeur connecté
-//   const ambassadeur = await Ambassade.findOne({
-//     ambassadeur: req.user._id,
-//   }).populate("listeEtudiants.etudiant", "nom email pays telephone");
-//   if (!ambassadeur)
-//     return res
-//       .status(404)
-//       .json({ status: "fail", message: "Ambassade introuvable" });
-//   res.status(200).json({
-//     status: "success",
-//     resultats: ambassadeur.listeEtudiants.length,
-//     data: ambassadeur.listeEtudiants,
-//   });
-// });
+ 
 
 // Lister mes étudiants confirmés 🟩
 export const listerMesEtudiants = catchAsync(async (req, res, next) => {
@@ -122,22 +107,7 @@ export const listerMesEtudiants = catchAsync(async (req, res, next) => {
 });
 
 
-// export const consulterEtudiantsEnAttente = catchAsync(
-//   async (req, res, next) => {
-//     // Récupère l'ambassade de l'ambassadeur connecté
-//     const ambassade = await Ambassade.findOne({
-//       ambassadeur: req.user._id,
-//     }).populate("listeEtudiants.etudiant", "nom email pays telephone");
-
-//     if (!ambassade) {
-//       return res.status(404).json({
-//         status: "fail",
-//         message: "Ambassade introuvable",
-//       });
-//     }
-//   }
-// );
-
+ 
 
 export const consulterEtudiantsEnAttente = catchAsync(async (req, res, next) => {
   const ambassade = await Ambassade.findOne({
@@ -403,7 +373,7 @@ export const listerMesDemandes = catchAsync(async (req, res, next) => {
   }
 
   // Étape 2 : Récupérer les demandes liées à cette ambassade
-  const demandes = await Demande.find({ ambassadeDestinataire: ambassade._id })
+  const demandes = await Demande.find({ ambassadeDestinataire: ambassade._id }).sort({dateCreation:-1})
     .populate("etudiant")
     .populate("ambassadeDestinataire");
 

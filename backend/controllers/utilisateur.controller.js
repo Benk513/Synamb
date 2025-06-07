@@ -262,9 +262,9 @@ export const obtenirStatistiquesAmbassadeur = catchAsync(
     //   (e) => e.statusEtudiant === "rejeté"
     // ).length;
 
-     const etudiantsRejetes = ambassade.listeEtudiantsRejete.map(
-    (entry) => entry.etudiant
-  ).length;
+    const etudiantsRejetes = ambassade.listeEtudiantsRejete.map(
+      (entry) => entry.etudiant
+    ).length;
     const etudiantsEnAttentes = ambassade.listeEtudiants.filter(
       (e) => e.statusEtudiant === "en attente"
     ).length;
@@ -282,6 +282,12 @@ export const obtenirStatistiquesAmbassadeur = catchAsync(
       ambassadeDestinataire: ambassadeId,
       status: { $in: ["approuvée", "rejetée"] },
     });
+    // 4. Nombre de demandes en attente
+    const demandesEnAttente = await Demande.countDocuments({
+      ambassadeDestinataire: ambassadeId,
+      status: { $in: ["en attente"] },
+    });
+
 
     res.status(200).json({
       status: "success",
@@ -291,6 +297,7 @@ export const obtenirStatistiquesAmbassadeur = catchAsync(
         demandesTraitees,
         etudiantsRejetes,
         etudiantsEnAttentes,
+        demandesEnAttente
       },
     });
   }
