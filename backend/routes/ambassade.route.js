@@ -21,6 +21,7 @@ import {
   listerMesEtudiants,
   traiterDemandeAccompagnement,
   traiterDemandeInscription,
+  verifierSiEtudiantEstConfirme,
 } from "../controllers/ambassade.controller.js";
 import { uploadFormData } from "../middlewares/uploadFormData.js";
 import { obtenirStatistiquesAmbassadeur } from "../controllers/utilisateur.controller.js";
@@ -80,6 +81,12 @@ router.patch(
   proteger,
   restreindreA("ambassadeur"),
   traiterDemandeInscription
+);
+router.get(
+  "/verfierSiEtudiantEstConfirme",
+  proteger,
+  restreindreA("etudiant"),
+  verifierSiEtudiantEstConfirme
 );
 
 router.get(

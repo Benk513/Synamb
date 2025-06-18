@@ -233,7 +233,7 @@
                                         class="side-menu__label" >Se deconnecter</span> </button>
                             </li>
 
-                             <li><a href="https://chat.whatsapp.com/FzhNb8s7la8KNiuoBAzPA5" class="btn btn-primary">Rejoindre le groupe d'echange</a></li>
+                             <li><a href="https://chat.whatsapp.com/FzhNb8s7la8KNiuoBAzPA5" class="btn btn-primary comunityButton">Rejoindre le groupe d'echange</a></li>
                             
                           
                         </ul>
@@ -422,11 +422,6 @@ $(".deconnexion").click(function () {
 });
 
 
-
-
-
-
-
 $(document).ready(function () {
             // Charger les données du profil
 
@@ -482,6 +477,7 @@ $(document).ready(function () {
 
         $(".actionButtons").show()
         $("#blockAnnonceButtons").hide()
+        $(".comunityButton").show()
         
         
         
@@ -490,6 +486,8 @@ $(document).ready(function () {
         console.error("Erreur:", err.message);
         $(".actionButtons").hide()
         $("#blockAnnonceButtons").show()
+        $(".comunityButton").hide()
+
       },
     });})
   </script>
